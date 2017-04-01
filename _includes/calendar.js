@@ -26,6 +26,21 @@ var dates = {
 	{% endfor %}
     ],
 
+    "pa": [
+	{% for asn in site.pa %}
+	{% if asn.num %}
+	{
+	    "num" : "{{ asn.num }}",
+	    "ready" :  "{{ asn.ready }}",
+	    "desc" :  "{{ asn.desc }}",
+	    "assigned" :  "{{ asn.assigned }}",
+	    "due" :  "{{ asn.due }}",
+	    "url" :  "{{ asn.url }}",
+	},
+	{% endif %}
+	{% endfor %}
+    ],
+
     "exam": [
 	{% for asn in site.exam %}
 	 {% if asn.layout == "exam_info" %}
@@ -94,6 +109,9 @@ function traverseDates(dates) {
     }
     for (var i = 0, len = dates.lab.length; i < len; i++) {
 	processHwkOrLab(dates.lab[i],"lab");
+    }
+    for (var i = 0, len = dates.pa.length; i < len; i++) {
+	processHwkOrLab(dates.pa[i],"lab");
     }
     for (var i = 0, len = dates.exam.length; i < len; i++) {
 	processExam(dates.exam[i]);

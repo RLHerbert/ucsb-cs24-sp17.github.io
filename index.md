@@ -31,6 +31,11 @@ title: "CS 24: Problem Solving with Computers -II , Spring 17 Mirza"
 {% include lab_table.html %}
 </div>
 
+<div data-role="collapsible" data-collapsed="false">
+<h2 id="labs">Programming Assignments:</h2>
+{% include pa_table.html %}
+</div>
+
 <!--
 <div data-role="collapsible" data-collapsed="false">
 <h2 id="exams">Exams</h2>

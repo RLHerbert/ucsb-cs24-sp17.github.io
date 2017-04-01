@@ -43,6 +43,10 @@ collections:
     output: true
     permalink: /lab/:path/
     last_before: false
+  pa:
+    output: true
+    permalink: /pa/:path/
+    last_before: false
   exam:
     output: true
     permalink: /exam/:path/
@@ -71,6 +75,12 @@ defaults:
       type: lab
     values:
       layout: lab
+  - 
+    scope:
+      path: ""
+      type: pa
+    values:
+      layout: pa
   - 
     scope:
       path: ""

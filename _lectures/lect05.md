@@ -1,6 +1,6 @@
 ---
 num: "lect05"
-desc: "Makefiles, intro to lab02 "
+desc: "Chapter 3.1- 3.3: Container classes, the sequence class, interactive test programs, intro to pa2 "
 ready: false
 pdfurl: /lectures/CS16_Lecture5.pdf
 annotatedpdfurl: /lectures/CS16_Lecture5_ann.pdf
@@ -8,29 +8,15 @@ annotatedready: false
 lecture_date: 2017-04-17
 ---
 
-# Code from lecture
-[https://github.com/ucsb-cs16-wi17/lecture-01-31](https://github.com/ucsb-cs16-wi17/lecture-01-31)
-
-We will learn the following concepts by looking at the specific problem of drawing a house with a triangular roof and rectangular body!
-
 # Topics
 
-## Intro to lab02 - ASCII Art
+Container classes - bag example version 1
+	bag1.h [docs only] - typedefs, value semantics
+	bagdemo.cxx - “Abstraction is good!”
+	bag1 class design - fixed size array
+		bag1.h [rest]
+		bag1.cxx - class invariant
 
-## Under the hood of program compilation and execution
-* From high-level programs to machine code
-	* What are .h, .o and .cpp file?
-	* What is an execuatble 
-	* Steps in compilation
- 	* Creating object files and linking programs with g++
-* Separate compilation with Makefiles
-* Types of compile-time errors. 
-* Linker errors
-* Header guards
-
-
-## Review: Designing nested loops 
-* When do we need a loop?
-* When do we need a nested loop?
-* Checking for limits
-
+sequence class (v.1: fixed array) - sequence1.h
+	Interactive test programs - sequence_test.cxx
+	Introduce pa02

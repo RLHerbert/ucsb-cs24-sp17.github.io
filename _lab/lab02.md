@@ -2,373 +2,273 @@
 layout: lab
 num: lab02
 ready: false
-desc: "ASCII Art: Logical operators, integrating github into your workflow"
+desc: "Using g++, make and gdb"
 assigned: 2017-04-18 9:00:00.00-7
-due: 2017-04-25 11:59:00.00-7
+due: 2017-04-18 11:59:00.00-7
 ---
 
-# Goals for this lab 
- 
+# Goals for this lab
+
 By the time you have completed this lab, you should be able to
 
-* Use if/else and for loops to print various kinds of shapes with &quot;ASCII Art&quot;
-* Show that you understand how to work through the basic process of test-driven development in C++
+* Effectively use g++ from the command line
+* Create and use a simple Makefile
+* Use basic gdb commands to debug a program
 
-Below are the links to different sections of the lab:
+# Step by Step Instructions
 
-* [Skills Needed ](#skills){: data-ajax="false"}
-* [Ascii Art](#asciiart){: data-ajax="false"}
-* [An example for you to follow: starL](#starL){: data-ajax="false"}
-* [What you'll be doing](#yourgoal){: data-ajax="false"}
-* [Step by Step Instructions](#stepbystep){: data-ajax="false"}
-* [Evaluation and grading](#eval){: data-ajax="false"}
+## Step 0: Fill out a survey for the department
 
+The Computer Science Department's Curriculum Committee wants each student (individually) to fill out and submit the [Undergraduate Curriculum Assessment Survey #1](https://www.surveymonkey.com/r/6FP5L5Z). It should only take a couple of minutes for you to complete. Please do that now, before going on to Step 1.
 
+## Step 1: Choose initial roles, create a directory and get the starter code for this lab
 
-## Skills Needed <a name="skills"></a>
+Partner up (and remember to switch roles after awhile). If your regular partner is more than 5 minutes late, ask the TA to pair you with someone else for this week.
 
-By now, we expect that you are comfortable with these basic skills from lab00 and lab01 so we will no longer describe them in as much detail as we did previously:
- 
-* Using a text-editor to create and/or edit C++ programs
-* Creating a git repo on github
-* Cloning your github to your local machine
-* Integrating git command-line tools into your workflow (*git add...*, *git commit..*, *git push ...*)
-* Compiling and running C++ programs
-* Using the computers in both the CSIL and the Phelps labs to do basic things:
-    * Performing basic management of directories and files with Unix commands such as mkdir, cd, pwd, ls, cp, mv
-    * Submitting assignments in this class with the submit.cs system, and checking your results
+This lab's pilot should log in. You will (both) work in this account for the rest of the lab.
 
-## What we'll be doing in this lab: ASCII Art <a name="asciiart"></a>
-
-There was a time when laser printers either hadn't been invented yet, or were not yet widely available. Thus, the only kind of printer most folks had access to was something called a &quot;line printer&quot;, which printed only from left to right, top to bottom, and could only print the kinds of characters you find on a typewriter keyboard.
-
-So, you might find folks making pictures like this one, found at http://chris.com/ascii/
-
- <pre>
-                                 .ze$$e.
-              .ed$$$eee..      .$$$$$$$P""
-           z$$$$$$$$$$$$$$$$$ee$$$$$$"
-        .d$$$$$$$$$$$$$$$$$$$$$$$$$"
-      .$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$e..
-    .$$****""""***$$$$$$$$$$$$$$$$$$$$$$$$$$$be.
-                     ""**$$$$$$$$$$$$$$$$$$$$$$$L
-                       z$$$$$$$$$$$$$$$$$$$$$$$$$
-                     .$$$$$$$$P**$$$$$$$$$$$$$$$$
-                    d$$$$$$$"              4$$$$$
-                  z$$$$$$$$$                $$$P"
-                 d$$$$$$$$$F                $P"
-                 $$$$$$$$$$F 
-                  *$$$$$$$$"
-                    "***""  Gilo94'
-</pre>
-
-For now, we'll be keeping things much simpler: we are going to do some very simple ASCII art of letters, numbers and symbols, in order to practice with if/else and for loops.
-
-The first few exercises will be very simple, but they get progressively more challenging.
-
-## An example for you to follow: starL  <a name="starL"></a>
-
-As an example, we will write a C++ function that returns a C++ string that when printed to cout,  makes the shape of prints the letter L with stars, at any width or height, provided both width and height are &gt;= 2
-
-If either the parameter width or height is less than 2, the function returns an empty string.
-
-The function will have the following <em>function prototype:</em>
-
-<pre>string starL(int width, int height);</pre>
-
-* As a reminder, a function prototype is the first line of the function definition (the header) followed by a semicolon instead of the function body&mdash;it is used to introduce the function to the compiler, in case the function definition isn't coming until later.
-
-* You can read more about function prototypes here: [C++: function prototypes](https://ucsb-cs16.github.io/topics/cpp_function_prototypes/)
-
-The following table shows various calls to this function, along with what the string returned looks like when printed using <code> cout << starL(w,h); </code>
-
-The rule is that the L should have width at least 2, and height at least 2, otherwise the result is an empty string, and printing an empty string results in no output.
-
-![starL](/lab/lab02/starL.png){:height="400px"}
-
-
-So, this is a fairly easy function to write. This will do the job, and is provided for you as an example of how functions like this should be written.
-
-
-To test whether this function works, we can write a simple main that takes the command line arguments, converts them to integers with stoi, 
-and then passes those to the function:
-
-## What you'll be doing <a name="yourgoal"></a>
-
-What you'll be doing in this lab is writing three similar functions: startT, starC and starZ.  
-
-*Sample values returned from starT*
-
-![starT](/lab/lab02/starT.png){:height="400px"}
-
-*Sample values returned from starC*
-
-starC renders the letters C, but requires a minimum width of 2, and a minimum height of 3.  Otherwise it returns an empty string.
-
-![starC](/lab/lab02/starC.png){:height="400px"}
-
-
-*Sample values returned from starZ*
-
-starZ renders the letters Z, but requires a minimum width of 3.   It only takes one parameter, because the height and width are always assumed to be equal.
-
-![starZ](/lab/lab02/starZ.png){:height="400px"}
-
-# Step by Step Instructions <a name="stepbystep"></a>
-
-## Step 1: Getting Started 
-
-* In the previous lab you probably noticed that everytime you pushed your code to git you had to enter your username and password. To avoid this we ask that you use a ssh-key method to establish your identity with git hub.
-The main task is to generate a private/public key and upload your public key to github. To do this refer to this tutorial: [https://ucsb-cs56-pconrad.github.io/topics/github_ssh_keys/](https://ucsb-cs56-pconrad.github.io/topics/github_ssh_keys/)
-
-* Decide if you are working alone, or working in a pair.  
-
-If you are working in a pair:
-
-* Go to submit.cs, navigate to CS16, S17, lab02, and create a team for you and your pair partner.   
-* Decide on initial navigator and driver.
-* Driver, log on to driver's CSIL account.
-* Go to our class organization on github: [ucsb-cs16-sp17](https://github.com/orgs/ucsb-cs16-sp17/dashboard) and create a new repo following the naming conventions introduced in previous labs. 
-* Add your partner as a collaborator on the newly created git repo
-* Log on to CSIL, bring up a terminal window, and clone your repo in your ~/cs16/ directory following the instructions from previous labs
-
-## Step 2:  Get the startercode
-
-Copy the code from the instructor's account on the CSIL server into your local git directory.
-
-First, Move to the local git directory:
+Create a ~/cs24/lab02 directory and make it your current directory:
 
 ```
-cd local_git_directory
-(Example: cd lab02_alily_jgaucho) 
+mkdir ~/cs24/lab02
+cd ~/cs24/lab02
 ```
 
-Then, Copy the code to the local git directory: (Don't forget the period (.) in the end)
+Now copy all of the files for this lab from /cs/faculty/dimirza/cs24-sp17/starter-code/lab02/ to your cs24/lab02 directory:
+
+cp /cs/faculty/dimirza/cs24-sp17/starter-code/lab02 ~/cs24/lab02/
+
+## Step 2: Review compiling and linking with g++
+
+With a simple program like hello.cpp, we normally compile and link in one step, and then it is ready to run like so:
 
 ```
-cp /cs/faculty/dimirza/cs16-sp17/labs/lab02-startercode/* .
+g++ hello.cpp -o hello
+./hello
 ```
 
-After executing this command in your local git directory ( ~/cs16/lab02_alily_jgaucho/) . If you use the ls command, you should see the following files:
+But we can also compile the program without linking it. Type the following, and then use ls to find out what happened:
 
 ```
--bash-4.2$ ls
-backslash.cpp  README.md  starC.cpp  starL.cpp  starT.cpp  starZ.cpp
--bash-4.2$ 
+-bash-4.3$ g++ -c hello.cpp
+-bash-4.3$ ls hello.*
+hello.cpp  hello.o
 ```
 
-Save the initial version of your code by typing out the following commands:
+Notice the new object file hello.o, which contains the machine language instructions in binary form. In a second step we would link this object file (just to standard libraries in this case) as follows:
 
 ```
-git add .
-git commit -m "Initial version"
-git push origin master
+g++ hello.o -o hello
 ```
 
+That step will finally produce the executable file "hello" - but only because we specified by the g++ option -o that the output file should be named hello. The program is run exactly like before by typing ./hello at the prompt.
 
-## Step 3: Practicing with the starL program 
+## Step 3: Understanding separate compilation
 
-First compile the starL.cpp file that you have in this week’s directory with the option (-std=c++11 ) as per the following command:
+When it comes to large projects in C++, it's always useful to organize your project into separate parts. When some parts of your program change, then only these parts need to be recompiled.
 
-```
-g++ -std=c++11 -o starL starL.cpp
-```
+See the three files main.cpp, functions.cpp and functions.h in your starter code. Notice that both of the .cpp files include the .h file - this is a typical case. It won't be necessary to compile functions.h by itself, as it will become part of both object files produced when the .cpp files are compiled.
 
-Run the program with a few command line parameters. You’ll notice something special happens when you pass in the command line parameters -1 -1.
+*Your job for Step 3:*
 
-<pre>
- ./starL 3 4
- ./starL 4 3
- ./starL
- ./starL 2 1
- ./starL -1 -1
-</pre>
+Compile both of main.cpp and functions.cpp separately.
+Then link the object files (will be main.o and functions.o) together to produce an executable file named "hello2" - this executable's name is important, and part of the lab requirement.
 
-With the command line parameters -1 -1, the program runs a set of tests on itself to make sure that the function starL inside the program is functioning correctly.  So, you should be able to get some feedback on whether your code is correct before you even send it to the submit program.  The code uses stoi to convert the argv[1] and argv[2] to integer values, and compare against -1.
+Run ./hello2 to verify success.
 
-Look over the code and try to understand how it works.  When you feel ready, move on to the next step, and try tackling the starT.cpp, starC.cpp and starZ.cpp programs.
+Thought question: Why is it unnecessary to separately compile functions.h?
 
-## Step 4: Writing the starT program 
+*Other useful g++ options*
 
-Your job now is to start edit the starT.cpp program, which has a function inside of it that is a "stub".  That function does NOT produce the correct output---it always just returns the string "stub".   You need to replace that code with a proper implementation of starT.  You can use the implementation of starL in the starL.cpp file as a model.
+When first compiling your programs it's always good to use the "-Wall" and the "-g" options in order to force g++ to give you warnings about possible errors in the source code, and include extra debugging information in its output, respectively.
 
-Compile your starT.cpp to the execuatable star. Suppose we want your program to draw a T with width 3 and height 2, we will run your starT executable as follows:
+The -g option is also necessary in order to use the gdb debugger later in the lab.
 
-```
-$./starT 3 2
-```
+If your program uses any of the extended C++ features of the C++ 2011 standard, then you must give the -std=c++11 option to g++ too.
 
-In general the parameters to the startT program are width, followed by height. You should take this into consideration when writing your main function. To write the starT() function refer back to the description of starT earlier in this lab.   You can also run the program with arguments of -1 -1 to run the internal tests and see whether your implementation is correct.
+## Step 4: Using a Makefile
 
+Now imagine that you have a project with 20 different files, or even hundreds of files ...
 
-When you think you have a correct implementation, try submitting to the submit.cs system.  You can submit just your starT.cpp program to see how far along you've gotten:
+Wouldn't it be better if we could compile all our files just by typing one command? Wouldn't it be better and save us time if we have to compile only the files we have changed, and not all of them? This is why we use the Makefile and the make command.
+
+Now let's write a simple makefile to easily compile the files main.cpp, functions.cpp, and functions.h that we used on the previous section. Open a text editor and name the file "Makefile" (or "makefile"). You should always name your make files in this way.
+
+Don't just copy & paste this text! Be sure there is a tab character at the beginning of every command line (in this case, the three g++ commands and the rm command) - spaces will not work.
 
 ```
-~submit/submit -p 635 starT.cpp 
-```
+hello: main.o functions.o
+  g++ main.o functions.o -o hello
 
-Note that this will show failures for <code>starC.cpp</code> and <code>starZ.cpp</code>, which are files that you'll be working on at a later step.
+main.o: main.cpp functions.h
+  g++ main.cpp -c
 
-You could also just submit the "stubs" for those&mdash;though those will fail some or all of the tests:
+functions.o: functions.cpp functions.h
+  g++ functions.cpp -c
 
-```
-~submit/submit -p 635 starC.cpp starT.cpp starZ.cpp
-```
-
-Either way, for now, concentrate only on the test failures that pertain to starT.cpp and try to address any problems you encounter.  If you fix these NOW before moving on to starC.cpp and/or starZ.cpp, you will likely have better success, because what you learn from fixing your mistakes will help you get those other parts solved more quickly and easily.
-
-Some rules to keep in mind for the starT function:
-
-* EVERY line of your T should have exactly the same number of characters, and should end in a newline&mdash;remember to pad out each line with spaces.
-* Return a string that represents the letter T with the correct width and height, but only if height &gt;=2, and width is an odd number &gt;=3
-* if the height and width values are not valid, return an empty string
-
-Hints: recall that:
-
-* the <code>%</code> operator can be used to test where a number is odd or even
-* the <code>&&</code> operator means "and"
-* the <code>||</code> operator means "or"
-* the opposite of &gt;= is &lt;, not &lt;=
-
-Also, for starT.cpp:
-
-* If there are not exactly two command line args after the program name (one for width and one for height), print a usage message: 
+clean:
+  rm hello main.o functions.o
 
 ```
-Usage: ./starT width height
-```
+Save the Makefile. Then make a minor change to one of the source code files (main.cpp, functions.cpp or functions.h). And finally type "make" in your console. Fix Makefile if it doesn't compile the changed parts and reproduce the executable file. If it does, then find out what happens if you type "make" again. ;-)
 
-* If the height and width are both -1, then invoke the internal tests.  Don't change those.  If you do, then you may lose points.
+By default, make will execute whatever is necessary to produce the first target which is hello (the executable) in this case. Alternatively, you can specify the target you want make to make by typing it as a command line argument, as in "make hello" to execute the default another way.
 
+Suppose that now you want to remove the objects and executable file. What should you type in your console? Be prepared to answer that question if the TA asks you.
 
-Save the new version of your code with the starT implementation by typing out the following commands:
+## Step 5: Using gdb (Gnu debugger)
 
-```
-git add starT.cpp
-git commit -m "Implemented starT()"
-git push origin master
-```
+Maybe time to switch partner roles?
 
-## Step 5: Writing the starC program 
+Inevitably sometime you will need to debug your code. gdb is a very powerful tool. Here we learn just the basics.
 
-Next, write the starC program.   Follow the same basic procedure as for the starT.cpp program.
+Look at buggy1.cpp to know its major parts.
 
-To get started, look at the table near the top of this lab that shows correct output for the starC program, as well as looking at the test cases in the runTests() function of the starC.cpp file in your directory.
+(Emacs Users Hint: If you are using emacs you can see line numbers on the editor by typing M-x linum-mode. This will make your life easier. If you prefer running gdb on e-macs maybe you should try M-x gdb-many-windows in order to split your screen and be able to see variable values, gdb and e-macs all together. You gain control back to emacs by typing: C-x 0)
 
-Note that you'll need to add some code to the main, but this time the rules are different.   The minimum width is 2, and the minimum height is 3&mdash;everything else returns a null string (except for the values -1 for width and -1 for height&mdash;when passed in combination, the tests should be run.)
-
-When:
-
-* You can run your code with: <code>./starC -1 -1</code> and all the tests pass
-* You can run your code on values such as <code>./starC 4 5</code> and <code>./starC 5 4 </code> and see the same output as what is shown in the table, AND
-* When typing in a command line that doesn't have exactly two arguments after <code>./starC</code> produces the correct error message
-
-then, you are ready to try testing your code on the submit system.
-
-If you submit starC.cpp together with your starT.cpp program, your submit command will look like this:
+This program is supposed to ask a student about the courses he/she plans to register. So a non-buggy version of the program would execute like this:
 
 ```
-~submit/submit -p 635 starC.cpp starT.cpp 
-```
+Enter a course name:
+Computer Networks
+You are registered for the following 1 courses:
+1. Computer Networks
 
-(The order of the files doesn't matter&mdash;list starT.cpp first, or starC.cpp first, aand either way, the result is the same.)
+ Do you want to register for  another course? (y/n)
+y
+Your Answer is:y
+Enter a course name:
+Computer Security
+You are registered for the following 2 courses:
+1. Computer Networks
+2. Computer Security
 
-Note that failures for <code>starZ.cpp</code> may still show up, but we need not be concerned about those yet.  
-
-Concentrate only on the test failures that pertain to starC.cpp and starT.cpp and try to address any problems you encounter.  Once all of those pass, move on to the starZ.cpp program:
-
-Save the new version of your code with the starT and starC implementation by typing out the following commands:
-
-```
-git add starC.cpp
-git commit -m "Implemented starC()"
-git push origin master
-```
-
-
-
-## Step 6: Writing the starZ program 
-
-For the starZ.cpp program, we have these rules:
-
-* Take only one command line parameter: the width. The height will automatically be set equal to the width.
-
-The starZ function follows these rules:
-
-* return a string that draws  the letter Z with the correct width and height, but only if width &gt;=3 
-* return an empty string if the value passed in for width is not valid, print nothing at all.
-
-Hints for the middle part of the Z:
-
-* Take a look at the program backslash.cpp which is in your directory.   Try compiling and running it.  Look at the source code and see if there are any hints there.
-* As you can see, it produces a backslash.cpp produces a backslash of a given width, as shown here.   Look at the source code, and consider how you might turn backslash.c into forwardslash.c&mdash;in fact, that might be a good warm-up exercise for making the starZ.c program.     Note that the backslash.cpp program does not contain an internal test harness.
-* Note that the backslash.cpp program uses several "helper functions".  You might find that to be a useful technique in writing your own code.   You may introduce whatever helper functions would be useful to you.
+ Do you want to register for  another course? (y/n)
 
 ```
--bash-4.1$  ./backslash
-Usage: ./backslash width
--bash-4.1$ ./backslash 3
-*
- *
-  *
--bash-4.1$ ./backslash 5
-*
- *
-  *
-   *
-    *
--bash-4.1$ ./backslash 2
-*
- *
--bash-4.1$ ./backslash 4
-*
- *
-  *
-   *
--bash-4.1$ 
-```
+But this code has errors. Your job will be to find one of them using gdb. No need to fix it now, just find it. That's the purpose of gdb - it helps you find errors in your code.
 
-
-As with starC.cpp, you should add code to starZ.cpp so that you are able to invoke the internal tests by typing <code>./starZ -1 </code>.  Note that this time, there is only one parameter.
-
-And, if there is not exactly one parameter, there should be an appropriate "usage" message that follows the pattern of the other programs&mdash;except that there is only a width parameter in this program.
-
-When you have a version that can pass its internal tests, try submitting it along with your starT.cpp and starC.cpp to the submit.cs system.  
+Compile the code, and remember to compile with the -g option. Use this command:
 
 ```
-~submit/submit -p 635 starC.cpp starT.cpp starZ.cpp
+g++ -g -o buggy1 buggy1.cpp
 ```
 
-If there are errors reported, fix them.    
+Then run it. Here is an example run:
 
-When you have a clean build, you are nearly done with this lab.   I say "nearly" done, because you should take one last look over the grading rubric to see if there is anything you need to adjust before doing your final submit and calling it a day.
+```
+Enter a course name:
+history
+You are registered for the following 1 courses:
+1. history
 
-Note:
-You MUST make one final submission that includes ALL of your files.  For getting incremental feedback while working on the lab, it is fine to submit one at a time, but for GRADING purposes, your LAST submission (in time) must be a complete submission of EVERYTHING.   In the ideal case (for you), that submission is completely "green", i.e. all test cases pass, and you have a perfect score (at least from the standpoint of the points you are awarded for passing the test cases.)
+ Do you Want to register for  another course? (y/n)
+y
+Your Answer is:y
+Enter a course name:
+You are registered for the following 2 courses:
+1. history
+2. 
 
-If there are parts you can't figure out, be sure to submit all of your files anyway to maximize the number of points you receive based on the parts that '''are''' working.
+ Do you Want to register for  another course? (y/n)
+y
+Your Answer is:y
+Enter a course name:
+You are registered for the following 3 courses:
+1. history
+2. 
+3. 
 
-Make sure you do a final *git add ..*, *git commit ...* and *git push ..* to make sure the latest version of your code is available on github.
+ Do you Want to register for  another course? (y/n)
+y
+Your Answer is:y
+Enter a course name:
+You are registered for the following 4 courses:
+1. history
+2. 
+3. 
+4. 
 
-# Evaluation and Grading <a name="eval"></a>
- 
-Mechanics:
+ Do you Want to register for  another course? (y/n)
 
-* (30 pts) submitting starT.cpp, starC.cpp and starZ.cpp to the submit system (10 points each)
-* (30 pts) submission is on time and follows instructions 
-* (30 pts) starT.cpp, starC.cpp and starZ.cpp files submitted  have good header comments 
+ ```
+
+Hmmm... Well it seems that our program doesn't wait for our input after the first course name ... Let's try to debug it with gdb to see how the basic gdb commands work. Begin by starting gdb with buggy1 as its command line argument:
+
+```
+bash-4.3$ gdb buggy1
+Then type "run" (or just "r") at the gdb prompt:
+
+(gdb) run
+The program starts and asks for user input. Push CTRL-C and write the gdb command to set a breakpoint at line 19 (You could also do the following by typing just "b 19")
+
+(gdb) break 19
+Enter "run" again, and then start the program from the beginning by typing "y" when asked:
+
+(gdb) run
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+This way the program will run until line 19. Write the command "next" or just "n" in order to move one statement forward. Now the program asks for your input:
+
+Enter a course name: 
+20      getline(cin,courseName,'\n');
+Don't give your input at this time. Instead move to the next step by writing again "next" or just by hitting enter (enter repeats the previous command you had typed). After you hit enter the getline function on line 20 is called and waits for your input. So you just have to enter a course name again - "Math" for example.
+
+Let's say we would like to know if the courseName variable has the value we assigned to it. Just type:
+
+(gdb) print courseName
+$1 = "Math"
+
+```
+So indeed (on this first iteration at least) variable courseName has the value we entered as an input ("Math"). Now use the next command to move forward up to line 29 ("userAnswer = trackUserAnswer();"). At that point, use the "step" command (or "s") in order to step into and execute the subroutine trackUserAnswer(). When you wish to exit from the trackUserAnswer function you can write finish. (But be aware that this function needs user input. So you should enter finish just after you have entered your input.)
+
+More about breakpoints: Write command break to put a breakpoint on line 29. Now you have two breakpoints set - this new one is number 2. You can disable it by entering "disable 2" (you could also use dis 2). And you can enter "enable 2" (or "ena 2") to enable the breakpoint again, and "delete 2" (or "d 2") to delete the breakpoint.
+
+To run your code until the next breakpoint is reached type (c) for continue.
+
+Other stuff: Enter "help" at the gdb prompt to find out about more commands. One useful one, for example, is "list" - try it.
+
+Ok... Now you have all the tools you need in order to find where is the input bug in this program. Continue stepping until right after the program attempts to get the second course name from the user. Not what you expected? Exit gdb after you have stepped to the point where the program is not working properly.
+
+The problem (typical in programs that use cin to get answers from the user) is that the input stream is not flushed after the user enters 'y' or 'n' in response to the "Do you want ..." question - there is still a newline character in the stream, so just that newline character is read as the course name in the next iteration. Add the following line of code in an appropriate place to solve the problem:
+
+```
+cin.ignore(1000, '\n');
+```
+
+That line will flush up to 1000 characters from the input stream, including the newline character. Afterwards the stream will be empty and ready for new user input.
+Compile (still with -g option) again, and run it to make sure it works properly now. Be ready to demonstrate the corrected version to your TA or tutor.
+
+## Step 6: Show off your work and get credit for this lab
+
+Get your TA or tutor's attention to inspect your work, and to record completion of your lab work.
+Don't leave early though ... begin the after-lab work below.
+
+### Submit your corrected program
+
+Submit your probgram on submit.cs and also push it to github
+
+## Evaluation and Grading
+
+You must accomplish the following to earn full credit [50 total points] for this lab:
+
+* [50 points] buggy1.cpp is saved, it has your name(s) in a comment at the top, and it compiles and executes properly. Moreover, you can tell the TA where the error happens in buggy1.cpp, and can demonstrate how to use make. And lastly, you each filled out the survey in Step 0.
+
+* [20 pts] correct program turned in via submit
+
+Deadline for after-lab submission: tonight at 11:59pm. Note that to be eligible for late turn-in with credit, you MUST have attended your entire lab period.
+
+* [-0 to -50 points, at the TA's discretion] The student arrived on time to their lab session, and worked diligently on CS24-related material until dismissed.
 
 
-Correctness
+After lab-work is done
 
-* (150 pts) 15 tests, ten points each, executed by submit.cs system
+## Work on the following after completing the required work
 
-Style: Style points will be provided based on your github submission, so make sure you have one
+It turns out that buggy1.cpp also has another problem. After inserting more that 5 courses, a segmentation fault (eventually) takes place. It's obvious why, but every bug in your program is a chance to learn more useful commands to improve your programming life! Start gdb again, and enter more than 5 courses until the fault occurs. Then try the gdb command backtrace (or bt) to see the sequence of commands that produce the crash. Use the x command (to examine memory), and list (or l). By the way, what are your options for fixing this bug?
 
-* (10 pts) Correct creation of the lab02 github repo in our class organization following the naming conventions provided in the lab. Addig your partner as collaborator and partner accepting the invitation. Both partners joining the same group on submit.cs
+By the way, here is a GDB Quick Reference Card that shows more gdb commands. And there are many online tutorials for gdb - google "gdb tutorial" for instance.
 
-* (30 pts) All three programs have good programming style, including proper use of indentation, reasonable choices for variable names, readable code, reasonable use of whitespace, and other good programming practices. You must have good header comments as illustrated in the coding examples done in class. First line should be the name of your file, followed by date of creation, author and a brief description of the program. You must use curly braces in the body of all control structures (if-else, for and while) even if they contain a single statement. You should not mix tabs and spaces when indenting your code
+You may work on PA2 if you need more work to do. Or like usual, help other students who might be struggling. Did you know that trying to teach others is the very best way for you to learn something yourself?
 
-Refer back to the feedback provided by the teaching staff on your lab02 code on github.
-
-
+This lab was prepared by Michael Costanzo as an adaptation of a lab created for a different class in 2011 by Stratos Dimopoulos.

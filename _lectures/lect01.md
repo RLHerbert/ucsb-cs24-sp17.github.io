@@ -2,7 +2,7 @@
 num: "lect01"
 lecture_date: 2017-04-03
 desc: "Course overview, github intro"
-ready: false
+ready: true
 pdfurl: /lectures/CS24_Lecture1.pdf
 annotatedpdfurl: /lectures/CS24_Lecture1_ann.pdf
 annotatedready: false 
@@ -11,6 +11,11 @@ annotatedready: false
 # Topics
 
 ## Course overview
+* C++
+* Data structures
+* Complexity analysis
+* and ...github
+
 ## Github intro
 * What is github? How and why we plan to use it in this class
 * What is a git repo?

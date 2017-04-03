@@ -2,377 +2,205 @@
 layout: lab
 num: lab04
 ready: false
-desc: "Odds and primes: Fun with arrays and makefiles"
+desc: "Implementing a linked list"
 assigned: 2017-05-02 09:00:00.00-7
-due: 2017-05-09 11:59:00.00-7
+due: 2017-05-02 11:59:00.00-7
 ---
 <div markdown="1">
 
-<h1>CS16: Programming Assignment 04</h1>
-<h2>Introduction -- Important: Read this!</h2>
+# Goals for this lab
+
+By the time you have completed this lab, you should be able to
+
+* Explain the meaning of a "self-referential" data structure
+* Create, use and manage memory for simple linked lists
+* Implement functions that process linked lists
 
-The TAs and I will be looking for (and grading) your programming style, such as proper use of comments, tab indentation, good variable names, and overall block and function designs. So, it is not enough for your lab to pass submit.cs! Please read the instructions herein <b>carefully</b>. 
+## Step by Step Instructions
 
-<h3>Pair programming </h3>
+Step 1: Create a lab05 directory, and get copies of lab files
 
-If working in a pair: Choose who will be the first driver and who will start as navigator, and then remember to switch (at least once) during the lab. But you should probably know the long-term goal too: each partner should participate in both roles in approximately equal parts over the course of the assignment. We realize it is not possible to equally split time in every lab perfectly, but it is worth trying, and it is possible to make up for unequal splits in future labs. We trust you will try to meet this goal. Thanks!
+First get together with your lab partner. If your regular partner is more than 5 minutes late, ask the TA to pair you with someone else for this week.
 
+This lab's first pilot should log in, create a ~/cs24/lab05 directory, and make it your current directory.
 
-**PLEASE MAKE SURE YOU TRADE CONTACT INFORMATION WITH YOUR LAB PARTNER! This means emails, phone numbers, online chat handles, or whatever is necessary to continue working together when you are working remotely (like, say, if one of you goes home for the weekend).**
+Copy all four files (* means all) from the class account into your lab05 directory as follows:
 
-Be sure to commit and push or work to github at the end of EVERY work session. That way, if your pair partner bails on you, you can continue working without him/her. :)
+cp ~cs24/labs/lab05/* ~/cs24/lab05/
+Verify you got all the files and try to compile them as follows:
 
-<h2>Step 1: Getting Ready</h2>
-1. Decide if you are working alone, or working in a pair.
-
-2. If you are working as a pair, go to submit.cs, navigate to this lab page and create a team for you and your pair partner. Do this by clicking on the blue "Join Groups" button, then follow directions.
-
-3. Go to github and create a git repo for lab04 following the naming convention specified in previous labs (this step carries style points, see our feedback on lab02 to understand what we are looking for). If you are working with a partner only one of you needs to create the repo.
-
-4. If you are working with a partner and you are the one who created the github repo, add your partner as a collborator on the repo
-
-5. Decide on initial navigator and driver.
-
-6. Driver, log on to your CSIL account.
-
-7. Open a terminal window and log into the correct machine.
-
-8. Change into your CS 16 directory
-
-<h2>Step 2: Getting the starter code</h2>
-
-Clone your github repo in the ~/cs16/ directory. Then cd into your repo directory.
-Copy the starter code by running the following command
-
-```
-cp /cs/faculty/dimirza/cs16-wi17/labs/lab04-startercode/* ./
-```
-
-Typing the list (ls) command should show you the following files in your current directory
-
-```
-[dimirza@csil-03 lab04-startercode]$ ls
-arrayBoundsDemo.cpp    maxOfArray.cpp           sumOfArray.cpp
-arrayFuncs.h           maxOfArrayErrorTest.cpp  sumOfArrayTest.cpp
-arrayToString.cpp      maxOfArrayTest.cpp       tddFuncs.cpp
-arrayToStringTest.cpp  minOfArray.cpp           tddFuncs.h
-countEvens.cpp         minOfArrayErrorTest.cpp  utility.cpp
-countEvensTest.cpp     minOfArrayTest.cpp       utility.h
-countPrimes.cpp        README.md                utilityTest
-countPrimesTest.cpp    sumOdds.cpp              utilityTest.cpp
-Makefile               sumOddsTest.cpp
-[dimirza@csil-03 lab04-startercode]$
-
-```
-
-Push the initial version of the code on github before making any changes by typing the following commands
-
-```
-git add .
-git commit -m "Initial version"
-git push origin master
-```
-
-<h2>Step 3: Reviewing Separate Compilation</h2>
-The files in your directory this week use separate compilation, that is each program is not necessarily taking all of its code from a single .cpp source file.
-
-In Lecture, we will introduce the idea of separate compilation, where your C++ program may be divided among multiple source files. The following web page explains more about separate compilation, dividing your program up among multiple C++ and .h files, and using a Makefile. I strongly encourage you to read over it briefly before you proceed with the lab: [Separate Compilation and Makefiles](https://foo.cs.ucsb.edu/16wiki/index.php/C%2B%2B:_Separate_Compilation_and_Makefiles)
-
-<h2>Step 4: Writing isOdd(), isEven() and isPrime()</h2>
-
-Your first step is very simple to describe, but somewhat challenging. The challenge here is mostly C++ coding — we will not get into the details of the separate compilation until a bit later.
-
-To get started, do the following steps:
-
-<b>Step 4a: make clean</b>
-In your working directory, type <b>ls</b> and make note of the different files therein: some are .cpp types, some are .o (short for "object file"), some are .h (short for "header file"), and others do not have extensions (they are binary executables). Now, type <b>make clean</b>. This command cleans out any .o files and executables from your directory
-
-That should look like this:
-
-```
--bash-4.2$ make clean
-/bin/rm -f arrayToStringTest arrayBoundsDemo countEvensTest minOfArrayTest minOfArrayErrorTest 
-countPrimesTest maxOfArrayTest maxOfArrayErrorTest sumOddsTest sumOfArrayTest utilityTest *.o
-
--bash-4.2$ 
-```
-
-Take a look at the <b>Makefile</b> file to understand why this happened.
-
-<b>Step 4b: make utilityTest</b>
-
-Next type: `make utilityTest`
-
-This command makes the executable for a main program, defined in `utilityTest.cpp`, that tests the functions defined in `utility.cpp`. 
-Recall that for functions defined in a file such as `utility.cpp` that has no <b>main()</b>, the function prototypes are defined in the file `utility.h`
-Look at the source code for both `utility.cpp` and `utility.h` to see what they contain.
-Recall that a "stub" is place-holder code that allows an incomplete function to compile. It is designed to fail all the tests, though for a boolean function, since there are only two possible values (true and false), any stub value you choose is going to pass at least some of the tests.
-
-That should look like this:
-
-```
--bash-4.2$ make utilityTest
-g++ -Wall -Wno-uninitialized   -c -o utilityTest.o utilityTest.cpp
-g++ -Wall -Wno-uninitialized   -c -o tddFuncs.o tddFuncs.cpp
-g++ -Wall -Wno-uninitialized   -c -o utility.o utility.cpp
-g++ -Wall -Wno-uninitialized  utilityTest.o tddFuncs.o utility.o -o utilityTest
-
--bash-4.2$ 
-```
-
-<b>Step 4c: Run ./utilityTest</b>
-
-Next, type `./utilityTest` 
-
-This runs the `utilityTest` program that tests the three functions isOdd, isEven and isPrime. As we noted above, some of the tests will pass, even though the implementation of the three functions is totally bogus (hard coded to return false always).
-
-Here is what that looks like (some output truncated)
-
-```
--bash-4.2$ ./utilityTest
-	FAILED: isEven(2)
-		Expected: 1 Actual: 0
-	PASSED: isEven(3)
-	FAILED: isEven(4)
-		Expected: 1 Actual: 0
-	PASSED: isEven(55)
-
-[...      Some output omitted here... ]
-
-PASSED: isPrime(64507)
-	FAILED: isPrime(69997)
-		Expected: 1 Actual: 0
-PASSED: isPrime(-55)
-PASSED: isPrime(-80)
-PASSED: isPrime(0)
-PASSED: isPrime(1)
-
--bash-4.2$ 
-```
-
-<b>Step 4d: Repeat: edit, compile, run ,until all tests pass</b>
-Now do these steps, repeatedly, until all tests pass:
-
-edit utility.cpp (e.g. emacs utility.cpp, or gvim utility.cpp)
-make utilityTest
-run utilityTest (e.g. ./utilityTest)
-
-Submit working versions of your code on github using the commands:
-
-```
-git add *.cpp *.h
-git commit -m "implemented utility function - nameof function()"
-git push origin master
-```
-
-You must only proceed with the rest of the lab once you have implemented all the utility functions and pass the provided test cases. This is because for other files that you will be editing later, you will NEED functions isOdd, isEven and isPrime. Once you get them working, you will be able to call them in other files and KNOW that they work properly. You will not have to repeat the function definition.
-
-When all the tests for `utlityTest` pass, do a final push to github and move on to the next step.
-
-If you are working with a pair partner, this is a good time to switch roles.
-
-<h2>Step 5: Reviewing the rest of the files and what your tasks are</h2>
-
-Now, let us look at the files you actually have in your directory, and what you need to do with them.
-You have the following .cpp files. This table indicates what you must do with each one to get full credit on this lab.
-
-
-|Filename|Your task|Details
-|--- |---|---
-|arrayBoundsDemo.cpp|NOTHING TO CHANGE OR SUBMIT.|This is here as example code only. You are encouraged to run it, study it, and learn about how array bounds work in C++
-|arrayToString.cpp|	NOTHING TO CHANGE OR SUBMIT.|This code is part of your solution, but you do not have to submit it - we will use our own version, which matches the one in your sample directory. This file just has utiltiy funcitons for printing arrays as strings.
-|arrayToStringTest.cpp|NOTHING TO CHANGE OR SUBMIT.|This code is part of your solution, but you do not have to submit it - we will use our own version, which matches the one in your sample directory. This file is an example of how to test cases to determine whether the output of `arrayToString` works correctly.
-|countEvens.cpp|REPLACE STUB WITH CORRECT CODE.|You must replace the code in this file with correct code that returns the number of even integers in each array passed in.
-|countEvensTest.cpp|NO MODIFICATIONS NEEDED|This tests the changes you made in *countEvens.cpp*.
-|countPrimes.cpp|REPLACE STUB WITH CORRECT CODE.|You must replace the code in this file with correct code that returns the number of prime integers in each array passed in. Treat negative numbers, 0 and 1 as "not prime". You may want to add a definition of `isPrime()` to the *utility.cpp* file and a function prototype to *utility.h* so that you can call function `isPrime` in your solution.
-|countPrimesTest.cpp|NO MODIFICATIONS NEEDED|This tests the changes you made in *countEvens.cpp*.
-|maxOfArray.cpp|REPLACE STUB WITH CORRECT CODE.|You can look at *minOfArray.cpp* for hints. This one should be easy.
-|maxOfArrayErrorTest.cpp|REPLACE EMPTY MAIN WITH TESTS.|Insert code to call maxOfArray with zero length array. Use *minOfArrayErrorTest.cpp* as a model.
-|maxOfArrayTest.cpp|REPLACE EMPTY MAIN WITH TESTS.|Insert code to call `assertEqual` exactly seven times testing whether `maxOfArray` returns correct values. Use *minOfArrayTest.cpp* as a model. It must be exactly "seven" calls to `assertEquals` to pass the submit.cs tests. You should call your arrays the same things that they are called in `minOfArrayTests`, and the lengths should be the same. So the messages you get out for passed tests should match the messages from `minOfArrayTests` except that the name of the function is `maxOfArray` instead of `minOfArray`. You MAY change the values in the arrays themselves, though, to make the tests better tests, if you need to. **(Note that just hard coding a program that prints "PASSED" seven times with the apprpriate messages is not sufficient to get credit--you need to really have actual tests. Any attempt to "game the system", i.e. to get submit.cs tests to pass without a bona-fide attempt to actually solve the problem will get zero credit.)**
-|minOfArray.cpp|NOTHING TO CHANGE.|This is a model of correct code that can serve as a hint for how to write *maxOfArray.cpp*
-|minOfArrayErrorTest.cpp|NOTHING TO CHANGE.|This is an model of correct code for how to test whether a function behaves as expected when given input that should print a message to cerr and exit the progrm.
-|minOfArrayTest.cpp|NOTHING TO CHANGE.|This is a model of how to do unit testing on a function that returns an integer.
-|sumOdds.cpp|REPLACE STUB WITH CORRECT CODE.|You must replace the code in this file with correct code that returns the number of sum of the odd integers in each array passed in. Negative odd integers count as odd integers.
-|sumOddsTest.cpp|REPLACE EMPTY MAIN WITH TESTS|Insert code to call `assertEqual` exactly seven times testing whether `sumOdds` returns correct values. Use *sumOfArrayTest.cpp* as a model. It must be exactly "seven" calls to `assertEquals` to pass the submit.cs tests. You should call your arrays the same things that they are called in `sumOfArrayTests`, and the lengths should be the same. So the messages you get out for passed tests should match the messages from `sumOfArrayTests` except that the name of the function tested is `sumOdds` instead of `sumOfArray`. You MAY change the values in the arrays themselves, though, to make the tests better tests, if you need to. **(Note that just hard coding a program that prints "PASSED" seven times with the apprpriate messages is not sufficient to get credit--you need to really have actual tests. Any attempt to "game the system", i.e. to get submit.cs tests to pass without a bona-fide attempt to actually solve the problem will get zero credit.)**
-|sumOfArray.cpp|INCORRECT CODE FOR YOU TO FIX.|The sum is not initialized properly. So the tests should fail. Your job is to see that the tests fail, then fix the sum initialization so the tests pass. Should be easy.
-|sumOfArrayTest.cpp|NOTHING TO CHANGE.|This is a set of tests to verify whether `sumOfArray()` works correctly.
-|tddFuncs.cpp|NOTHING TO CHANGE.|These are two functions that can be used to test functions that return either int or string values.
-|utility.cpp|ADD FUNCTIONS HERE AS NEEDED.|If you need to write your own helper functions, e.g. `isPrime`, `isOdd`, `isEven`, to use in other files, here is where you can put those definitions.
-
-
-<h2>Step 6: Actually Getting Started</h2>
-I suggest you start by typing: `make`.
-
-You should see a lot of activity as programs are compiled. You then will have a lot of executables you can run. Here is a list. Try running each one and see what happens.
-
-Note these are the programs listed under BINARIES in the Makefile.
-
-|file|Anything to do?|explanation
-|--- |---|---
-|arrayToStringTest|no|Run this and all tests should pass. Nothing to do here.
-|arrayBoundsDemo|no|Run this, and look at the code. This is an opportunity to learn something about how we pass arrays to functions in C++, but there is nothing you have to turn in from this program for the lab. It is just here as an example for you to learn from.
-|countEvensTest|<b>*YES*</b>|Run this, and you will see all the tests fail. YOU NEED TO FIX THE `countEvens` function and then get all these tests to pass.
-|minOfArrayTest|no|Just run this and see the tests pass. You can use the .cpp file *minOfArrayTest.cpp* as a model for writing *maxOfArrayTest.cpp*
-|minOfArrayErrorTest|no|Just run this and see the output. It should be `ERROR: minOfArray called with size < 1` printed on cerr (the standard error output stream). The submit.cs system will check this as one of the acceptance tests for this lab, and it will also check that `maxOfArrayErrorTest` does the same thing. You can use the .cpp file *minOfArrayErrorTest.cpp* as a model for writing *maxOfArrayErrorTest.cpp*
-|countPrimesTest|<b>*YES*</b>|Run this, and you will see all the tests fail. YOU NEED TO FIX THE `countPrimes` function and then get all these tests to pass.
-|maxOfArrayTest|<b>*YES*</b>|Run this, and you will see that initially there is no output. That is because the main is empty. YOU NEED TO REPLACE THIS MAIN with code that tests `maxOfArray`. Use `minOfArrayTest` as a model. Initially, just put in the tests, and keep `maxOfArray` returning the stub vaue -42. See all the tests fail. Then get `maxOfArray` to return the right values and see all the tests pass.
-|maxOfArrayErrorTest|<b>*YES*</b>|Run this, and you will see that initially there is no output. That is because the main() is empty. YOU NEED TO REPLACE THIS MAIN with code that tests `maxOfArray`. Use `minOfArrayTest` as a model. Initially, just put in the tests, and keep `maxOfArray` returning the stub vaue -42. See all the tests fail. Then get `maxOfArray` to return the right values and see all the tests pass.
-|sumOddsTest|<b>*YES*</b>|Run this, and you will see that initially there is no output. That is because the main() is empty. YOU NEED TO REPLACE THIS MAIN with code that tests `sumOdds`. Use `minOfArrayTest` as a model. Initially, just put in the tests, and keep `sumOdds` returning the stub vaue -42. See all the tests fail. Then get `sumOdds` to return the right values and see all the tests pass.
-|sumOfArrayTest|<b>*YES*</b>|Run `sumOfArrayTest` and you will see that all the tests fail. Getting them to pass is probably the easiest step in this lab. Just look at the `sumOfArray` function, which is almost correct - it just needs you to initialize sum correctly. Note that in C/C++ variables are NOT automatically initialized, and failing to initialize them does not always result in an error message or warning unless you specifically ask the compiler to tell you about those. For this lab, the Makefile deliberarly turns that warning OFF so that we have to catch that ourselves.
-
-So, if you go through that list, and do all the things indicated, you are finished with the lab and ready to submit.
-
-<h2>Step 7: Checking your work before submitting</h2>
-
-When you are finished, you should be able to type `make tests` and see the following output:
-
-```
--bash-4.2$ make tests
-./arrayToStringTest
-PASSED: arrayToString(fiveThrees,5)
-PASSED: arrayToString(zeros,3)
-PASSED: arrayToString(empty,0)
-PASSED: arrayToString(primes,10)
-PASSED: arrayToString(meaning,1)
-PASSED: arrayToString(mix,10)
-./countEvensTest
-PASSED: countEvens(fiveThrees,5)
-PASSED: countEvens(zeros,3)
-PASSED: countEvens(fiveInts,5)
-PASSED: countEvens(empty,0)
-PASSED: countEvens(primes,10)
-PASSED: countEvens(meaning,1)
-PASSED: countEvens(mix,10)
-./countPrimesTest
-PASSED: countPrimes(fiveThrees,5)
-PASSED: countPrimes(zeros,3)
-PASSED: countPrimes(fiveInts,5)
-PASSED: countPrimes(empty,0)
-PASSED: countPrimes(primes,10)
-PASSED: countPrimes(meaning,1)
-PASSED: countPrimes(mix,10)
-./maxOfArrayTest
-PASSED: maxOfArray(fiveThrees,5)
-PASSED: maxOfArray(zeros,3)
-PASSED: maxOfArray(fiveInts,5)
-PASSED: maxOfArray(fiveInts,2)
-PASSED: maxOfArray(fiveInts,3)
-PASSED: maxOfArray(meaning,1)
-PASSED: maxOfArray(mix,10)
-./minOfArrayTest
-PASSED: minOfArray(fiveThrees,5)
-PASSED: minOfArray(zeros,3)
-PASSED: minOfArray(fiveInts,5)
-PASSED: minOfArray(fiveInts,2)
-PASSED: minOfArray(fiveInts,3)
-PASSED: minOfArray(meaning,1)
-PASSED: minOfArray(mix,10)
-./sumOddsTest
-PASSED: sumOdds(fiveThrees,5)
-PASSED: sumOdds(zeros,3)
-PASSED: sumOdds(fiveInts,5)
-PASSED: sumOdds(fiveInts,3)
-PASSED: sumOdds(fiveInts,2)
-PASSED: sumOdds(meaning,1)
-PASSED: sumOdds(mix,10)
-./sumOfArrayTest
-PASSED: sumOfArray(fiveThrees,5)
-PASSED: sumOfArray(zeros,3)
-PASSED: sumOfArray(fiveInts,5)
-PASSED: sumOfArray(fiveInts,3)
-PASSED: sumOfArray(fiveInts,2)
-PASSED: sumOfArray(meaning,1)
-PASSED: sumOfArray(mix,10)
-./utilityTest
-PASSED: isEven(2)
-PASSED: isEven(3)
-PASSED: isEven(4)
-PASSED: isEven(55)
-PASSED: isEven(-55)
-PASSED: isEven(-80)
-PASSED: isOdd(2)
-PASSED: isOdd(3)
-PASSED: isOdd(4)
-PASSED: isOdd(55)
-PASSED: isOdd(-55)
-PASSED: isOdd(-80)
-PASSED: isPrime(2)
-PASSED: isPrime(3)
-PASSED: isPrime(4)
-PASSED: isPrime(55)
-PASSED: isPrime(859)
-PASSED: isPrime(861)
-PASSED: isPrime(863)
-PASSED: isPrime(1337)
-PASSED: isPrime(1373)
-PASSED: isPrime(64507)
-PASSED: isPrime(69997)
-PASSED: isPrime(-55)
-PASSED: isPrime(-80)
-PASSED: isPrime(0)
-PASSED: isPrime(1)
-
--bash-4.2$ 
-```
-And, you should be able to type `make errorTests` and see the following output:
-
-```
--bash-4.2$ make errorTests
-./minOfArrayErrorTest
-ERROR: minOfArray called with size < 1
-make: [errorTests] Error 1 (ignored)
-./maxOfArrayErrorTest
-ERROR: maxOfArray called with size < 1
-make: [errorTests] Error 1 (ignored)
-
--bash-4.2$ 
-```
-At that point, you are ready to try submitting on the submit.cs system.
-
-<h2>Step 8: Submit</h2>
-
-For this lab, since there are a lot of files to upload to submit.cs, your best course is to type the following from the Linux/UNIX prompt, that is, from the command line (terminal) on any CS machine, including from your computer when you are remotely logged into a CS machine (via ssh):
-
-`$ ~submit/submit -p 640 *.cpp *.h`
-
-You can then copy the URL shown in the output of the above and paste into a web browser to reach the submission result page.
-
-Push your code to github. We will use your github submission to give you points for coding style.
-
-<h2>Grading Rubric</h2>
-Points from automated submit.cs. system tests
-
-<b>Passed Tests</b>
-
-|Test Group|Test Name|Value
-|--- |---|---
-|countEvens|countEvensTest|30 pts
-|countPrimes|countPrimesTest|30 pts
-|maxOfArray|maxOfArrayTest|30 pts
-|maxOfArrayErrorTest|maxOfArrayErrorTest |30 pts
-|sumOdds|sumOddsTest|30 pts
-|sumOfArray|sumOfArrayTest|30 pts
-|utilityTest|utilityTest|50 pts
-
-<b>Points assigned manually for coding style</b>
-
-(50 pts) Style:
-Good choice of variable names, code indented in ways that are consistent, and in line with good C++ practice. Where applicable, common code is factored out into functions (added to utility.h and utility.cpp as needed). Please see the feedback on lab02 for a detailed rubric on coding style.
-
-This last point may or may not arise, but if it does, utility.h and utility.cpp is a place where functions needed in multiple files can be put—prototypes in utility.h and function definitions in utility.cpp.
-
-
-
-You will note that the submit.cs score is worth 230 points and the manual grading is worth 50 points, making the total points for this lab equal to 280. The grade will ultimately normalized to be out of 100 points. This lab is worth exactly the same as all the other labs done so far (i.e. the 300 points here are equivalent to 100 points in other labs).
-
-<h2>Step 9: Done!</h2>
-
-Once your submission receives a score of 230/230, you are done with this assignment. Remember that we will check your code for appropriate comments, formatting, and the use of required code, as stated earlier, based on your github submission
-
-If you are in the Phelps lab or in CSIL, make sure to log out of the machine before you leave. Also, make sure to close all open programs before you log out. Some programs will not work next time if they are not closed. Remember to save all your open files before you close your text editor.
-
-If you are logged in remotely, you can log out using the exit command:
-
-`$ exit`
-
+-bash-4.2$ ls
+intlist.cpp  intlist.h  Makefile  testlist.cpp
+-bash-4.2$ make
+g++ -c testlist.cpp
+g++ -c intlist.cpp
+g++ -o testlist testlist.o intlist.o
+We will discuss these files in Step 3. But first some practice.
+Step 2: Practice using linked structures in ch
+
+Start ch as you did in Lab01 (just type ch on the command line). Then type or copy/paste the one-line structure definition shown below (in bold) at the ch prompt:
+
+ch> struct Node {int info; Node *next;};
+Normally such a definition would be spread over a few lines for clarity, but ch makes that difficult. Below we ask you to write a couple of one-line loops for the same reason.
+
+The structure you just created incorporates a way for an object of its type to point at another object of the same type - it is a self-referential structure. The idea is to point the next field of a Node at another Node, and in this way we can build lists of Nodes, with each one pointing to the next one. We also maintain a separate pointer that points at the first node in the list - often we call this pointer the "list" because it is the way we can access the list's elements.
+
+But before we do all that, let's just make a Node object, set it's fields, and let ch display its contents:
+
+ch> Node item;
+ch> item.info = 7;
+7
+ch> item.next = 0; // same as NULL
+(nil)
+ch> item
+.info = 7
+.next = (nil)
+The Node named item stores a 7 as its information, and its next field (a.k.a. "link") does not point to anything. (The address 0 is reserved to mean "no address" in C++, and it is also the value of the symbolic constant NULL that is define in <cstlib>. Notice that ch calls it nil, but that just means the same thing too.) Usually a node with a null link is used to indicate the end of a linked list.
+
+Now let's use the structure to build an actual linked list of three integers. First we will declare a pointer named list to point at the first node in the list (or null if the list is empty). We initialize this pointer to a dynamically allocated first node, using the C++ keyword new (which returns a pointer). The remaining steps will create two more nodes, store values in each node, and properly link them all together as a list. Type or copy/paste the stuff in bold:
+
+ch> Node *list = new Node;  // dynamic memory way to create
+ch> list->info = 10; // store 10 in the first list node
+10
+ch> list->next = new Node; // point first node at new one
+0x2445e60 
+ch> list->next->info = 20; // store 20 in second node
+20 
+ch> list->next->next = 0;  // mark second node as end of list
+(nil) 
+ch> Node *temp = list;  // store temporary pointer to list
+ch> list = new Node; // new node to insert first into list
+0x2446550 
+ch> list->info = 5;  // store 5 in new first node
+5 
+ch> list->next = temp; // connect rest of list to new first
+0x2445c70 
+Of course dealing with list nodes this way is really clumsy. Soon you will learn cleaner ways to build and process a list. For now, see how we can use a for loop and an auxiliary pointer to print the data in such a list:
+
+ch> Node *n;  // a list pointer to use for loop control
+ch> for (n = list; n != 0; n = n->next) cout << n->info << endl;
+5
+10
+20
+The for loop continues as long as n points at a node. At the end of each loop iteration, n is changed to point at the next node in the list. Study this loop, and be sure to understand it - discuss it with your partner to make sure you both understand it.
+
+As one more illustration, let's use a while loop to count the nodes in a list like this one. Make sure you understand the following loop too, in which the while loop condition is just the node pointer itself -- it becomes 0 at the end. ;-)
+
+ch> int count = 0;
+ch> n = list; // start back at beginning
+0x2446550 
+ch> while (n) { ++count; n = n->next; }
+ch> count
+3
+Since we dynamically allocated the memory for three nodes, we should free that memory before exiting ch and proceeding to Step 3. Also, according to convention, we set the list pointer to null - it is now an empty list:
+
+ch> delete list->next->next; // free last node first
+ch> delete list->next; // then free second one
+ch> delete list; // free first node last
+ch> list = 0; // to indicate the list is empty
+(nil)
+Exit ch.
+
+Step 3: Learn how to encapsulate list nodes
+
+Now that you have a feel for list nodes, you should know that such structures are not usually manipulated directly by application programs - not in C++ anyway (although it is common in C programming). Instead applications normally use objects of a List class, and the class itself is the only part of the program that accesses list nodes.
+
+In the rest of this lab, you will help build such a list class. The class definition is stored in intlist.h - please study it to know its parts:
+
+The public declarations show what a client program can do with an IntList object. Notice, however, that the list node structure definition is in the private area. Clients can't directly use or even refer to such nodes, but all that clients should care about are the values stored in these nodes anyway! Also notice that every list object will have one node pointer, to point at the first node in the list or at 0 if the list is empty.
+Now look at intlist.cpp. All but sum, contains, max, average and insertFirst are already done. You will implement those five methods in Step 4. The other parts are implemented at the bottom of the file - do not change what is done.
+
+An application file would create IntList objects and use them to solve problems. For this lab, our application is just a testing program - testlist.cpp - and you should look at that file next. Two IntList objects are created; then numbers read from the command line are appended to one of the lists; and finally the methods are tested for each list.
+
+You can use this Makefile to help you complile the program. If you store all four of these files in the same directory, then you just type "make" (without the quotes) to compile them and create the executable program.
+
+Step 4: Implement five linked list functions
+
+First: switch roles between pilot and navigator if you did not already do that. Always stay logged into the original pilot's account.
+
+You should be able to run the program now (assuming you compiled it in Step 3) - it requires you to enter a starter list of integers on the command line:
+
+-bash-4.2$ ./testlist
+error: need at least one int arg on command line
+usage: ./testlist int [int ...]
+Next time we'll run it properly. The contains method is checked for three values that ought to be in the list, plus one value that should not (the sum). Here is a sample run with initial values of 5, 7, 9 and 11:
+./testlist 5 7 9 11
+List 1: 
+   [5 7 9 11]
+   count: 4
+   sum: 0
+   contains 5 ? no
+   contains 7 ? no
+   contains 11 ? no
+   contains 0 ? no
+   max: 0
+   average: 0.000
+   List after insertFirst(sum): 
+   [5 7 9 11]
+Empty list 2: 
+   []
+   count: 0
+   sum: 0
+   contains 1 ? no
+   max: 0
+   average: 0.000
+   List 2 after insertFirst(3), then insertFirst(1): 
+   []
+See that append, print and count all work. But the others need to be fixed.
+
+Use an editor (e.g., emacs) to make the following changes to intlist.cpp - do not change any of the other files.
+
+Fix the comment at the top to show your name(s) and the date.
+Implement the sum method. See the count method for guidance.
+Save, and then test your sum implementation - compile and execute testlist again. Verify sum is working before going on.
+Then implement the contains method, save again and test again.
+Continue with the other three functions in the same way: implement and test one at time.
+Here are correct results for the same sample data as above:
+
+List 1: 
+   [5 7 9 11]
+   count: 4
+   sum: 32
+   contains 5 ? yes
+   contains 7 ? yes
+   contains 11 ? yes
+   contains 32 ? no
+   max: 11
+   average: 8.000
+   List after insertFirst(sum): 
+   [32 5 7 9 11]
+Empty list 2: 
+   []
+   count: 0
+   sum: 0
+   contains 1 ? no
+   max: 0
+   average: 0.000
+   List 2 after insertFirst(3), then insertFirst(1): 
+   [1 3]
+If you do your work diligently, your program should pass both of the submit.cs tests on your first try!
+
+Step 5: Submit intlist.cpp
+
+Submit Lab05 at https://submit.cs.ucsb.edu/, or use the following command from a CS terminal:
+
+~submit/submit -p 567 intlist.cpp
+If you are working with a partner, be sure that both partners' names are in a comment at the top of the source code file, and be sure to properly form a group for this project in the submit.cs system.
+
+Do beware that all parts must be working to earn any points at all from the submit.cs tests.
+
+After completing the required lab work
+
+If you are still in the lab with time to spare, then do one of the following:
+
+Ask yourself: What are the value semantics of an IntList object? With just the automatic copy constructor and assignment operator, won't copies be shallow? Try adding these features to the class in a copy of intlist.h, and implement them in a copy of intlist.cpp.
+Offer to help the TA guide any struggling students.
+Evaluation and Grading
+
+Each student must accomplish the following to earn full credit [50 total points] for this lab:
+
+[50 points] intlist.cpp is saved, it has your name(s) in a comment at the top, it compiles and executes properly, and has been submitted with a score of 50/50 to the submit.cs system.
+[-0 to -50 points, at the TA's discretion] The student arrived on time to their lab session, and worked diligently on CS24-related material until dismissed.
+This lab is due by 11:59 pm tomorrow night.
+Prepared by Michael Costanzo.
 </div>

@@ -2,207 +2,145 @@
 layout: lab
 num: lab06
 ready: false
-desc: "Linked lists and array lists"
+desc: "Implementing a queue"
 assigned: 2017-05-16 09:00:00.00-7
-due: 2017-05-23 11:59:00.00-7
+due: 2017-05-16 11:59:00.00-7
 ---
 
-# Goals of this lab
+# Goals for this lab
 
-The goal of this lab is two fold: dynamic memory management on the heap and implementing linked lists. The relationship between the two is that dynamic memory management is almost always used in the implementation of linked lists.
+By the time you have completed this lab, you should be able to
 
-*Dynamic memory management on the heap*: Managing data on the heap using new and delete is fundamentally different from that on the stack. The heap and stack two different areas in program memory,  The stack is used to automatically manage the allocate and deallocation of memory for local variables. Specifically memory is allocated for local variables when a function is called and deallocated when the function returns. On the other hand data on the heap is allocated and deallocated at the will of the programmer. So, when should you use the heap instead of the stack? When you want your data to persists in memory beyond the execution time of a single function.  
+* Implement a queue using an array
+* Implement a queue using a linked list
+* Appreciate the differences between the two types of implementations
 
-*Linked lists* : Linked lists were covered in class. They are list arrays lists in that they store a list of data elements. However unlike arrays, the elements of a linked list are not placed in contiguous memory locations. By the end of this lab you should be able to have a working knowledge of how to implement linked lists, test your implementation and contrast them with an array based implementation.
+# Step by Step Instructions
 
+Step 1: Create a lab07 directory (in the first pilot's account)
 
-# Step by Step Instructions 
+First get together with your lab partner. If your regular partner is more than 5 minutes late, ask the TA to pair you with someone else for this week.
 
-## Step 1: Getting Started 
+Select a pilot, log in, create a ~/cs24/lab07 directory, and make it your current directory.
 
-1. Decide if you are working alone, or working in a pair. Pair programming is OPTIONAL for this lab.
+Step 2: Get a copy of all the program files
 
-2. If you are working as a pair, go to submit.cs, navigate to this lab page and create a team for you and your pair partner. Do this by clicking on the blue "Join Groups" button, then follow directions. Choose who will be the first driver and who will start as navigator, and then remember to switch (at least once) during the lab. But you should probably know the long-term goal too: each partner should participate in both roles in approximately equal parts over the course of the quarter. We realize it is not possible to equally split time in every lab, but it's worth trying, and it is possible to make up for unequal splits in future labs. We trust you will try to meet this goal. Thanks!
+There are six files to copy from the class account this week. You can copy them all at once using the Unix wildcard character '*' and then verify you got them all as follows:
 
-3. Go to github and create a git repo for this lab following the naming convention specified in previous labs (this step carries style points, see our feedback on previous labs to understand what we are looking for). If you are working with a partner only one of you needs to create the repo.
+-bash-4.3$ cp ~cs24/labs/lab07/* ~/cs24/lab07/
+-bash-4.3$ ls
+arrayQ.cpp  arrayQ.h  listQ.cpp  listQ.h  Makefile  testQ.cpp
+Step 3: Learn two ways to implement a queue
 
-4. If you are working with a partner and you are the one who created the github repo, add your partner as a collborator on the repo
+Recall that a queue is a "first-in first-out" (FIFO) data structure. Similar to a stack, it has very few operations, as new entries are always added to the rear of the queue, and entries are only ever removed from the front. More queue ADT specifications, as well as ways that queues are applied, are topics covered in lectures and the textbook. Today's lab is all about implementing a queue two ways.
 
-5. Decide on initial navigator and driver.
+The first way discussed uses a static array, and so it has a fixed capacity. The second way uses singly-linked list nodes, so it can hold many more items.
 
-6. Driver, log on to your CSIL account.
+Way A: How to use an array, with "circular" indexing
 
-7. Open a terminal window and log into the correct machine.
-
-8. Change into your CS 16 directory
-
-Note: Remember to push your work to github at the end of EVERY work session. That way, both partners always have access to the latest version of the code even if the code is being developed on one partner's CoE account.
-
-
-## Step 2: Obtain the starter code
-
-Clone your github repo in the ~/cs16/ directory. Then cd into your repo directory.
-Copy the starter code by running the following command
-
-```
-cp /cs/faculty/dimirza/cs16-wi17/labs/lab06-startercode/* ./
-```
-
-Typing the list (ls) command should show you the following files in your current directory
-
-```
-[dimirza@csil-03 lab06-startercode]$ ls
-addIntToEndOfListTest.cpp    arrayToStringTest.cpp  Makefile
-addIntToStartOfListTest.cpp  linkedListFuncs.cpp    tddFuncs.cpp
-arrayFuncs.h                 linkedListFuncs.h      tddFuncs.h
-arrayToLinkedListTest.cpp    linkedList.h
-[dimirza@csil-03 lab06-startercode]$
-
-```
+See the private section of arrayQ.h. The data items will be stored in the array named data. The number of items currently stored will be recorded in the size variable. The indices of the items at the front and rear of the queue are recorded in the front and rear variables. You will have to decide what indices to store in front and rear. Here is a suggestion from C++ Plus Data Structures, a 2013 textbook written by Nell Dale:
 
 
-## Step 3: Reviewing the files and what your tasks are 
-
-Here is a list of your tasks for this lab:
-
-* Run "make tests"
-
-1. You will see that  and see the tests for arrayToString and linkedListToString pass. 
-2. But notice that tests for addIntToEndOfListTest and addIntToStartOfListTest are failing.
-
-Your job is to understand all of the skeleton code that is provided to you and then write the code for addIntToEndOfList and addIntToStartOfList.  Both are in linkedListFuncs.cpp. There are clues in the file to help you.
-
-As in the previous lab you are required to draw pointer diagrams for the code that you have written and upload the diagrams to your github repo.
-Draw diagrams to show the evolution of objects in memory as the following code is executed for YOUR implementation of 'addIntToStartOfList' and 'addIntToEndOfList. You must trace through every line of code that is executed as a result of the given code.
-In your diagrams you must clearly indicate which objects are created in the stack and which on the heap.  
-
-```
-int empty[0]={};
-LinkedList *emptyList = arrayToLinkedList(empty,0);
-addIntToStartOfList(emptyList,7);
-addIntToStartOfList(emptyList,8);
-freeLinkedList(emptyList);
-
-```
-Save your diagram for the above code in a file named "StartOfListPointerDiagram". Your file can be an image file or a pdf
-
-Draw a new diagram for the code given below which is executed independent of the above code.
-
-```
-int empty[0]={};
-LinkedList *emptyList = arrayToLinkedList(empty,0);
-addIntToEndOfList(emptyList,7);
-addIntToEndOfList(emptyList,8);
-freeLinkedList(emptyList);
-```
-Save your diagram for the above code in a file named "EndOfListPointerDiagram". Your file can be an image file or a pdf
-
-Upload both diagrams to your github repo.
-
-When the test cases pass, AND you have successfully uploaded your pointer diagrams to github, you are done.
-
-* Run "make tests" and see the correct output.
-* Try submitting to submit.cs to see if your output is correct.
-* YOU ARE READY TO CHECK YOUR WORK.
-
-## Step 4: Checking your work before submitting 
-
-When you are finished, you should be able to type  <code>make clean</code> and then <code>make tests</code> and see the following output:
-
-```
--bash-4.2$ make clean
-/bin/rm -f arrayToStringTest arrayToLinkedListTest addIntToEndOfListTest addIntToStartOfListTest  *.o
--bash-4.2$ make tests
-clang++ -Wall -Wno-uninitialized   -c -o arrayToStringTest.o arrayToStringTest.cpp
-clang++ -Wall -Wno-uninitialized   -c -o linkedListFuncs.o linkedListFuncs.cpp
-clang++ -Wall -Wno-uninitialized   -c -o tddFuncs.o tddFuncs.cpp
-clang++ -Wall -Wno-uninitialized  arrayToStringTest.o linkedListFuncs.o tddFuncs.o -o arrayToStringTest
-clang++ -Wall -Wno-uninitialized   -c -o arrayToLinkedListTest.o arrayToLinkedListTest.cpp
-clang++ -Wall -Wno-uninitialized  arrayToLinkedListTest.o linkedListFuncs.o tddFuncs.o -o arrayToLinkedListTest
-clang++ -Wall -Wno-uninitialized   -c -o addIntToEndOfListTest.o addIntToEndOfListTest.cpp
-clang++ -Wall -Wno-uninitialized  addIntToEndOfListTest.o linkedListFuncs.o tddFuncs.o -o addIntToEndOfListTest
-clang++ -Wall -Wno-uninitialized   -c -o addIntToStartOfListTest.o addIntToStartOfListTest.cpp
-clang++ -Wall -Wno-uninitialized  addIntToStartOfListTest.o linkedListFuncs.o tddFuncs.o -o addIntToStartOfListTest
-./arrayToStringTest
-PASSED: arrayToString(fiveThrees,5)
-PASSED: arrayToString(zeros,3)
-PASSED: arrayToString(empty,0)
-PASSED: arrayToString(primes,10)
-PASSED: arrayToString(meaning,1)
-PASSED: arrayToString(mix,10)
-./arrayToLinkedListTest
-PASSED: linkedListToString(list)
-PASSED: linkedListToString(emptyList)
-PASSED: linkedListToString(singletonList)
-./addIntToEndOfListTest
-PASSED: linkedListToString(list)
-PASSED: list->head->data == 42
-PASSED: list->tail->data == 25
-PASSED: list after adding 25
-PASSED: list->head->data == 42
-PASSED: list->tail->data == 31
-PASSED: list after adding 31
-PASSED: list->head == NULL
-PASSED: list->tail == NULL)
-PASSED: linkedListToString(emptyList)
-PASSED: 
-PASSED: list->head->data == 7
-PASSED: 
-PASSED: list->tail->data == 7)
-PASSED: list after adding 7
-PASSED: list != NULL
-PASSED: list->head == list->tail
-PASSED: list after adding -6
-PASSED: 
-PASSED: list->head->data == 7
-PASSED: 
-PASSED: list->tail->data == -6)
-./addIntToStartOfListTest
-PASSED: linkedListToString(list)
-PASSED: list after adding 25
-PASSED: list after adding 31
-PASSED: linkedListToString(emptyList)
-PASSED: list after adding 7
-PASSED: list after adding -6
--bash-4.2$ 
-```
-
-At that point, you are ready to try submitting on the submit.cs system.
-
-=== An important word about academic honesty and the submit.cs system ===
-
-We will test your code against other data files too&mdash;not just these.  So while you might be able to pass the tests on submit.cs now by just doing a hard-coded "cout" of the expected output, that will NOT receive credit.    
-
-To be very clear, code like this will pass on submit.cs, BUT REPRESENTS A FORM OF ACADEMIC DISHONESTY since it is an attempt to just "game the system", i.e. to get the tests to pass without really solving the problem.
-
-I would hope this would be obvious, but I have to say it so that there is no ambiguity: hard coding your output is a form of cheating, i.e. a form of "academic dishonesty".  Submitting a program of this kind would be subject not only to a reduced grade, but to possible disciplinary penalties.    If there is <em>any</em> doubt about this fact, please ask your TA and/or your instructor for clarification.
-
-## Step 5: Submitting via submit.cs 
-
-Here is the command to submit this week's labs:
-
-```
-~submit/submit -p 648 *.cpp *.h
-```
-
-= Grading Rubric =
-
-Points from submit.cs automatic grading:
+The beginning of the array becomes logically empty as front is incremented, so it is prudent to circle back around to reuse that portion of the array for later items:
 
 
-<table border="1">
-  <tr><th>Test Group</th><th>Test Name</th><th>Value</th></tr>
-<tr><td>addIntToEndOfListTest</td><td><p style="color:green;margin:0;padding:0;">addIntToEndOfListTest</p></td><td>(50 pts)</td></tr>
-<tr><td>addIntToStartOfListTest</td><td><p style="color:green;margin:0;padding:0;">addIntToStartOfListTest</p></td><td>(50 pts)</td></tr>
-<tr><td>arrayToLinkedListTest</td><td><p style="color:green;margin:0;padding:0;">arrayToLinkedListTest</p></td><td>(0 pts)</td></tr><tr><td>arrayToStringTest</td><td><p style="color:green;margin:0;padding:0;">arrayToStringTest</p></td><td>(0 pts)</td></tr></table>
+As you can see, rear is incremented on every enqueue, and front is incremented on every dequeue. But increment does not simply mean ++ in this situation, because when the result of ++ equals the array size, then the index should increment to 0. You can either use an if/else structure to find the right value, or use the modulus operator, %, as follows:
 
-## Other points:
+incrementedIndex = (currentIndex + 1) % CAPACITY
+The methods in the public section of arrayQ.h can be implemented as follows:
 
-* (50 pts) Pointer diagrams 
-* (50 pts) Code style, including but not limited to:
-1. Code can be easily understood by humans familiar with C++ (including both the author(s) of the code, and non-authors of the code.)
-2. Code is neatly indented and formatted, following standard code indentation practices for C++ as illustrated in either the textbook, or example code given in lectures and labs
-3. Variable names choices are reasonable
-** Code is reasonably "DRY" (as in "don't repeat yourself")&mdash;where appropriate, common code is factored out into functions
-** Code is not unnecessarily or unreasonably complex when a simpler solution is available
+Queue()
+Initialize front, rear and size to appropriate values.
+enqueue(int n)
+Assuming the queue is not full, the following three things must occur - but their order and exact details depend on how you are treating the front and rear indices: set the appropriate array element to n; increment rear; and increment size.
+dequeue()
+Assuming the queue is not empty, the following three things must occur - but order/details again depend on your approach: increment front; decrement size; and return the data item at the front of the queue.
+clear()
+Reset front, rear and size to their initial values.
+isEmpty(), isFull() and getSize()
+The size variable makes it very easy to implement these three methods.
+Way B: How to use a linked list
 
+See the private section of listQ.h. The data items will be stored in list nodes. The number of items currently stored will be recorded in the size variable. The front of the list should be the first node in the list, and the rear of the list should be the last node (think about why). The front and rear pointer variables are used to point at these nodes:
+
+
+Both front and rear would point at the same node if there is only one item on the queue, and both would point at 0 (NULL) if the queue is empty.
+
+Since memory for the nodes is dynamically allocated, this version requires a destructor at least (ignore for now that copying such a queue is unwise). Otherwise the class's interface is exactly the same as the array version. The methods are implemented as follows:
+
+Queue()
+Initialize front, rear and size to appropriate values.
+~Queue()
+Delete all the nodes, one at a time in a sensible order.
+enqueue(int n)
+No need to consider a full queue. Create a new node to store n. Append this node to the end of the list by using the rear pointer, and then point rear at this new node (also point front at it if it is the only item), and increment size. Here is an image of the operation from the Dale text: 
+dequeue()
+Assuming the queue is not empty, there are several things to do. Store the value of the item at the front to return at the end. Also store a copy of the front pointer to be able to delete this front node later. Point front at the next item. Delete the old front node. Decrement size. If the queue is now empty, then set rear to 0 (NULL). Finally, return the value that was at the front. Here is a Dale text image of the operation: 
+clear()
+Delete all the nodes. Also reset front, rear and size to their initial values.
+isEmpty() and getSize()
+The size variable makes it very easy to implement these methods. And isFull() is already implemented inline in listQ.h so don't redefine that method.
+Step 4: Implement a queue both ways, and test your implementations
+
+Select Way A or Way B to accomplish first; then do it the other way after you are sure your first way is working. Do not split this work with your lab partner - instead use your pair programming skills to work on your implementations together in sequence. We want each of you to experience implementing a queue both ways.
+
+Edit arrayQ.cpp when you accomplish Way A,
+And edit listQ.cpp when you do Way B.
+In both cases, type your name(s) and the date at the top of the files you are editing, and then implement the methods as specified by the comments in these files (and their associated header files).
+Pick a good time to switch roles between pilot and navigator - preferably before either of you gets tired, bored or frustrated.
+
+If you have your textbook with you, please wait at least 15 minutes before trying to look up the solutions. One reason is we want you to be able to figure out the problems by yourself. Another reason is the textbook's techniques do not mesh exactly with the structure of this lab's problem, and that could confuse you.
+
+Use the Makefile to compile, and use testQ.cpp to test your implementations. The use of both of these files differs depending on the implementation you are testing.
+
+Way A (array implementation). Do not change testQ.cpp at all, and compile it by simply typing "make" at the command line:
+-bash-4.3$ make
+g++ -std=c++11 -o testQ testQ.cpp arrayQ.cpp
+Way B (list implementation). First edit testQ.cpp to include the correct header file. Notice the 4th line of the original file is `#include "arrayQ.h"` but that must become `#include "listQ.h"` (or you can just turn that line into a comment, and uncomment the 5th line). Then use the "testlist" target in the Makefile as follows:
+-bash-4.3$ make testlist
+g++ -std=c++11 -o testQ testQ.cpp listQ.cpp
+Except for one small difference, both implementations should produce the following results when you run testQ:
+
+-bash-4.3$ ./testQ
+beginning state
+    size = 0, full = false, empty = true
+enqueue first 8 multiples of 7
+    size = 8, full = false, empty = false
+dequeue two items: 7 14
+    size = 6, full = false, empty = false
+enqueue next 4 multiples of 7
+    size = 10, full = true, empty = false
+dequeue all items: 21 28 35 42 49 56 63 70 77 84
+    size = 0, full = false, empty = true
+enqueue 5, then 10
+    size = 2, full = false, empty = false
+clear
+    size = 0, full = false, empty = true
+Those results are from our arrayQ solution. The one difference is that the listQ solution would have "full = false" when the size is 10 items.
+
+Step 5: Submit arrayQ.cpp and listQ.cpp
+
+Submit Lab07 at https://submit.cs.ucsb.edu/, or use the following command from a CS terminal:
+
+~submit/submit -p 594 arrayQ.cpp listQ.cpp
+If you are working with a partner, be sure that both partners' names are in a comment at the top of the source code files, and be sure to properly form a group for this project in the submit.cs system.
+
+50/50 is a perfect score.
+
+Evaluation and Grading
+
+Each student must accomplish the following to earn full credit [50 total points] for this lab:
+
+[25 points] arrayQ.cpp is saved, it has your name(s) in a comment at the top, it compiles and executes properly, and scores 25 on the submit.cs system tests.
+[25 points] listQ.cpp is saved, it has your name(s) in a comment at the top, it compiles and executes properly, and scores 25 on the submit.cs system tests.
+[-0 to -50 points, at the TA's discretion] The student arrived on time to their lab session, and worked diligently on CS24-related material until dismissed.
+This lab is due by 11:59 pm Friday night.
+Optional Extra Challenge
+
+Add an appropriate copy constructor and an assignment operator to the listQ version, to achieve the usual value semantics for objects of the class.
+
+If you still have some time, why not adapt an STL vector<int> to solve the problem? Create a new version of the class definition, vectorQ.h, to define the private data. You shouldn't need a size variable, because the vector will keep track of its own size. Then write vectorQ.cpp to implement it. Look up the vector methods at http://www.sgi.com/tech/stl/Vector.html.
+
+Just for fun, why not try to adapt a version of testQ.cpp to test the STL queue class? Does the test program require many changes?
+
+Prepared by Michael Costanzo.

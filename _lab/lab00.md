@@ -48,7 +48,7 @@ At this point, please go to [THIS LINK](https://ucsb.box.com/s/px12flf8g41m8g0gq
 
 You can create an account online at <a href="https://accounts.engr.ucsb.edu/create" target="_blank">https://accounts.engr.ucsb.edu/create</a>.
 
-If you are enrolled in <i>any</i> CoE course this quarter (including CS16), you can create your account immediately. If you are not, you will need to contact the ECI Help Desk at <a href="mailto:help@engineering.ucsb.edu">help@engineering.ucsb.edu</a>.
+If you are enrolled in <i>any</i> CoE course this quarter (including CS24), you can create your account immediately. If you are not, you will need to contact the ECI Help Desk at <a href="mailto:help@engineering.ucsb.edu">help@engineering.ucsb.edu</a>.
 
 ### Create a github account
 
@@ -92,7 +92,7 @@ You'll get much better performance on those individual machines, because they ar
 
 Now that your environment is set up, you will need to create a directory that will contain all your work for the course. Then, inside that directory, you will need to create another directory to contain your work for this assignment.
 
-To create your CS16 directory, use the <b>mkdir</b> command. Type the following in the terminal and press enter:
+To create your CS24 directory, use the <b>mkdir</b> command. Type the following in the terminal and press enter:
 
 ```
 $ mkdir cs24
@@ -150,7 +150,7 @@ Join the class CS24_s17 on submit.cs.
 Submit using the command:
 
 ```
-$ ~submit/submit -p 660 hello.cpp
+$ ~submit/submit -p 661 hello.cpp
 ```
 
 <hr>
@@ -161,7 +161,7 @@ Motivation for using github: When developing large programs, it is very useful t
 
 1. Before we begin, read this article to get an overview of git: [https://ucsb-cs56-pconrad.github.io/topics/git_overview/](https://ucsb-cs56-pconrad.github.io/topics/git_overview/)
 
-2. You will now create a git repo. The concept of a repo was explained in the article that you just read. New projects always start with this step. Since Github promotes "open source" projects, repos created under your default github account are *public*. This means that they are visible to everyone on the internet. However, for this class your assignments have to be "closed source", and not open to your classmates and others on the internet. This requires that you create *private* repos. These are repos that are only visible to you, your pair-partner and the instructional staff. You can only create private repos within our class organization on github: ucsb-cs16-sp17. So, the next step is to join our class organization.
+2. You will now create a git repo. The concept of a repo was explained in the article that you just read. New projects always start with this step. Since Github promotes "open source" projects, repos created under your default github account are *public*. This means that they are visible to everyone on the internet. However, for this class your assignments have to be "closed source", and not open to your classmates and others on the internet. This requires that you create *private* repos. These are repos that are only visible to you, your pair-partner and the instructional staff. You can only create private repos within our class organization on github: ucsb-cs24-sp17. So, the next step is to join our class organization.
 
 3. Read this article on [creating a github repo under an organization](https://ucsb-cs16.github.io/topics/github_com_create_private_repo_under_org/). Open a browser and navigate to our class organization on github: [ucsb-cs24-sp17](https://github.com/orgs/ucsb-cs24-sp17/dashboard). Click on the green button that says "New repository", and follow the steps from the ["creating a github repo under an organization"](https://ucsb-cs24.github.io/topics/github_com_create_private_repo_under_org/) article, to create a PRIVATE repo containing only a README.md and a .gitignore. See screenshot below:
 

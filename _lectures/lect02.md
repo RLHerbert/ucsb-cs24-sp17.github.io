@@ -21,4 +21,4 @@ Implement in C++ [temperature.cxx]
 
 ADT ~ class (w/ info hiding) for use by other programmers
 
-Version 1 of throttle ADT example [demo1.cxx]
+

@@ -1,6 +1,6 @@
 ---
 num: "lect02"
-desc: "Chapter 2.1: C++ classes and members"
+desc: "Chapter 1.1 and 2.1: Specification, design and implementation, C++ classes and members"
 ready: false
 pdfurl:  /lectures/CS24_Lecture2.pdf
 annotatedpdfurl: /lectures/CS24_Lecture2_ann.pdf

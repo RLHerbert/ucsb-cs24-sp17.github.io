@@ -25,7 +25,7 @@ We assume you already know everything that was covered in Lab00, and we will not
 
 * Choose who will be the pilot for the first part of the lab. The pilot should sit down in front of the computer now. The navigator gets a chair and sits next to the pilot. You should exchange roles after awhile, before the pilot gets tired, and before the navigator gets bored or distracted.
 
-* If your regular partner is more than 5 minutes late, ask the TA/tutor to pair you with someone else for this week.
+* If your partner shows up late, let your mentor know. Points will be deducted for students who don't show up on time. If you face difficulties with pair programming consult your mentor. 
 
 ## Step 1: Create a directory for this lab in the pilot's account and get the starter code
 
@@ -39,22 +39,25 @@ We assume you already know everything that was covered in Lab00, and we will not
 mkdir ~/cs24/lab01
 cd ~/cs24/lab01
 ```
+
 * Copy the starter code by typing the following command:
 
 ```
 cp /cs/faculty/dimirza/cs24-sp17/starter-code/lab01/* ./
 ```
+You should see two files in your current directory: rugfit1.cpp and rugfit2.cpp
 
 ## Step 2: Study a non-OO program, and copy an incomplete OO conversion
 
 In the rest of this lab, you will finish writing a C++ program that uses an object-oriented (OO) approach to solve exactly the same problems that are solved by rugfit1.cpp - but first study this program to understand the problems and their non-OO solutions:
 
-After including the standard C++ input-output library, a utility function is defined for calculating the area of a rectangle. All other work is done inside the main function.
-All variables are declared at the beginning of main.
-The user is prompted to enter data, and the data are read into the appropriate variables.
-Calculations are performed using the area function to help.
-Results are printed.
-Here is a sample run of the program (user input is bold like usual):
+* After including the standard C++ input-output library, a utility function is defined for calculating the area of a rectangle. All other work is done inside the main function.
+* All variables are declared at the beginning of main.
+* The user is prompted to enter data, and the data are read into the appropriate variables.
+* Calculations are performed using the area function to help.
+* Results are printed.
+
+Here is a sample run of the program :
 
 ```
 -bash-4.3$ ./rugfit1
@@ -143,9 +146,8 @@ Each student must accomplish the following to earn full credit [50 total points]
 
 * [50 points] rugfit2.cpp is saved, it has your name(s) in a comment at the top, your program is object-oriented according to the instructions above, it compiles and executes properly, and has been submitted with a score of 50/50 to the submit.cs system.
 
-[-0 to -50 points, at the TA's discretion] The student arrived on time to their lab session, and worked diligently on CS24-related material until dismissed.
+[-0 to -50 points, at the mentor's discretion] The student arrived on time to their lab session, and worked diligently on CS24-related material until dismissed.
 
-This lab is due by 11:59 pm tonight.
 
 ## Optional Extra Challenge
 

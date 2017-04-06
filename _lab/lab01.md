@@ -23,15 +23,50 @@ We assume you already know everything that was covered in Lab00, and we will not
 
 ## Step 0: Get together with your lab partner (chosen last week)
 
+* If you reported a different partner to your mentor last week, please update your mentor before you proceed with the rest of the lab
+
 * Choose who will be the pilot for the first part of the lab. The pilot should sit down in front of the computer now. The navigator gets a chair and sits next to the pilot. You should exchange roles after awhile, before the pilot gets tired, and before the navigator gets bored or distracted.
 
 * If your partner shows up late, let your mentor know. Points will be deducted for students who don't show up on time. If you face difficulties with pair programming consult your mentor. 
 
-## Step 1: Create a directory for this lab in the pilot's account and get the starter code
+## Step 1: Clone the git repo that contains the starter code for this lab and all subsequent labs and programming assignments
 
 * Log onto the pilot's account. If the pilot's account is not working, allow the navigator to log in instead. You will (both) work in this account for the rest of the lab.
 
 * Open a terminal window. As a reminder, that's the Application Menu, then System Tools, then Terminal Window.
+
+* In your ~/cs24 directory, type the following commands, replacing Alex Triton with your name and atriton@cs.ucsb.edu with your email address. 
+
+```
+   git config --global user.name "Alex Triton"
+
+   git config --global user.email "atriton@cs.ucsb.edu"
+```
+
+The above commands are one-time git configurations and you won't need to do them again.
+
+* Next, generate a private/public key pair and upload your public key to github. To do this refer to this tutorial: [https://ucsb-cs56-pconrad.github.io/topics/github_ssh_keys/](https://ucsb-cs56-pconrad.github.io/topics/github_ssh_keys/) In the process of setting up your key pair, when asked for a passphrase just press enter. By doing this step you will avoid having to enter a password or passphrase everytime you push your code to git
+
+* Clone the starter code repo from our class organization to your local account by typing the following commands
+
+```
+	git clone git@github.com:ucsb-cs24-sp17/starter-code.git 
+
+```
+Note that you have to do this step only once and won't need to repeat it in subsequent labs to get the starter code.
+
+* Now navigate to the lab01 directory within the starter code repo, and do a git pull to get the latest version of the starter code for lab01:
+
+```
+	cd starter-code
+	git pull
+```
+You will only have to do the above step in subsequent labs to get the latest starter code for that lab. Notice that a git pull will update the starter code for all the directories within that repo (all labs) but you can only expect the current lab to have the final version of the starter code.
+
+
+
+Create a directory for this lab in the pilot's account and get the starter code
+
 
 * Create a ~/cs24/lab01 directory and make it your current directory:
 

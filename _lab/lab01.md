@@ -63,9 +63,9 @@ Note that you have to do this step only once and won't need to repeat it in subs
 ```
 You will only have to do the above step in subsequent labs to get the latest starter code for that lab. Notice that a git pull will update the starter code for all the directories within that repo (all labs) but you can only expect the current lab to have the final version of the starter code.
 
+In the next lab, we will talk about how to completely integrate git into your work flow. For this lab, you have only used it as a way of obtaining the latest starter code. Note that you must never modify the code in the starter-code repo because you are not the owner of that repo. Instead you copy the files from that repo to your own private repo or directory before you start working  on the assignment.
 
-
-Create a directory for this lab in the pilot's account and get the starter code
+## Step 2: Create a directory for this lab in the pilot's account and get the starter code
 
 
 * Create a ~/cs24/lab01 directory and make it your current directory:
@@ -78,11 +78,11 @@ cd ~/cs24/lab01
 * Copy the starter code by typing the following command:
 
 ```
-cp /cs/faculty/dimirza/cs24-sp17/starter-code/lab01/* ./
+cp ../starter-code/lab01/* ./
 ```
 You should see two files in your current directory: rugfit1.cpp and rugfit2.cpp
 
-## Step 2: Study a non-OO program, and copy an incomplete OO conversion
+## Step 3: Study a non-OO program, and copy an incomplete OO conversion
 
 In the rest of this lab, you will finish writing a C++ program that uses an object-oriented (OO) approach to solve exactly the same problems that are solved by rugfit1.cpp - but first study this program to understand the problems and their non-OO solutions:
 
@@ -107,7 +107,7 @@ empty floor area: 53.22
 Your revision of this program should operate exactly the same way. You will make the revision using the provided skeleton code in rugfit2.cpp
 
 
-## Step 3: Know what it means to design an OO program
+## Step 4: Know what it means to design an OO program
 
 An experienced OO programmer would frown at the sight of variable names like floorWidth and floorLength, and would absolutely cringe at then seeing names like rugWidth and rugLength. Such a programmer's object-oriented training would scream out the need for objects named floor and rug, each with its own width and length attributes. And although this programmer would appreciate the procedural abstraction of an area function, he or she would prefer to let the floor and rug objects calculate their own areas. In response, the OO programmer probably would decide to write a class that can represent either a floor or a rug, or any other rectangle for that matter. Then he would use objects of this class to solve problems - maybe even future problems the programmer is not facing yet.
 
@@ -121,7 +121,7 @@ Here are the steps necessary to achieve such an object-oriented solution:
 
 * Discuss the meaning of these steps with your lab partner, to make sure you both understand (at least generally) what you are to do, and hopefully gain an appreciation for why you might want to do it that way.
 
-## Step 4: Complete rugfit2.cpp
+## Step 5: Complete rugfit2.cpp
 
 First you should study the parts of rugfit2.cpp that are complete. It consists of three main parts - and in later labs you will normally store such parts in separate files: (1) the abstraction - class Rectangle is defined; (2) the implementation - the methods of class Rectangle are defined (a.k.a. implemented); and (3) the application - the main function is defined. Your job involves additions to each of these parts.
 
@@ -144,7 +144,7 @@ floor.getWidth()
 
 * Also in main: change the two assignment statements for floorArea and rugArea to use the area method for each of the floor and rug objects.
 
-## Step 5: Compile and run the program to test it
+## Step 6: Compile and run the program to test it
 
 Use make to compile your program. Then run it to make sure everything works.Here is a test of our solution:
 
@@ -162,7 +162,7 @@ empty floor area: 0
 
 If errors occur: read the error messages and try to figure out what needs changing. Don't just randomly make changes, but instead really think about the problem and how to fix it. Ask the TA for help only if you are truly stumped, but give it at least 5-10 minutes worth of study first.
 
-## Step 6: Submit rugfit2.cpp, and verify your work
+## Step 7: Submit rugfit2.cpp, and verify your work
 
 Submit Lab01 at https://submit.cs.ucsb.edu/, or use the following command from a CS terminal:
 

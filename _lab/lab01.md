@@ -9,6 +9,17 @@ due: 2017-04-11 11:59:00.00-7
 
 <div markdown="1">
 
+---
+layout: lab
+num: lab01	
+ready: false
+desc: "Define implement and apply a C++ class  "
+assigned: 2017-04-11 09:00:00.00-7
+due: 2017-04-11 11:59:00.00-7
+---
+
+<div markdown="1">
+
 # Goals for this lab
 
 By the time you have completed this lab, you should be able to
@@ -178,13 +189,13 @@ Submit Lab01 at https://submit.cs.ucsb.edu/, or use the following command from a
 
 ```
 ~submit/submit -p 548 rugfit2.cpp
-``
+```
 
 Be sure to wait for the results of the 4 simple tests.
 If you are working with a partner, be sure that both partners' names are in a comment at the top of the source code file, and be sure to properly form a group for this project in the submit.cs system.
 
 
-Now open a web-browser and upload all your files to your git repo.
+Now open a web-browser and upload all your files to your git repo (following the process from)
 
 Don't leave early though ... see challenge problems below.
 

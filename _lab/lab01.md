@@ -31,7 +31,7 @@ We assume you already know everything that was covered in Lab00, and we will not
 
 * If your partner shows up late, let your mentor know. Points will be deducted for students who don't show up on time. If you face difficulties with pair programming consult your mentor. 
 
-## Step 1a: Do some initial git configurations (this step has to be done individually)
+## Step 1a: Do some initial ONE-TIME git configurations (this step has to be done individually)
 
 * On separate machines, log onto your account. 
 
@@ -47,7 +47,13 @@ We assume you already know everything that was covered in Lab00, and we will not
 
 * Next, generate a private/public key pair and upload your public key to your github account. To do this refer to this tutorial: [https://ucsb-cs56-pconrad.github.io/topics/github_ssh_keys/](https://ucsb-cs56-pconrad.github.io/topics/github_ssh_keys/) In the process of setting up your key pair, when asked for a passphrase just press enter. By doing this step you will avoid having to enter a password or passphrase everytime you push your code to git. 
 
-The above are one-time git configurations and you won't need to do them again for subsequent labs.
+* Clone the starter code repo from our class organization to the pilot's local account by typing the following commands
+
+```
+	git clone git@github.com:ucsb-cs24-sp17/starter-code.git 
+```
+Note that this repo contains the starter code for all labs and pas (although only the code for lab01 is up to date). So, you don't have to repeat the above step in subsequent labs. 
+
 
 ## Step 1b: Create a new repo, add your partner as collaborator and clone the git repo that contains the starter code 
 
@@ -55,13 +61,7 @@ The above are one-time git configurations and you won't need to do them again fo
 
 * The pilot should add the navigator as a collaborator on github. To do this navigate to the git repo you just created. Choose the settings tab. Then click on the 'Collaborators and teams' option on the left. Scroll all the way down and add the navigator's github account. Then press on the 'Add collaborator' button. Now you and the navigator share the ownership of your git repo. You won't work with your new repo until the end of the lab.
 
-* Clone the starter code repo from our class organization to the pilot's local account by typing the following commands
-
-```
-	git clone git@github.com:ucsb-cs24-sp17/starter-code.git 
-
-```
-Note that this repo contains the starter code for all labs and pas (although only the code for lab01 is up todate). So, you don't have to repeat the above step in subsequent labs. You just have to do a 'git pull' in the starter-code to get the latest code.
+You just have to do a 'git pull' in the starter-code to get the latest code.
 
 * Now navigate to the lab01 directory within the starter-code repo, and do a git pull to get the latest version of the starter code for lab01:
 

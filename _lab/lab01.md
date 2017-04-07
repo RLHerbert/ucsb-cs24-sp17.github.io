@@ -45,10 +45,9 @@ We assume you already know everything that was covered in Lab00, and we will not
    git config --global user.email "atriton@cs.ucsb.edu"
 ```
 
-The above commands are one-time git configurations and you won't need to do them again.
-
 * Next, generate a private/public key pair and upload your public key to your github account. To do this refer to this tutorial: [https://ucsb-cs56-pconrad.github.io/topics/github_ssh_keys/](https://ucsb-cs56-pconrad.github.io/topics/github_ssh_keys/) In the process of setting up your key pair, when asked for a passphrase just press enter. By doing this step you will avoid having to enter a password or passphrase everytime you push your code to git. 
 
+The above are one-time git configurations and you won't need to do them again for subsequent labs.
 
 ## Step 1b: Create a new repo, add your partner as collaborator and clone the git repo that contains the starter code 
 

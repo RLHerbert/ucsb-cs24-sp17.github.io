@@ -4,7 +4,7 @@ num: lab02
 ready: false
 desc: "Using g++, make and gdb"
 assigned: 2017-04-18 9:00:00.00-7
-due: 2017-04-18 11:59:00.00-7
+due: 2017-04-18 23:59:00.00-7
 ---
 
 # Goals for this lab

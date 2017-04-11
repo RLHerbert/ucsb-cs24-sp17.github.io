@@ -21,17 +21,62 @@ We assume you already know everything that was covered in Lab00, and we will not
 
 # Step by Step Instructions
 
-## Step 0: Get together with your lab partner (chosen last week)
+## Step 0: Check-in with your mentor
+
+* At the start of every lab, you and your partner should get together with your mentor group and mentor. Your mentor will give you any initial instructions as required for the lab, guiding you on the key learning goals and any challenging aspects that you need to pay special attention to. They will also take your attendance for that lab. This is also a time when you will check in about your progress in the programming assignments. Make sure that you always have the latest version of your code pushed to github before your weekly check-in with your mentor.
+
+* If you reported a different partner to your mentor last week, please update your mentor before you proceed with the rest of the lab
 
 * Choose who will be the pilot for the first part of the lab. The pilot should sit down in front of the computer now. The navigator gets a chair and sits next to the pilot. You should exchange roles after awhile, before the pilot gets tired, and before the navigator gets bored or distracted.
 
 * If your partner shows up late, let your mentor know. Points will be deducted for students who don't show up on time. If you face difficulties with pair programming consult your mentor. 
 
-## Step 1: Create a directory for this lab in the pilot's account and get the starter code
+## Step 1a: Do some initial ONE-TIME git configurations (this step has to be done individually)
 
-* Log onto the pilot's account. If the pilot's account is not working, allow the navigator to log in instead. You will (both) work in this account for the rest of the lab.
+* On separate machines, log onto your account. 
 
 * Open a terminal window. As a reminder, that's the Application Menu, then System Tools, then Terminal Window.
+
+* In your ~/cs24 directory, type the following commands, replacing Alex Triton with your name and atriton@cs.ucsb.edu with your email address. 
+
+```
+   git config --global user.name "Alex Triton"
+
+   git config --global user.email "atriton@cs.ucsb.edu"
+```
+
+* Next, generate a private/public key pair and upload your public key to your github account. To do this refer to this tutorial: [https://ucsb-cs56-pconrad.github.io/topics/github_ssh_keys/](https://ucsb-cs56-pconrad.github.io/topics/github_ssh_keys/) In the process of setting up your key pair, when asked for a passphrase just press enter. By doing this step you will avoid having to enter a password or passphrase everytime you push your code to git. 
+
+* Clone the starter code repo from our class organization to the pilot's local account by typing the following commands
+
+```
+	git clone git@github.com:ucsb-cs24-sp17/starter-code.git 
+```
+Note that this repo contains the starter code for all labs and pas (although only the code for lab01 is up to date). So, you don't have to repeat the above step in subsequent labs. 
+
+
+## Step 1b: Create a new repo, add your partner as collaborator and clone the git repo that contains the starter code 
+
+* Create a repo for this lab on the pilot's github account (just like you did in lab00): To do this, open a browser and navigate to [www.github.com](www.github.com). Log into the pilot's github account. From the drop down menu on the left, select our class organization: ucsb-cs24-sp17 and proceed to create a new repo. You may refer to the instructions in lab00. Follow this naming convention: If your github username is jgaucho and your partner's is alily, your should name your repo lab00_agaucho_alily (usernames appear in alphabetical order). Also you must set the visibity of your repo to be 'PRIVATE' when creating it. We will not repeat these instructions in subsequent labs.
+
+* The pilot should add the navigator as a collaborator on github. To do this navigate to the git repo you just created. Choose the settings tab. Then click on the 'Collaborators and teams' option on the left. Scroll all the way down and add the navigator's github account. Then press on the 'Add collaborator' button. Now you and the navigator share the ownership of your git repo. You won't work with your new repo until the end of the lab.
+
+You just have to do a 'git pull' in the starter-code to get the latest code.
+
+* Now navigate to the lab01 directory within the starter-code repo, and do a git pull to get the latest version of the starter code for lab01:
+
+```
+	cd starter-code
+	git pull
+```
+
+You have to do the above step in subsequent labs to get the latest version of the starter code for that lab. In the next lab, we will talk about how to completely integrate git into your work flow. For this lab, you will only use it to upload your latest work at the end of the lab. 
+
+
+Note that you must never modify the code in the starter-code repo because you are not the owner of that repo. Instead you copy the files from that repo to your own private repo or directory before you start working  on the assignment.
+
+## Step 2: Create a directory for this lab in the pilot's account and get the starter code
+
 
 * Create a ~/cs24/lab01 directory and make it your current directory:
 
@@ -43,11 +88,11 @@ cd ~/cs24/lab01
 * Copy the starter code by typing the following command:
 
 ```
-cp /cs/faculty/dimirza/cs24-sp17/starter-code/lab01/* ./
+cp ../starter-code/lab01/* ./
 ```
 You should see two files in your current directory: rugfit1.cpp and rugfit2.cpp
 
-## Step 2: Study a non-OO program, and copy an incomplete OO conversion
+## Step 3: Study a non-OO program, and copy an incomplete OO conversion
 
 In the rest of this lab, you will finish writing a C++ program that uses an object-oriented (OO) approach to solve exactly the same problems that are solved by rugfit1.cpp - but first study this program to understand the problems and their non-OO solutions:
 
@@ -72,7 +117,7 @@ empty floor area: 53.22
 Your revision of this program should operate exactly the same way. You will make the revision using the provided skeleton code in rugfit2.cpp
 
 
-## Step 3: Know what it means to design an OO program
+## Step 4: Know what it means to design an OO program
 
 An experienced OO programmer would frown at the sight of variable names like floorWidth and floorLength, and would absolutely cringe at then seeing names like rugWidth and rugLength. Such a programmer's object-oriented training would scream out the need for objects named floor and rug, each with its own width and length attributes. And although this programmer would appreciate the procedural abstraction of an area function, he or she would prefer to let the floor and rug objects calculate their own areas. In response, the OO programmer probably would decide to write a class that can represent either a floor or a rug, or any other rectangle for that matter. Then he would use objects of this class to solve problems - maybe even future problems the programmer is not facing yet.
 
@@ -86,7 +131,7 @@ Here are the steps necessary to achieve such an object-oriented solution:
 
 * Discuss the meaning of these steps with your lab partner, to make sure you both understand (at least generally) what you are to do, and hopefully gain an appreciation for why you might want to do it that way.
 
-## Step 4: Complete rugfit2.cpp
+## Step 5: Complete rugfit2.cpp
 
 First you should study the parts of rugfit2.cpp that are complete. It consists of three main parts - and in later labs you will normally store such parts in separate files: (1) the abstraction - class Rectangle is defined; (2) the implementation - the methods of class Rectangle are defined (a.k.a. implemented); and (3) the application - the main function is defined. Your job involves additions to each of these parts.
 
@@ -109,7 +154,7 @@ floor.getWidth()
 
 * Also in main: change the two assignment statements for floorArea and rugArea to use the area method for each of the floor and rug objects.
 
-## Step 5: Compile and run the program to test it
+## Step 6: Compile and run the program to test it
 
 Use make to compile your program. Then run it to make sure everything works.Here is a test of our solution:
 
@@ -127,16 +172,19 @@ empty floor area: 0
 
 If errors occur: read the error messages and try to figure out what needs changing. Don't just randomly make changes, but instead really think about the problem and how to fix it. Ask the TA for help only if you are truly stumped, but give it at least 5-10 minutes worth of study first.
 
-## Step 6: Submit rugfit2.cpp, and verify your work
+## Step 7: Submit rugfit2.cpp, and upload yourfiles to github
 
 Submit Lab01 at https://submit.cs.ucsb.edu/, or use the following command from a CS terminal:
 
 ```
 ~submit/submit -p 548 rugfit2.cpp
-``
+```
 
 Be sure to wait for the results of the 4 simple tests.
 If you are working with a partner, be sure that both partners' names are in a comment at the top of the source code file, and be sure to properly form a group for this project in the submit.cs system.
+
+
+Now open a web-browser and upload all your files to your git repo (following the process from)
 
 Don't leave early though ... see challenge problems below.
 
@@ -184,4 +232,4 @@ Both methods refer to another Rectangle object, and both methods promise not to 
 
 
 
-
+</div>

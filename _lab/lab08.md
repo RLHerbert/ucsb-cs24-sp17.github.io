@@ -4,7 +4,7 @@ num: lab08
 ready: false
 desc: "Binary Search Tree"
 assigned: 2017-05-30 09:00:00.00-7
-due: 2017-05-30 11:59:00.00-7
+due: 2017-05-30 23:59:00.00-7
 ---
 <div markdown="1">
 

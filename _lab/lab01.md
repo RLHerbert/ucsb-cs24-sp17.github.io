@@ -1,10 +1,10 @@
 ---
 layout: lab
 num: lab01	
-ready: false
+ready: true
 desc: "Define implement and apply a C++ class  "
 assigned: 2017-04-11 09:00:00.00-7
-due: 2017-04-11 11:59:00.00-7
+due: 2017-04-11 23:59:00.00-7
 ---
 
 <div markdown="1">
@@ -177,16 +177,22 @@ If errors occur: read the error messages and try to figure out what needs changi
 Submit Lab01 at https://submit.cs.ucsb.edu/, or use the following command from a CS terminal:
 
 ```
-~submit/submit -p 548 rugfit2.cpp
+~submit/submit -p 693 rugfit2.cpp
 ```
 
 Be sure to wait for the results of the 4 simple tests.
 If you are working with a partner, be sure that both partners' names are in a comment at the top of the source code file, and be sure to properly form a group for this project in the submit.cs system.
 
 
-Now open a web-browser and upload all your files to your git repo (following the process from)
+Now open a web-browser and upload all your files to your git repo (following the process from lab00)
 
 Don't leave early though ... see challenge problems below.
+
+## Step 8: Lab check off
+
+* Meet with your mentor again to get checked off on the lab
+* Talk to your mentor about any challenges you faced while completing the lab
+* Talk to your mentor abut next steps
 
 ## Evaluation and Grading
 
@@ -194,8 +200,10 @@ Each student must accomplish the following to earn full credit [50 total points]
 
 * [50 points] rugfit2.cpp is saved, it has your name(s) in a comment at the top, your program is object-oriented according to the instructions above, it compiles and executes properly, and has been submitted with a score of 50/50 to the submit.cs system.
 
-[-0 to -50 points, at the mentor's discretion] The student arrived on time to their lab session, and worked diligently on CS24-related material until dismissed.
+[1 to 5 points, at the mentor's discretion] The student arrived on time to their lab session, and worked diligently on CS24-related material until dismissed.
 
+
+You may now attempt the optional extra challenge or work on pa01 (and then return to the challenge problems)
 
 ## Optional Extra Challenge
 

@@ -1,6 +1,6 @@
 ---
 num: "lect03"
-desc:  "Chapter 2.1- 2.3: Constructors, value semantics, namespace, header and implementation files, intro to lab01 and pa1 "
+desc:  "Chapter 2.1- 2.3: Constructors, value semantics, intro to lab01 and pa1 "
 ready: true
 pdfurl: /lectures/CS24_Lecture3.pdf
 annotatedpdfurl: /lectures/CS24_Lecture3_ann.pdf 

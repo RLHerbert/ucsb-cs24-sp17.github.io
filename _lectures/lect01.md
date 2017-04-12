@@ -8,10 +8,11 @@ annotatedpdfurl: /lectures/CS24_Lecture1_ann.pdf
 annotatedready: true 
 ---
 
-# Topics
+
 # Code from lecture:
 [https://github.com/ucsb-cs24-sp17/lectures](https://github.com/ucsb-cs24-sp17/lectures)
 
+#Topics
 
 ## Course overview
 * C++

@@ -8,6 +8,10 @@ annotatedready: true
 lecture_date: 2017-04-05
 ---
 
+
+# Code from lecture:
+[https://github.com/ucsb-cs24-sp17/lectures](https://github.com/ucsb-cs24-sp17/lectures)
+
 # Topics
 
 About specification, design, implementation

@@ -9,7 +9,10 @@ lecture_date: 2017-04-10
 ---
 
 
-# Code from lecture
+
+# Code from lecture:
+[https://github.com/ucsb-cs24-sp17/lectures](https://github.com/ucsb-cs24-sp17/lectures)
+
 
 # Topics 
 * Intro to lab01 and pa01

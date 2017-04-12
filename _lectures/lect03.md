@@ -4,7 +4,7 @@ desc:  "Chapter 2.1- 2.3: Constructors, value semantics, intro to lab01 and pa1 
 ready: true
 pdfurl: /lectures/CS24_Lecture3.pdf
 annotatedpdfurl: /lectures/CS24_Lecture3_ann.pdf 
-annotatedready: false
+annotatedready: true
 lecture_date: 2017-04-10
 ---
 

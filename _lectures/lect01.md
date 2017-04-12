@@ -5,10 +5,13 @@ desc: "Course overview, github intro"
 ready: true
 pdfurl: /lectures/CS24_Lecture1.pdf
 annotatedpdfurl: /lectures/CS24_Lecture1_ann.pdf
-annotatedready: false 
+annotatedready: true 
 ---
 
 # Topics
+# Code from lecture:
+[https://github.com/ucsb-cs24-sp17/lectures](https://github.com/ucsb-cs24-sp17/lectures)
+
 
 ## Course overview
 * C++

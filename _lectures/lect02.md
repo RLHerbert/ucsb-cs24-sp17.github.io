@@ -4,7 +4,7 @@ desc: "Chapter 1.1 and 2.1: Specification, design and implementation, C++ classe
 ready: true
 pdfurl:  /lectures/CS24_Lecture2.pdf
 annotatedpdfurl: /lectures/CS24_Lecture2_ann.pdf
-annotatedready: false
+annotatedready: true
 lecture_date: 2017-04-05
 ---
 

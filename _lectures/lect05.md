@@ -1,9 +1,9 @@
 ---
 num: "lect05"
-desc: "Chapter 3.1- 3.3: Container classes, the sequence class, interactive test programs, intro to pa2 "
-ready: false
-pdfurl: /lectures/CS16_Lecture5.pdf
-annotatedpdfurl: /lectures/CS16_Lecture5_ann.pdf
+desc: "Chapter 2 wrap up, Chapter 3.1- 3.3: Container classes, the sequence class, interactive test programs, intro to pa2 "
+ready: true
+pdfurl: /lectures/CS24_Lecture5.pdf
+annotatedpdfurl: /lectures/CS24_Lecture5_ann.pdf
 annotatedready: false 
 lecture_date: 2017-04-17
 ---

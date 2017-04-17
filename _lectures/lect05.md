@@ -10,13 +10,17 @@ lecture_date: 2017-04-17
 
 # Topics
 
-Container classes - bag example version 1
+* Wrap up of chapter 2: friend functions, operator overloading
+* Review of makefiles
+* Intro to gdb
+* Container classes - bag example version 1
 	bag1.h [docs only] - typedefs, value semantics
 	bagdemo.cxx - “Abstraction is good!”
 	bag1 class design - fixed size array
 		bag1.h [rest]
 		bag1.cxx - class invariant
 
-sequence class (v.1: fixed array) - sequence1.h
+* Sequence class (v.1: fixed array) - sequence1.h
 	Interactive test programs - sequence_test.cxx
-	Introduce pa02
+
+* Introduce pa02

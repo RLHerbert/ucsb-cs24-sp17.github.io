@@ -1,7 +1,7 @@
 ---
 layout: lab
 num: lab02
-ready: false
+ready: true
 desc: "Using g++, make and gdb"
 assigned: 2017-04-18 9:00:00.00-7
 due: 2017-04-18 23:59:00.00-7
@@ -34,9 +34,19 @@ mkdir ~/cs24/lab02
 cd ~/cs24/lab02
 ```
 
-Now copy all of the files for this lab from /cs/faculty/dimirza/cs24-sp17/starter-code/lab02/ to your cs24/lab02 directory:
+Now navigate to your starter-code directory and do a git pull to get the latest version of the code
 
-cp /cs/faculty/dimirza/cs24-sp17/starter-code/lab02 ~/cs24/lab02/
+```
+cd ~/cs24/starter-code/
+git pull
+cd ~/cs24/lab02/
+```
+
+Now copy all of the files for this lab from the starter-code directory to your cs24/lab02 directory:
+
+```
+cp ~/cs24/starter/lab02/* ~/cs24/lab02/
+```
 
 ## Step 2: Review compiling and linking with g++
 
@@ -69,7 +79,7 @@ When it comes to large projects in C++, it's always useful to organize your proj
 
 See the three files main.cpp, functions.cpp and functions.h in your starter code. Notice that both of the .cpp files include the .h file - this is a typical case. It won't be necessary to compile functions.h by itself, as it will become part of both object files produced when the .cpp files are compiled.
 
-*Your job for Step 3:*
+## Your job for Step 3:
 
 Compile both of main.cpp and functions.cpp separately.
 Then link the object files (will be main.o and functions.o) together to produce an executable file named "hello2" - this executable's name is important, and part of the lab requirement.
@@ -78,7 +88,7 @@ Run ./hello2 to verify success.
 
 Thought question: Why is it unnecessary to separately compile functions.h?
 
-*Other useful g++ options*
+## Other useful g++ options
 
 When first compiling your programs it's always good to use the "-Wall" and the "-g" options in order to force g++ to give you warnings about possible errors in the source code, and include extra debugging information in its output, respectively.
 
@@ -112,9 +122,9 @@ clean:
 ```
 Save the Makefile. Then make a minor change to one of the source code files (main.cpp, functions.cpp or functions.h). And finally type "make" in your console. Fix Makefile if it doesn't compile the changed parts and reproduce the executable file. If it does, then find out what happens if you type "make" again. ;-)
 
-By default, make will execute whatever is necessary to produce the first target which is hello (the executable) in this case. Alternatively, you can specify the target you want make to make by typing it as a command line argument, as in "make hello" to execute the default another way.
+By default, make will execute whatever is necessary to produce the first target which is hello (the executable) in this case. Alternatively, you can specify the target you want to make by typing it as a command line argument, as in "make hello" to execute the default another way.
 
-Suppose that now you want to remove the objects and executable file. What should you type in your console? Be prepared to answer that question if the TA asks you.
+Suppose that now you want to remove the objects and executable file. What should you type in your console? Be prepared to answer that question if the your mentor asks you.
 
 ## Step 5: Using gdb (Gnu debugger)
 
@@ -220,7 +230,7 @@ Let's say we would like to know if the courseName variable has the value we assi
 $1 = "Math"
 
 ```
-So indeed (on this first iteration at least) variable courseName has the value we entered as an input ("Math"). Now use the next command to move forward up to line 29 ("userAnswer = trackUserAnswer();"). At that point, use the "step" command (or "s") in order to step into and execute the subroutine trackUserAnswer(). When you wish to exit from the trackUserAnswer function you can write finish. (But be aware that this function needs user input. So you should enter finish just after you have entered your input.)
+So indeed (on this first iteration at least) variable courseName has the value we entered as an input ("Math"). Now use the next command to move forward up to line 29 ("userAnswer = trackUserAnswer();"). At that point, use the "step" command (or "s") in order to step into and execute the subroutine trackUserAnswer(). When you wish to exit from the trackUserAnswer function you can write finish. (But be aware that this function needs user input. So you should enter finish just after you enter your input.)
 
 More about breakpoints: Write command break to put a breakpoint on line 29. Now you have two breakpoints set - this new one is number 2. You can disable it by entering "disable 2" (you could also use dis 2). And you can enter "enable 2" (or "ena 2") to enable the breakpoint again, and "delete 2" (or "d 2") to delete the breakpoint.
 
@@ -237,16 +247,22 @@ cin.ignore(1000, '\n');
 ```
 
 That line will flush up to 1000 characters from the input stream, including the newline character. Afterwards the stream will be empty and ready for new user input.
-Compile (still with -g option) again, and run it to make sure it works properly now. Be ready to demonstrate the corrected version to your TA or tutor.
+Compile (still with -g option) again, and run it to make sure it works properly now. Be ready to demonstrate the corrected version to your mentor.
 
 ## Step 6: Show off your work and get credit for this lab
 
-Get your TA or tutor's attention to inspect your work, and to record completion of your lab work.
+Get your mentor's attention to inspect your work, and to record completion of your lab work.
 Don't leave early though ... begin the after-lab work below.
 
-### Submit your corrected program
 
-Submit your probgram on submit.cs and also push it to github
+## Step 7: Submit your code on submit.cs
+
+* Both you and your partner should join the same group on submit.cs
+* To submit your code type:
+
+```
+~submit/submit -p 701 buggy1.cpp
+```
 
 ## Evaluation and Grading
 
@@ -256,9 +272,9 @@ You must accomplish the following to earn full credit [50 total points] for this
 
 * [20 pts] correct program turned in via submit
 
-Deadline for after-lab submission: tonight at 11:59pm. Note that to be eligible for late turn-in with credit, you MUST have attended your entire lab period.
+Deadline for after-lab submission: tonight at 11:59pm. 
 
-* [-0 to -50 points, at the TA's discretion] The student arrived on time to their lab session, and worked diligently on CS24-related material until dismissed.
+* [-0 to -2 points, at the TA's discretion] The student arrived on time to their lab session, and worked diligently on CS24-related material until dismissed.
 
 
 After lab-work is done
@@ -271,4 +287,4 @@ By the way, here is a GDB Quick Reference Card that shows more gdb commands. And
 
 You may work on PA2 if you need more work to do. Or like usual, help other students who might be struggling. Did you know that trying to teach others is the very best way for you to learn something yourself?
 
-This lab was prepared by Michael Costanzo as an adaptation of a lab created for a different class in 2011 by Stratos Dimopoulos.
+This lab was prepared by Michael Costanzo as an adaptation of a lab created for a different class by Stratos Dimopoulos. 

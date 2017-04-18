@@ -1,10 +1,10 @@
 ---
 num: "lect05"
-desc: "Chapter 2 wrap up, Chapter 3.1- 3.3: Container classes, the sequence class, interactive test programs, intro to pa2 "
+desc: "Chapter 2 wrap up, gdb"
 ready: true
 pdfurl: /lectures/CS24_Lecture5.pdf
 annotatedpdfurl: /lectures/CS24_Lecture5_ann.pdf
-annotatedready: false 
+annotatedready: true 
 lecture_date: 2017-04-17
 ---
 
@@ -13,14 +13,3 @@ lecture_date: 2017-04-17
 * Wrap up of chapter 2: friend functions, operator overloading
 * Review of makefiles
 * Intro to gdb
-* Container classes - bag example version 1
-	bag1.h [docs only] - typedefs, value semantics
-	bagdemo.cxx - “Abstraction is good!”
-	bag1 class design - fixed size array
-		bag1.h [rest]
-		bag1.cxx - class invariant
-
-* Sequence class (v.1: fixed array) - sequence1.h
-	Interactive test programs - sequence_test.cxx
-
-* Introduce pa02

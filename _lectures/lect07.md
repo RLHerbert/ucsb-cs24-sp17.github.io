@@ -1,6 +1,6 @@
 ---
 num: "lect07"
-desc: ""
+desc: "Chapter 4: Pointers and dynamic arrays"
 ready: false
 pdfurl: /lectures/CS24_Lecture7.pdf
 annotatedpdfurl: /lectures/CS24_Lecture7_ann.pdf

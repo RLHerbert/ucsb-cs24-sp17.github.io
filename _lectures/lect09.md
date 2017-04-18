@@ -1,6 +1,6 @@
 ---
 num: "lect09"
-desc: ""
+desc: "Chapter 5: Linked-list with classes"
 ready: false
 pdfurl: /lectures/CS16_Lecture9.pdf
 annotatedpdfurl: /lectures/CS16_Lecture9_ann.pdf

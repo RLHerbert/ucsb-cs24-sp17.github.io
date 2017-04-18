@@ -2,8 +2,8 @@
 num: "lect04"
 desc: "Chapter 2.4 - 2.5: Classes and parameters, Operator overloading"
 ready: true
-pdfurl: /lectures/CS16_Lecture4.pdf
-annotatedpdfurl: /lectures/CS16_Lecture4_ann.pdf
+pdfurl: /lectures/CS24_Lecture4.pdf
+annotatedpdfurl: /lectures/CS24_Lecture4_ann.pdf
 annotatedready: true
 lecture_date: 2017-04-12
 ---

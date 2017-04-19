@@ -1,7 +1,7 @@
 ---
 num: "lect06"
 desc: "Chapter 3: Container classes, the sequence class, interactive test programs, intro to pa2 "
-ready: false
+ready: true
 pdfurl: /lectures/CS24_Lecture6.pdf
 annotatedpdfurl: /lectures/CS24_Lecture6_ann.pdf
 annotatedready: false
@@ -16,9 +16,9 @@ lecture_date: 2017-04-19
 		bag1.h 
 		bag1.cxx - class invariant
 
-* Sequence class (v.1: fixed array) - sequence1.h
+* Introduce pa02: Sequence class (v.1: fixed array) - sequence1.h
 	Interactive test programs - sequence_test.cxx
 
-* Introduce pa02
+
 
 

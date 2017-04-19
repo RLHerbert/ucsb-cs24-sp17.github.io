@@ -1,6 +1,6 @@
 ---
 num: "lect14"
-desc: "intro to lab08"
+desc: "Chapter 10: Trees, intro to lab08"
 ready: false
 pdfurl: /lectures/CS24_Lecture14.pdf
 annotatedpdfurl: /lectures/CS24_Lecture14_ann.pdf

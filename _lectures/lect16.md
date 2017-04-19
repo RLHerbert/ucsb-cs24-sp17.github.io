@@ -1,6 +1,6 @@
 ---
 num: "lect16"
-desc: ""
+desc: "Chapter 10: Binary Search Trees"
 ready: false
 pdfurl: /lectures/CS24_Lecture16.pdf
 annotatedpdfurl: /lectures/CS24_Lecture16_ann.pdf 

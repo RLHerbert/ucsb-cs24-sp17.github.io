@@ -1,6 +1,6 @@
 ---
 num: "lect17"
-desc: ""
+desc: "Searching"
 ready: false
 pdfurl: /lectures/CS24_Lecture17.pdf
 annotatedpdfurl: /lectures/CS24_Lecture17_ann.pdf

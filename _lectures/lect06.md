@@ -1,6 +1,6 @@
 ---
 num: "lect06"
-desc: "Chapter 3.1- 3.3: Container classes, the sequence class, interactive test programs, intro to pa2 "
+desc: "Chapter 3: Container classes, the sequence class, interactive test programs, intro to pa2 "
 ready: false
 pdfurl: /lectures/CS24_Lecture6.pdf
 annotatedpdfurl: /lectures/CS24_Lecture6_ann.pdf

@@ -45,7 +45,7 @@ cd ~/cs24/lab02/
 Now copy all of the files for this lab from the starter-code directory to your cs24/lab02 directory:
 
 ```
-cp ~/cs24/starter/lab02/* ~/cs24/lab02/
+cp ~/cs24/starter-code/lab02/* ~/cs24/lab02/
 ```
 
 ## Step 2: Review compiling and linking with g++
@@ -207,13 +207,10 @@ Hmmm... Well it seems that our program doesn't wait for our input after the firs
 
 ```
 bash-4.3$ gdb buggy1
-Then type "run" (or just "r") at the gdb prompt:
-
-(gdb) run
-The program starts and asks for user input. Push CTRL-C and write the gdb command to set a breakpoint at line 19 (You could also do the following by typing just "b 19")
+Insert a breakpoint at line 19. 
 
 (gdb) break 19
-Enter "run" again, and then start the program from the beginning by typing "y" when asked:
+Enter "run", and then start the program from the beginning by typing "y" when asked:
 
 (gdb) run
 The program being debugged has been started already.

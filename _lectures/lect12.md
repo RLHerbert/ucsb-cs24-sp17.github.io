@@ -1,6 +1,6 @@
 ---
 num: "lect12"
-desc: "intro to lab06"
+desc: "Run-time analysis for stacks, intro to lab06"
 ready: false
 pdfurl: /lectures/CS24_Lecture12.pdf
 annotatedpdfurl: /lectures/CS16_Lecture12_ann.pdf

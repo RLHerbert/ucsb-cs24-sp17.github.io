@@ -1,6 +1,6 @@
 ---
 num: "lect13"
-desc: " intro to lab07 "
+desc: "Chapter 8: Queues, intro to lab07 "
 ready: false
 pdfurl: /lectures/CS16_Lecture13.pdf
 annotatedpdfurl: /lectures/CS16_Lecture13_ann.pdf

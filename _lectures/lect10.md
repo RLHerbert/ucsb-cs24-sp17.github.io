@@ -1,6 +1,6 @@
 ---
 num: "lect10"
-desc: "intro to lab05"
+desc: "Chapter 6: Templates, intro to lab05 and pa04"
 ready: false
 pdfurl: /lectures/CS24_Lecture10.pdf
 annotatedpdfurl: /lectures/CS24_Lecture10_ann.pdf

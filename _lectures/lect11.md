@@ -1,6 +1,6 @@
 ---
 num: "lect11"
-desc: ""
+desc: "Chapter 7: Stacks "
 ready: false
 pdfurl: /lectures/CS24_Lecture11.pdf
 annotatedpdfurl: 

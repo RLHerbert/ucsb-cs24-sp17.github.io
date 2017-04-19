@@ -1,6 +1,6 @@
 ---
 num: "lect17"
-desc: "Searching"
+desc: "Searching algorithms and run time analysis"
 ready: false
 pdfurl: /lectures/CS24_Lecture17.pdf
 annotatedpdfurl: /lectures/CS24_Lecture17_ann.pdf

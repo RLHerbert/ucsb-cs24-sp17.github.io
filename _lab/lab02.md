@@ -207,10 +207,7 @@ Hmmm... Well it seems that our program doesn't wait for our input after the firs
 
 ```
 bash-4.3$ gdb buggy1
-Then type "run" (or just "r") at the gdb prompt:
-
-(gdb) run
-The program starts and asks for user input. Push CTRL-C and write the gdb command to set a breakpoint at line 19 (You could also do the following by typing just "b 19")
+Insert a breakpoint at line 19. 
 
 (gdb) break 19
 Enter "run" again, and then start the program from the beginning by typing "y" when asked:

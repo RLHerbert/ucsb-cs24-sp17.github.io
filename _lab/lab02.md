@@ -210,7 +210,7 @@ bash-4.3$ gdb buggy1
 Insert a breakpoint at line 19. 
 
 (gdb) break 19
-Enter "run" again, and then start the program from the beginning by typing "y" when asked:
+Enter "run", and then start the program from the beginning by typing "y" when asked:
 
 (gdb) run
 The program being debugged has been started already.

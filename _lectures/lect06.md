@@ -4,7 +4,7 @@ desc: "Chapter 3: Container classes, the sequence class, interactive test progra
 ready: true
 pdfurl: /lectures/CS24_Lecture6.pdf
 annotatedpdfurl: /lectures/CS24_Lecture6_ann.pdf
-annotatedready: false
+annotatedready: true
 lecture_date: 2017-04-19
 ---
 

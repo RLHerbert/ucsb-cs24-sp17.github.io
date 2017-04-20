@@ -8,11 +8,12 @@ annotatedready: true
 lecture_date: 2017-04-19
 ---
 
-# Topics 
+# Topics
+
 * Container classes - bag example version 1
-	bag1.h [docs only] - typedefs, value semantics
-	bagdemo.cxx - “Abstraction is good!”
-	bag1 class design - fixed size array
+	* bag1.h [docs only] - typedefs, value semantics
+	* bagdemo.cxx - “Abstraction is good!”
+	* bag1 class design - fixed size array
 		bag1.h 
 		bag1.cxx - class invariant
 

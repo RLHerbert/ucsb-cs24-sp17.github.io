@@ -18,23 +18,37 @@ By the time you have completed this lab, you should be able to
 
 ## Step by Step Instructions
 
-Step 1: Choose initial roles, create a directory and get files
+## Step 1: Choose initial roles, create a directory and get files
 
 Get together with your lab partner, and decide who will be the first pilot. Switch roles after awhile - before either of you gets tired, bored or distracted. If your regular partner is more than 5 minutes late, ask the TA to pair you with someone else for this week.
 
 Log onto the pilot's account. If the pilot's account is not working, allow the navigator to log in instead. You will (both) work in this account for the rest of the lab.
 
+## Step 1a: Create a git repo, add your partner as collaborator
+
+* Create a repo for this lab on the pilot's github account (just like you did in lab00): To do this, open a browser and navigate to [www.github.com](www.github.com). Log into the pilot's github account. From the drop down menu on the left, select our class organization: ucsb-cs24-sp17 and proceed to create a new repo. You may refer to the instructions in lab00. Follow this naming convention: If your github username is jgaucho and your partner's is alily, your should name your repo lab00_agaucho_alily (usernames appear in alphabetical order). Also you must set the visibity of your repo to be 'PRIVATE' when creating it. We will not repeat these instructions in subsequent labs.
+
+* The pilot should add the navigator as a collaborator on github. To do this navigate to the git repo you just created. Choose the settings tab. Then click on the 'Collaborators and teams' option on the left. Scroll all the way down and add the navigator's github account. Then press on the 'Add collaborator' button. Now you and the navigator share the ownership of your git repo. You won't work with your new repo until the end of the lab.
+
+## Step 1b: Set up directory for this lab
 Create a ~/cs24/lab03 directory and make it your current directory:
 
 ```
 mkdir ~/cs24/lab03
 cd ~/cs24/lab03
 ```
-
-Now copy all of the files for this lab from /cs/faculty/dimirza/cs24-sp17/starter-code/lab03 in the class account to your cs24/lab03 directory:
+Now navigate to your starter-code directory and do a git pull to get the latest version of the code
 
 ```
-cp /cs/faculty/dimirza/cs24-sp17/starter-code/lab03/* ~/cs24/lab03
+cd ~/cs24/starter-code/
+git pull
+cd ~/cs24/lab03/
+```
+
+Now copy all of the files for this lab from the starter-code directory to your cs24/lab03 directory:
+
+```
+cp ~/cs24/starter-code/lab03/* ~/cs24/lab03/
 ```
 
 ## Step 2: Study the fixed-size array version of class Words
@@ -130,7 +144,15 @@ Submit Lab03 at https://submit.cs.ucsb.edu/, or use the following command from a
 Wait for the results of the 3 tests.
 If you are working with a partner, be sure that both partners' names are in a comment at the top of the source code file, and be sure to properly form a group for this project in the submit.cs system.
 
+Now open a web-browser and upload all your files to your git repo (following the process from lab00).
+
 After completing the required lab work
+
+## Step 7: Lab check off
+
+* Meet with your mentor again to get checked off on the lab
+* Talk to your mentor about any challenges you faced while completing the lab
+* Talk to your mentor abut next steps
 
 Done early, but still some lab time left? If you see students who are struggling, and the TA is busy helping other struggling students, then please offer your help to them. Did you know that teaching someone else to do something is considered to be the surest way for you to learn that something yourself?
 
@@ -143,4 +165,4 @@ Each student must accomplish the following to earn full credit [50 total points]
 * [50 points] words2.cpp is saved, it has your name(s) in a comment at the top, it compiles and executes properly, and has been submitted with a score of 50/50 to the submit.cs system.
 
 * [-0 to -50 points, at the TA's discretion] The student arrived on time to their lab session, and worked diligently on CS24-related material until dismissed.
-This lab is due by 11:59 pm  
+This lab is due by 04/27/2017 11:59 pm  

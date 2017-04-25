@@ -4,7 +4,7 @@ num: lab03
 ready: false 
 desc: "Converting a class to use a dynamic array"
 assigned: 2017-04-25 09:00:00.00-7
-due: 2017-04-28 23:59:00.00-7
+due: 2017-04-27 23:59:00.00-7
 ---
 
 ## Goals for this lab
@@ -165,4 +165,4 @@ Each student must accomplish the following to earn full credit [50 total points]
 * [50 points] words2.cpp is saved, it has your name(s) in a comment at the top, it compiles and executes properly, and has been submitted with a score of 50/50 to the submit.cs system.
 
 * [-0 to -50 points, at the TA's discretion] The student arrived on time to their lab session, and worked diligently on CS24-related material until dismissed.
-This lab is due by 04/27/2017 11:59 pm  
+

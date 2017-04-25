@@ -1,7 +1,7 @@
 ---
 layout: lab
 num: lab03
-ready: false 
+ready: true 
 desc: "Converting a class to use a dynamic array"
 assigned: 2017-04-25 09:00:00.00-7
 due: 2017-05-01 23:59:00.00-7
@@ -31,30 +31,27 @@ Log onto the pilot's account. If the pilot's account is not working, allow the n
 * The pilot should add the navigator as a collaborator on github. To do this navigate to the git repo you just created. Choose the settings tab. Then click on the 'Collaborators and teams' option on the left. Scroll all the way down and add the navigator's github account. Then press on the 'Add collaborator' button. Now you and the navigator share the ownership of your git repo. You won't work with your new repo until the end of the lab.
 
 ## Step 1b: Set up directory for this lab
-* Clone the starter code repo in ~/cs24 directory from our class organization to the pilot's local account by typing the following commands
+* Create a repo for this lab in our class organization on github following the naming convention specified in previous labs.
+
+* Clone your repo in your cs24 directory on CSIL. If your repo is called lab03_jgaucho_alily, type the following commands:
+
 ```
 cd ~/cs24
-git clone git@github.com:ucsb-cs24-sp17/starter-code.git 
+git clone git@github.com:ucsb-cs24-sp17/lab03_jgaucho_alily.git 
 ```
 
-Create a ~/cs24/lab03 directory and make it your current directory:
-
-```
-mkdir ~/cs24/lab03
-cd ~/cs24/lab03
-```
-Now navigate to your starter-code directory and do a git pull to get the latest version of the code
+Now navigate to your starter-code directory (cloned in a previous lab) and do a git pull to get the latest version of the code
 
 ```
 cd ~/cs24/starter-code/
 git pull
-cd ~/cs24/lab03/
+cd ~/cs24/lab03_jgauch_alily/
 ```
 
 Now copy all of the files for this lab from the starter-code directory to your cs24/lab03 directory:
 
 ```
-cp ~/cs24/starter-code/lab03/* ~/cs24/lab03/
+cp ~/cs24/starter-code/lab03/* ./
 ```
 
 ## Step 2: Study the fixed-size array version of class Words
@@ -162,7 +159,6 @@ After completing the required lab work
 
 Done early, but still some lab time left? If you see students who are struggling, and the TA is busy helping other struggling students, then please offer your help to them. Did you know that teaching someone else to do something is considered to be the surest way for you to learn that something yourself?
 
-PA3 is ready to work on now. And you are ready to work on it!  
 
 ## Evaluation and Grading
 

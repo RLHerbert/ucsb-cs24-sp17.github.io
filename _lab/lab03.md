@@ -4,7 +4,7 @@ num: lab03
 ready: false 
 desc: "Converting a class to use a dynamic array"
 assigned: 2017-04-25 09:00:00.00-7
-due: 2017-04-27 23:59:00.00-7
+due: 2017-05-01 23:59:00.00-7
 ---
 
 ## Goals for this lab

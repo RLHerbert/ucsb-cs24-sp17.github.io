@@ -31,6 +31,12 @@ Log onto the pilot's account. If the pilot's account is not working, allow the n
 * The pilot should add the navigator as a collaborator on github. To do this navigate to the git repo you just created. Choose the settings tab. Then click on the 'Collaborators and teams' option on the left. Scroll all the way down and add the navigator's github account. Then press on the 'Add collaborator' button. Now you and the navigator share the ownership of your git repo. You won't work with your new repo until the end of the lab.
 
 ## Step 1b: Set up directory for this lab
+* Clone the starter code repo in ~/cs24 directory from our class organization to the pilot's local account by typing the following commands
+```
+cd ~/cs24
+git clone git@github.com:ucsb-cs24-sp17/starter-code.git 
+```
+
 Create a ~/cs24/lab03 directory and make it your current directory:
 
 ```
@@ -139,7 +145,7 @@ If all three tests say "PASS ALL" then proceed to Step 6.
 
 Submit Lab03 at https://submit.cs.ucsb.edu/, or use the following command from a CS terminal:
 
-~submit/submit -p 563 words2.cpp
+~submit/submit -p 712 words2.cpp
 
 Wait for the results of the 3 tests.
 If you are working with a partner, be sure that both partners' names are in a comment at the top of the source code file, and be sure to properly form a group for this project in the submit.cs system.

@@ -1,12 +1,9 @@
-***DISCLAIMER***
-The syntax on this may not be perfect!
-***END DISCLAIMER***
-
 
 cs24 review
 
+
 friend function vs member function
-pointers
+pointers - won't be on the exam but you are expected to know them for the upcoming pas
 Design and implementation of classes
 Use of refernces for passing parameters
 operator overloading 
@@ -171,10 +168,10 @@ Array operator +(const Array& LHS, const Array& RHS){
 
 
 int main(){
-	Point a; //a has [1,2,3]
-	Point b; //b has [1,2,3]
+	Point a; 
+	Point b;
 
-	cout<< a == b<< endl; //this will print out 0, need to define == operator, overload ==
+	cout<< a == b<< endl; //Need to overload == before you can use it like this
 
 }
 
@@ -207,12 +204,12 @@ bool operator ==(const Point& LHS, const Point& RHS){
 3 uses of const:
 before function return type -- const int foo(); //used to return a const value
 before variable -- int foo(const int x); //used so the parameter won't change
-after function in classes -- void foo() const; //this won't change any of the member variables 
+after function in classes -- void foo() const; //this won't change any of the member variables, only meaningful within a class definition
  									
 
 ------------------------------------------------------------
 ASSERT VS IF/ELSE STATEMENT
-assert will end the funciton when condition is not met
+assert will exit the program when condition is not met
 if/else will continue to the else statement when condition is not met
 
 

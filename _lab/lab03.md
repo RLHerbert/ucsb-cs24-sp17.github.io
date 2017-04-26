@@ -1,10 +1,10 @@
 ---
 layout: lab
 num: lab03
-ready: false 
+ready: true 
 desc: "Converting a class to use a dynamic array"
 assigned: 2017-04-25 09:00:00.00-7
-due: 2017-04-28 23:59:00.00-7
+due: 2017-05-01 23:59:00.00-7
 ---
 
 ## Goals for this lab
@@ -26,29 +26,32 @@ Log onto the pilot's account. If the pilot's account is not working, allow the n
 
 ## Step 1a: Create a git repo, add your partner as collaborator
 
-* Create a repo for this lab on the pilot's github account (just like you did in lab00): To do this, open a browser and navigate to [www.github.com](www.github.com). Log into the pilot's github account. From the drop down menu on the left, select our class organization: ucsb-cs24-sp17 and proceed to create a new repo. You may refer to the instructions in lab00. Follow this naming convention: If your github username is jgaucho and your partner's is alily, your should name your repo lab00_agaucho_alily (usernames appear in alphabetical order). Also you must set the visibity of your repo to be 'PRIVATE' when creating it. We will not repeat these instructions in subsequent labs.
+* Create a repo for this lab on the pilot's github account (just like you did in lab00): To do this, open a browser and navigate to [www.github.com](www.github.com). Log into the pilot's github account. From the drop down menu on the left, select our class organization: ucsb-cs24-sp17 and proceed to create a new repo. You may refer to the instructions in lab00. Follow this naming convention: If your github username is jgaucho and your partner's is alily, your should name your repo lab03_agaucho_alily (usernames appear in alphabetical order). Also you must set the visibity of your repo to be 'PRIVATE' when creating it. We will not repeat these instructions in subsequent labs.
 
 * The pilot should add the navigator as a collaborator on github. To do this navigate to the git repo you just created. Choose the settings tab. Then click on the 'Collaborators and teams' option on the left. Scroll all the way down and add the navigator's github account. Then press on the 'Add collaborator' button. Now you and the navigator share the ownership of your git repo. You won't work with your new repo until the end of the lab.
 
 ## Step 1b: Set up directory for this lab
-Create a ~/cs24/lab03 directory and make it your current directory:
+* Create a repo for this lab in our class organization on github following the naming convention specified in previous labs.
+
+* Clone your repo in your cs24 directory on CSIL. If your repo is called lab03_jgaucho_alily, type the following commands:
 
 ```
-mkdir ~/cs24/lab03
-cd ~/cs24/lab03
+cd ~/cs24
+git clone git@github.com:ucsb-cs24-sp17/lab03_jgaucho_alily.git 
 ```
-Now navigate to your starter-code directory and do a git pull to get the latest version of the code
+
+Now navigate to your starter-code directory (cloned in a previous lab) and do a git pull to get the latest version of the code
 
 ```
 cd ~/cs24/starter-code/
 git pull
-cd ~/cs24/lab03/
+cd ~/cs24/lab03_jgauch_alily/
 ```
 
 Now copy all of the files for this lab from the starter-code directory to your cs24/lab03 directory:
 
 ```
-cp ~/cs24/starter-code/lab03/* ~/cs24/lab03/
+cp ~/cs24/starter-code/lab03/* ./
 ```
 
 ## Step 2: Study the fixed-size array version of class Words
@@ -139,7 +142,7 @@ If all three tests say "PASS ALL" then proceed to Step 6.
 
 Submit Lab03 at https://submit.cs.ucsb.edu/, or use the following command from a CS terminal:
 
-~submit/submit -p 563 words2.cpp
+~submit/submit -p 712 words2.cpp
 
 Wait for the results of the 3 tests.
 If you are working with a partner, be sure that both partners' names are in a comment at the top of the source code file, and be sure to properly form a group for this project in the submit.cs system.
@@ -156,7 +159,6 @@ After completing the required lab work
 
 Done early, but still some lab time left? If you see students who are struggling, and the TA is busy helping other struggling students, then please offer your help to them. Did you know that teaching someone else to do something is considered to be the surest way for you to learn that something yourself?
 
-PA3 is ready to work on now. And you are ready to work on it!  
 
 ## Evaluation and Grading
 
@@ -165,4 +167,4 @@ Each student must accomplish the following to earn full credit [50 total points]
 * [50 points] words2.cpp is saved, it has your name(s) in a comment at the top, it compiles and executes properly, and has been submitted with a score of 50/50 to the submit.cs system.
 
 * [-0 to -50 points, at the TA's discretion] The student arrived on time to their lab session, and worked diligently on CS24-related material until dismissed.
-This lab is due by 04/27/2017 11:59 pm  
+

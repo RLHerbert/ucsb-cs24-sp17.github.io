@@ -5,7 +5,7 @@ cs24 review
 friend function vs member function
 pointers - won't be on the exam but you are expected to know them for the upcoming pas
 Design and implementation of classes
-Use of refernces for passing parameters
+Use of references for passing parameters
 operator overloading 
 the big three
 --------------------------------------

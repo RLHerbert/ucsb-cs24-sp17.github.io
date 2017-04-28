@@ -4,7 +4,7 @@ num: lab04
 ready: false
 desc: "Implementing a linked list"
 assigned: 2017-05-02 09:00:00.00-7
-due: 2017-05-02 23:59:00.00-7
+due: 2017-05-05 23:59:00.00-7
 ---
 <div markdown="1">
 

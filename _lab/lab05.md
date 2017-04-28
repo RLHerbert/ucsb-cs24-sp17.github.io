@@ -10,3 +10,5 @@ due: 2017-05-09 23:59:00.00-7
 
 
 There will be no new lab. Instead, please use the lab time to work on your pa04.
+
+* You must still come to lab and get checked off by your mentor.

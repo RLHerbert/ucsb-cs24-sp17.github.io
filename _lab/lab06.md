@@ -2,7 +2,7 @@
 layout: lab
 num: lab06
 ready: false
-desc: "Implementing a queue"
+desc: "Stacks, and evaluating expressions"
 assigned: 2017-05-16 09:00:00.00-7
 due: 2017-05-16 23:59:00.00-7
 ---
@@ -11,136 +11,163 @@ due: 2017-05-16 23:59:00.00-7
 
 By the time you have completed this lab, you should be able to
 
-* Implement a queue using an array
-* Implement a queue using a linked list
-* Appreciate the differences between the two types of implementations
+* Understand the meaning and purpose of typical stack operations
+* Solve problems with the help of stacks, including stack<T> objects from the Standard Template Library
+* Evaluate expressions in postfix form
 
 # Step by Step Instructions
 
-Step 1: Create a lab07 directory (in the first pilot's account)
+Step 1: Create a lab06 directory (in the first pilot's account)
 
 First get together with your lab partner. If your regular partner is more than 5 minutes late, ask the TA to pair you with someone else for this week.
 
-Select a pilot, log in, create a ~/cs24/lab07 directory, and make it your current directory.
+Select a pilot, log in, create a ~/cs24/lab06 directory, and make it your current directory.
 
-Step 2: Get a copy of all the program files
+Step 2: Get a copy of all the program files, and practice using a stack
 
-There are six files to copy from the class account this week. You can copy them all at once using the Unix wildcard character '*' and then verify you got them all as follows:
+There are three files to copy from the class account this week: intstack.h and usestack.cpp to practice with in this step and again in Step4, plus evalfull.cpp to work on in Step 3. You can copy them all at once using the Unix wildcard character '*' and then verify you got them all as follows:
 
--bash-4.3$ cp ~cs24/labs/lab07/* ~/cs24/lab07/
+-bash-4.3$ cp ~cs24/labs/lab06/* ~/cs24/lab06/
 -bash-4.3$ ls
-arrayQ.cpp  arrayQ.h  listQ.cpp  listQ.h  Makefile  testQ.cpp
-Step 3: Learn two ways to implement a queue
+evalfull.cpp  intstack.h  usestack.cpp
+First look at intstack.h to learn what you can do with objects of this type. You can also notice how a stack can be implemented with an array - since all of the methods are very simple, they are implemented "inline" as part of the function definition.
 
-Recall that a queue is a "first-in first-out" (FIFO) data structure. Similar to a stack, it has very few operations, as new entries are always added to the rear of the queue, and entries are only ever removed from the front. More queue ADT specifications, as well as ways that queues are applied, are topics covered in lectures and the textbook. Today's lab is all about implementing a queue two ways.
+Now look at usestack.cpp - notice it starts with #include "intstack.h" so it can create objects of type Stack and use the public methods of that class. The main function creates a Stack object named s, then it pushes first 10 then 20 onto the stack. Finally, it loops until the stack is empty, printing the top element then popping that element from the stack. Feel free to compile it and run it - notice the numbers are popped from the stack in last-in first-out (LIFO) order:
 
-The first way discussed uses a static array, and so it has a fixed capacity. The second way uses singly-linked list nodes, so it can hold many more items.
+-bash-4.3$ make usestack
+g++     usestack.cpp   -o usestack
+-bash-4.3$ ./usestack
+20
+10
+Edit usestack.cpp with emacs or another editor to play with this stack until you are comfortable with its operations. Push some numbers, pop a few numbers, use cout to print the top number, and so on. You might want to leave the loop at the end alone, to print out the remaining numbers at the end. Try to predict what numbers will be printed, and in what order. Move on to Step 3 after you are sure you know how to use this ADT.
 
-Way A: How to use an array, with "circular" indexing
+WARNING: this stack does no error checking - do not push a number onto it if it already has 10 of them, and do not try to access the top element if the stack is empty!
 
-See the private section of arrayQ.h. The data items will be stored in the array named data. The number of items currently stored will be recorded in the size variable. The indices of the items at the front and rear of the queue are recorded in the front and rear variables. You will have to decide what indices to store in front and rear. Here is a suggestion from C++ Plus Data Structures, a 2013 textbook written by Nell Dale:
+Step 3: Learn two algorithms that use stacks, and implement one of them
 
+The next file to look at is evalfull.cpp which is intended to evaluate fully-parenthesized arithmetic expressions. You can compile and run it now, but no matter what expression the user enters, it will say "bad expression: parentheses are not balanced" until you implement the function named balanced. But first learn how two stacks can be used to evaluate an arithmetic expression that has a set of parentheses enclosing every calculation. For example, the first expression below is fully parenthesized, and the rest are not:
 
-The beginning of the array becomes logically empty as front is incremented, so it is prudent to circle back around to reuse that portion of the array for later items:
+( 4 * ( ( 5 + 3.2 ) / 1.5 ) )  // okay
+( 4 * ( ( 5 + 3.2 ) / 1.5 )    // unbalanced parens - missing last ')'
+( 4 * ( 5 + 3.2 ) / 1.5 ) )    // unbalanced parens - missing one '('
+4 * ( ( 5 + 3.2 ) / 1.5 )      // not fully-parenthesized at '*' operation
+( 4 * ( 5 + 3.2 ) / 1.5 )      // not fully-parenthesized at '/' operation
+The main function gets an expression from the user, assuming that the "tokens" are separated by spaces. Each part of the expression is a different token - left parenthesis, right parenthesis, number, and arithmetic operators add, subtract, multiply and divide. These tokens are stored in an array, char *expression[] and passed to the evalFull function inside a try block, where it prints the result returned by evalFull. The evalFull function might throw a string exception if the expression cannot be evaluated, and such exceptions are caught and printed by main.
 
+Here is the evalFull algorithm (with help from the utility function that identifies tokens and the enum TokenType) - try to follow the steps involved, and see how the program implements them.
 
-As you can see, rear is incremented on every enqueue, and front is incremented on every dequeue. But increment does not simply mean ++ in this situation, because when the result of ++ equals the array size, then the index should increment to 0. You can either use an if/else structure to find the right value, or use the modulus operator, %, as follows:
+You must write function balanced to complete this program. Edit evalFull.cpp so that balanced implements the following algorithm:
 
-incrementedIndex = (currentIndex + 1) % CAPACITY
-The methods in the public section of arrayQ.h can be implemented as follows:
+// Balanced Parentheses Algorithm
+loop through all the tokens in the expression (up to numTokens):
+    identify the token (using the utility function named identify)
+    if token is a left parenthesis: push it on the stack named s
+    if token is a right parenthesis (means a left should be on the stack):
+        if stack is empty - done: found out not balanced, so return false
+        else pop a left parenthesis
+    ignore any other token
+end of loop (stack should be empty) - done: return true if empty, else false
+Just one stack is needed, and it is already created in the skeleton: stack<char *> s is an object of the STL stack class that is set up to store C strings like "(".
+Compile and test it on some balanced and some unbalanced expressions. If balanced, the program should print a result, or at least throw a different exception string like the following sample runs of our solution:
 
-Queue()
-Initialize front, rear and size to appropriate values.
-enqueue(int n)
-Assuming the queue is not full, the following three things must occur - but their order and exact details depend on how you are treating the front and rear indices: set the appropriate array element to n; increment rear; and increment size.
-dequeue()
-Assuming the queue is not empty, the following three things must occur - but order/details again depend on your approach: increment front; decrement size; and return the data item at the front of the queue.
-clear()
-Reset front, rear and size to their initial values.
-isEmpty(), isFull() and getSize()
-The size variable makes it very easy to implement these three methods.
-Way B: How to use a linked list
+-bash-4.3$ ./evalfull
+enter expression: ( 4 + 7 )
+result: 11
+-bash-4.3$ ./evalfull
+enter expression: ( 4 + 7 / 2 )
+bad expression: operator(s) left on stack at end
+-bash-4.3$ ./evalfull
+enter expression: ( 4 7 )
+bad expression: empty stack where operator expected
+Step 4: Learn how to evaluate postfix expressions with a stack
 
-See the private section of listQ.h. The data items will be stored in list nodes. The number of items currently stored will be recorded in the size variable. The front of the list should be the first node in the list, and the rear of the list should be the last node (think about why). The front and rear pointer variables are used to point at these nodes:
+First switch roles between pilot and navigator if you did not already do that.
 
+We are most accustomed to arithmetic expressions in infix form - number operator number - where the operator is between the two numbers, as in 7 + 5. With this form, it is necessary to consider the precedence of operators and the effects of parentheses, which makes 7 + 5 * 3 different than (7 + 5) * 3, for example.
 
-Both front and rear would point at the same node if there is only one item on the queue, and both would point at 0 (NULL) if the queue is empty.
+The postfix form of an arithmetic expression - number number operator - is far simpler from a computational standpoint, as it never requires parentheses and is not influenced by operator precedence. The first infix expression above translates to 7 5 + in postfix, the second one translates to 7 5 3 * + and the third one is 7 5 + 3 * in postfix form.
 
-Since memory for the nodes is dynamically allocated, this version requires a destructor at least (ignore for now that copying such a queue is unwise). Otherwise the class's interface is exactly the same as the array version. The methods are implemented as follows:
+An algorithm to evaluate general infix expressions is even more complicated than the one for fully-parenthesized expressions - to consider operator precedence, and without the right parenthesis flag to know when it is time to perform a calculation. But an algorithm to evaluate postfix expressions is simpler than both of the infix algorithms:
 
-Queue()
-Initialize front, rear and size to appropriate values.
-~Queue()
-Delete all the nodes, one at a time in a sensible order.
-enqueue(int n)
-No need to consider a full queue. Create a new node to store n. Append this node to the end of the list by using the rear pointer, and then point rear at this new node (also point front at it if it is the only item), and increment size. Here is an image of the operation from the Dale text: 
-dequeue()
-Assuming the queue is not empty, there are several things to do. Store the value of the item at the front to return at the end. Also store a copy of the front pointer to be able to delete this front node later. Point front at the next item. Delete the old front node. Decrement size. If the queue is now empty, then set rear to 0 (NULL). Finally, return the value that was at the front. Here is a Dale text image of the operation: 
-clear()
-Delete all the nodes. Also reset front, rear and size to their initial values.
-isEmpty() and getSize()
-The size variable makes it very easy to implement these methods. And isFull() is already implemented inline in listQ.h so don't redefine that method.
-Step 4: Implement a queue both ways, and test your implementations
+// Postfix Expression Evaluation Algorithm
+create a stack for numbers (just need this one stack)
+loop through all the tokens in the expression:
+    identify the token
+    if token is a number: push it on the stack
+    if token is an operator (means time to perform a calculation):
+        pop a number - last one pushed, so it is on right side of calculation
+        pop a second number - for the left side of the calculation
+        perform the calculation, and push the result on the stack
+Done: result is on top of stack
+Exceptions would be thrown if (a) a token cannot be identified, (b) there are less than two numbers on the stack when an operator is encountered, or (c) the stack does not have exactly one number left on it at the end of loop.
 
-Select Way A or Way B to accomplish first; then do it the other way after you are sure your first way is working. Do not split this work with your lab partner - instead use your pair programming skills to work on your implementations together in sequence. We want each of you to experience implementing a queue both ways.
+Edit usestack.cpp again to try this algorithm on a postfix expression (remember the stack in usestack.cpp only handles int values), and print the results to cout. For example, here is how the second expression from above could be evaluated (starts with a fresh stack):
 
-Edit arrayQ.cpp when you accomplish Way A,
-And edit listQ.cpp when you do Way B.
-In both cases, type your name(s) and the date at the top of the files you are editing, and then implement the methods as specified by the comments in these files (and their associated header files).
-Pick a good time to switch roles between pilot and navigator - preferably before either of you gets tired, bored or frustrated.
+// evaluating "7 5 3 * +"
 
-If you have your textbook with you, please wait at least 15 minutes before trying to look up the solutions. One reason is we want you to be able to figure out the problems by yourself. Another reason is the textbook's techniques do not mesh exactly with the structure of this lab's problem, and that could confuse you.
+// start with an empty stack
+Stack numbers;
 
-Use the Makefile to compile, and use testQ.cpp to test your implementations. The use of both of these files differs depending on the implementation you are testing.
+// first three tokens all numbers to push "7 5 3":
+numbers.push(7);
+numbers.push(5);
+numbers.push(3);
 
-Way A (array implementation). Do not change testQ.cpp at all, and compile it by simply typing "make" at the command line:
--bash-4.3$ make
-g++ -std=c++11 -o testQ testQ.cpp arrayQ.cpp
-Way B (list implementation). First edit testQ.cpp to include the correct header file. Notice the 4th line of the original file is `#include "arrayQ.h"` but that must become `#include "listQ.h"` (or you can just turn that line into a comment, and uncomment the 5th line). Then use the "testlist" target in the Makefile as follows:
--bash-4.3$ make testlist
-g++ -std=c++11 -o testQ testQ.cpp listQ.cpp
-Except for one small difference, both implementations should produce the following results when you run testQ:
+// fourth token is calculation to do "*":
+int right = numbers.top();
+numbers.pop();
+int left = numbers.top();
+numbers.pop();
+numbers.push(left * right);
 
--bash-4.3$ ./testQ
-beginning state
-    size = 0, full = false, empty = true
-enqueue first 8 multiples of 7
-    size = 8, full = false, empty = false
-dequeue two items: 7 14
-    size = 6, full = false, empty = false
-enqueue next 4 multiples of 7
-    size = 10, full = true, empty = false
-dequeue all items: 21 28 35 42 49 56 63 70 77 84
-    size = 0, full = false, empty = true
-enqueue 5, then 10
-    size = 2, full = false, empty = false
-clear
-    size = 0, full = false, empty = true
-Those results are from our arrayQ solution. The one difference is that the listQ solution would have "full = false" when the size is 10 items.
+// last token is another calculation "+":
+right = numbers.top();
+numbers.pop();
+left = numbers.top();
+numbers.pop();
+numbers.push(left + right);
 
-Step 5: Submit arrayQ.cpp and listQ.cpp
+// done - print result:
+cout << numbers.top() << endl;
+Please select a different expression - make up a simple one, but not too simple, so you know you understand the steps. Don't make it so complicated that you won't have time to complete it before lab ends (besides, you want to work on the optional challenges for awhile). Show the expression you are evaluating in a comment at the top. Compile and test it so you can show the TA how it works.
 
-Submit Lab07 at https://submit.cs.ucsb.edu/, or use the following command from a CS terminal:
+Step 5: Show off your work and get credit for the lab
 
-~submit/submit -p 594 arrayQ.cpp listQ.cpp
-If you are working with a partner, be sure that both partners' names are in a comment at the top of the source code files, and be sure to properly form a group for this project in the submit.cs system.
+Get your TA's attention to inspect your work, and to record your lab completion.
+Don't leave early though ... see challenge problems below.
 
-50/50 is a perfect score.
+Step 5a. ONLY IF YOU RAN OUT OF TIME TO HAVE THE TA INSPECT YOUR WORK
 
+In the unlikely event that you must complete this assignment at CSIL, then submit it with the turnin program - but do NOT turn it in if the TA already checked you off. The command is:
+
+turnin Lab06@cs24 usestack.cpp evalfull.cpp
 Evaluation and Grading
 
-Each student must accomplish the following to earn full credit [50 total points] for this lab:
-
-[25 points] arrayQ.cpp is saved, it has your name(s) in a comment at the top, it compiles and executes properly, and scores 25 on the submit.cs system tests.
-[25 points] listQ.cpp is saved, it has your name(s) in a comment at the top, it compiles and executes properly, and scores 25 on the submit.cs system tests.
+Each student must accomplish the following to earn full credit for this lab:
+[50 points] usestack.cpp and evalfull.cpp are saved, with your name(s) in a comment at the top and other evidence of your work. Both of these files should compile and execute properly too.
+ONLY IF STEP 5a IS NECESSARY - usestack.cpp and evalfull.cpp have been turned in. 
+Deadline for after-lab submission: Tonight at 11:59pm. 
+To be eligible for late turn-in with credit, you MUST have attended your entire lab period.
 [-0 to -50 points, at the TA's discretion] The student arrived on time to their lab session, and worked diligently on CS24-related material until dismissed.
-This lab is due by 11:59 pm Friday night.
 Optional Extra Challenge
 
-Add an appropriate copy constructor and an assignment operator to the listQ version, to achieve the usual value semantics for objects of the class.
-
-If you still have some time, why not adapt an STL vector<int> to solve the problem? Create a new version of the class definition, vectorQ.h, to define the private data. You shouldn't need a size variable, because the vector will keep track of its own size. Then write vectorQ.cpp to implement it. Look up the vector methods at http://www.sgi.com/tech/stl/Vector.html.
-
-Just for fun, why not try to adapt a version of testQ.cpp to test the STL queue class? Does the test program require many changes?
-
+Improve class Stack (the one defined in intstack.h) so its functions will behave properly if called on an empty or full stack. Notice what pop does now, for example: it decrements next no matter how many times it is called on an empty stack, which essentially is a seg fault waiting to happen when top is called or even push in some cases. At least pop should check for an empty stack and decrement only when it is not. Also both top and push should throw exceptions when they are used improperly, and the class should provide a way to check for a full stack.
+First, create intstack.cpp for implementing the functions of class Stack. The reason is that your functions won't be "one-liners" anymore, and therefore they are inappropriate choices for inline functions. Cut all of the implementations from intstack.h (constructor and four member functions) and paste them into intstack.cpp, and make all other necessary syntax changes. When done, verify it still compiles and that it works correctly with usestack.cpp too.
+Add a function, bool full() const, that returns true if the stack is filled to its capacity. Add the declaration in intstack.h, implement it in intstack.cpp, and add a test for it in usestack.cpp.
+Also in intstack.cpp:
+Implement push to throw string("full stack") if it is called when the stack is full.
+Implement pop to not decrement next if the stack is empty.
+Implement top to throw string("empty stack") if it is called when the stack is empty.
+Test all of these changes by editing usestack.cpp again (requires a try/catch block at least).
+Improve class Stack even more by preventing it from ever getting full. This challenge requires that you redesign the private portion of the class. Choose one of the following options:
+Use a dynamically allocated array that grows as necessary.
+The instance variable, data, must be changed (in intstack.h) from an int array to an int pointer. You should also add an instance variable to store the current capacity, and you can delete the CAPACITY symbolic constant.
+Change the constructor implementation (in intstack.cpp) to dynamically allocate an array of ints, as in data = new int[10], and set the value of the current capacity (to 10 in this case).
+Change the implementation of push so instead of throwing an exception if the array is currently at capacity, it dynamically allocates more space and always pushes the int passed to it. Update the capacity variable too. Choices here are to double the current capacity, or maybe just add 10 more, but either way it will be necessary to copy the values from the old array, delete[] the old array, and set data to point at the new array.
+Change the implementation of full to return false every time it is called.
+Use a linked list.
+For this option the private portion of the class (in intstack.h) must define a node structure, and an instance variable that points to the first node - traditionally treated as the "top" of the stack. There really is no need for any other instance variables.
+The implementations of push, pop, top and empty all must be changed accordingly, and full always should return false.
+In either case, test your stack implementation with a variation of usestack.cpp.
+Still got some time? Do the other option (from the previous challenge) now.
 Prepared by Michael Costanzo.

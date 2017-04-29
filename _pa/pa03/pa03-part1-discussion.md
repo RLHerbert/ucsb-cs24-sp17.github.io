@@ -1,4 +1,5 @@
 <div markdown="1">
+  
 # Discussion of The Polynomial Class Using a Fixed Array
 
 

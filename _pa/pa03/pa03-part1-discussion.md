@@ -1,3 +1,4 @@
+<div markdown="1">
 # Discussion of The Polynomial Class Using a Fixed Array
 
 
@@ -107,3 +108,5 @@ Although not exactly required for PA2, these restrictions are highly recommended
 Each of the first four functions will make changes to the coef array. After these changes are made, the functions must also adjust the value of current_degree. For example, if a non-zero coefficient is given for an exponent e that is larger than current_degree, then current degree must be adjusted upward to e. There are also several situations where the current_degree must be adjusted downward.
 
 Michael Main, University of Colorado, with small edits by Michael Costanzo.
+
+</div>

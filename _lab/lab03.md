@@ -31,7 +31,7 @@ Log onto the pilot's account. If the pilot's account is not working, allow the n
 * The pilot should add the navigator as a collaborator on github. To do this navigate to the git repo you just created. Choose the settings tab. Then click on the 'Collaborators and teams' option on the left. Scroll all the way down and add the navigator's github account. Then press on the 'Add collaborator' button. Now you and the navigator share the ownership of your git repo. You won't work with your new repo until the end of the lab.
 
 ## Step 1b: Set up directory for this lab
-* Create a repo for this lab in our class organization on github following the naming convention specified in previous labs.
+
 
 * Clone your repo in your cs24 directory on CSIL. If your repo is called lab03_jgaucho_alily, type the following commands:
 
@@ -48,7 +48,7 @@ git pull
 cd ~/cs24/lab03_jgauch_alily/
 ```
 
-Now copy all of the files for this lab from the starter-code directory to your cs24/lab03 directory:
+Now copy all of the files for this lab from the starter-code directory to your lab03 git repo directory:
 
 ```
 cp ~/cs24/starter-code/lab03/* ./

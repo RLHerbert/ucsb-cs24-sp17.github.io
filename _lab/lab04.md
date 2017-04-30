@@ -1,7 +1,7 @@
 ---
 layout: lab
 num: lab04
-ready: false
+ready: true
 desc: "Implementing a linked list"
 assigned: 2017-05-02 09:00:00.00-7
 due: 2017-05-05 23:59:00.00-7
@@ -243,8 +243,9 @@ After completing the required lab work
 If you are still in the lab with time to spare, then do one of the following:
 
 Ask yourself: What are the value semantics of an IntList object? With just the automatic copy constructor and assignment operator, won't copies be shallow? Try adding these features to the class in a copy of intlist.h, and implement them in a copy of intlist.cpp.
-Offer to help the TA guide any struggling students.
-Evaluation and Grading
+Offer to help the mentors with any students having a hard time with the lab.
+
+## Evaluation and Grading
 
 Each student must accomplish the following to earn full credit [50 total points] for this lab:
 

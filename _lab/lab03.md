@@ -122,7 +122,7 @@ Revise the append function as discussed above too.
 
 ## Step 5: Compile and test
 
-After making two very small changes, you can use wordstest1.cpp to test parts of your new version of the class. Using an editor, change the line "#include words1.h" to "#include words2.h", and change the line "using namespace lab04_1" to "using namespace lab04_2" - that's it. Now you can compile as above (substituting "words2.cpp" for "words1.cpp" in the command). Use this program to perform unit tests of append at least, and try to append more than 10 items to find out how that part is working. Verify that capacity increases too.
+After making two very small changes, you can use wordstest1.cpp to test parts of your new version of the class. Using an editor, change the line "#include words1.h" to "#include words2.h", and change the line "using namespace lab03_1" to "using namespace lab03_2" - that's it. Now you can compile as above (substituting "words2.cpp" for "words1.cpp" in the command). Use this program to perform unit tests of append at least, and try to append more than 10 items to find out how that part is working. Verify that capacity increases too.
 
 When you are satisfied with your unit tests, you can perform slightly more complete tests with wordsexam.cpp, the same program we will use when you submit your implementation. Compile it as follows:
 

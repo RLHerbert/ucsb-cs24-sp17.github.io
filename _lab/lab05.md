@@ -24,6 +24,10 @@ There will be no new lab. Instead, please use the lab time to work on your pa04.
 	/usr/bin/valgrind --leak-check=full ./polyexam1 7
 	```
 	Replace polyexam2 by the name of your executable and 7 by the argument to your program (test case number)
-	8. Push the latest version of your code to github
+	8. Push the latest version of your code to github and submit on submit.cs by typing the following command on the terminal:
+
+```
+	~submit/submit -p 724 poly2.cxx
+```
 
 Each of the above steps carries 10 points for a total of 80 points for this lab.

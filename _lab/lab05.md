@@ -21,7 +21,7 @@ There will be no new lab. Instead, please use the lab time to work on your pa04.
 	6. Pass all the test cases of test1() and make progress with passing the test cases of test2() provided in the polyexam1.cxx file 
 	7. Demonstrate that you can run valgrind on your program by generating a valgrind report and uploading it as a text file to your git repo. Here is the command 
 	```
-	/usr/bin/valgrind --leach-check=full polyexam2 7
+	/usr/bin/valgrind --leak-check=full ./polyexam1 7
 	```
 	Replace polyexam2 by the name of your executable and 7 by the argument to your program (test case number)
 	8. Push the latest version of your code to github

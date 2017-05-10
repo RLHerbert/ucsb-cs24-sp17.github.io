@@ -1,6 +1,6 @@
 ---
 num: "lect11"
-desc: "Chapter 6: Templates and Iterators "
+desc: "Chapter 6: Templates contd, Iterators "
 ready: true
 pdfurl: /lectures/CS24_Lecture11.pdf
 annotatedpdfurl: 

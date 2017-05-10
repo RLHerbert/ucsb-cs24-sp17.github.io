@@ -1,6 +1,6 @@
 ---
 num: "lect08"
-desc: "Chapter 4: Dynamic memory allocation and linked-lists (with structs), intro to lab04 "
+desc: "Chapter 5: Dynamic memory allocation and linked-lists (with structs), intro to lab04 "
 ready: true
 pdfurl: /lectures/CS24_Lecture8.pdf
 annotatedpdfurl: /lectures/CS16_Lecture8_ann.pdf

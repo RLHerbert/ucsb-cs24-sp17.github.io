@@ -1,6 +1,6 @@
 ---
 num: "lect13"
-desc: "Chapter 9: Recursion, intro to lab07 "
+desc: "Chapter 8: Queues, Chapter 9: Recursion, intro to lab07 "
 ready: false
 pdfurl: /lectures/CS24_Lecture13.pdf
 annotatedpdfurl: /lectures/CS24_Lecture13_ann.pdf

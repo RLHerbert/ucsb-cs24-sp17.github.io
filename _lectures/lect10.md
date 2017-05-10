@@ -4,7 +4,7 @@ desc: "Chapter 6: Templates, intro to pa04"
 ready: true
 pdfurl: /lectures/CS24_Lecture10.pdf
 annotatedpdfurl: /lectures/CS24_Lecture10_ann.pdf
-annotatedready: false
+annotatedready: true
 lecture_date:  2017-05-08
 ---
 

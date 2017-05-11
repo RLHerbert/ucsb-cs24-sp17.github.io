@@ -4,7 +4,7 @@ num: lab05
 ready: true
 desc: "Linked lists contd"
 assigned: 2017-05-09 09:00:00.00-7
-due: 2017-05-10 23:59:00.00-7
+due: 2017-05-12 23:59:00.00-7
 ---
 <div markdown="1">
 

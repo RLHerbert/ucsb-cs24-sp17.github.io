@@ -4,7 +4,7 @@ desc: "Chapter 6: Templates contd, Iterators "
 ready: true
 pdfurl: /lectures/CS24_Lecture11.pdf
 annotatedpdfurl: 
-annotatedready: false
+annotatedready: true
 lecture_date:  2017-05-10
 ---
 

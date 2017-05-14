@@ -165,9 +165,11 @@ Exceptions would be thrown if (a) a token cannot be identified, (b) there are le
 
 Edit usestack.cpp again to try this algorithm on a postfix expression (remember the stack in usestack.cpp only handles int values), and print the results to cout. For example, here is how the second expression from above could be evaluated (starts with a fresh stack):
 
+```
 // evaluating "7 5 3 * +"
 
 // start with an empty stack
+
 Stack numbers;
 
 // first three tokens all numbers to push "7 5 3":
@@ -191,6 +193,7 @@ numbers.push(left + right);
 
 // done - print result:
 cout << numbers.top() << endl;
+```
 Please select a different expression - make up a simple one, but not too simple, so you know you understand the steps. Don't make it so complicated that you won't have time to complete it before lab ends (besides, you want to work on the optional challenges for awhile). Show the expression you are evaluating in a comment at the top. Compile and test it so you can show the TA how it works.
 
 ## Step 5: Show off your work and get credit for the lab

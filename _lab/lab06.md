@@ -15,35 +15,63 @@ By the time you have completed this lab, you should be able to
 * Solve problems with the help of stacks, including stack<T> objects from the Standard Template Library
 * Evaluate expressions in postfix form
 
-# Step by Step Instructions
+## Step by Step Instructions
 
-Step 1: Create a lab06 directory (in the first pilot's account)
+##Step 1: Create a lab06 directory (in the first pilot's account)
 
 First get together with your lab partner. If your regular partner is more than 5 minutes late, ask the TA to pair you with someone else for this week.
 
 Select a pilot, log in, create a ~/cs24/lab06 directory, and make it your current directory.
 
-Step 2: Get a copy of all the program files, and practice using a stack
+## Step 1a: Create a git repo, add your partner as collaborator
 
-There are three files to copy from the class account this week: intstack.h and usestack.cpp to practice with in this step and again in Step4, plus evalfull.cpp to work on in Step 3. You can copy them all at once using the Unix wildcard character '*' and then verify you got them all as follows:
+* Create a repo for this lab on the pilot's github account (just like you did in lab00): To do this, open a browser and navigate to [www.github.com](www.github.com). Log into the pilot's github account. From the drop down menu on the left, select our class organization: ucsb-cs24-sp17 and proceed to create a new repo. You may refer to the instructions in lab00. Follow this naming convention: If your github username is jgaucho and your partner's is alily, your should name your repo lab03_agaucho_alily (usernames appear in alphabetical order). Also you must set the visibity of your repo to be 'PRIVATE' when creating it. We will not repeat these instructions in subsequent labs.
 
--bash-4.3$ cp ~cs24/labs/lab06/* ~/cs24/lab06/
+* The pilot should add the navigator as a collaborator on github. To do this navigate to the git repo you just created. Choose the settings tab. Then click on the 'Collaborators and teams' option on the left. Scroll all the way down and add the navigator's github account. Then press on the 'Add collaborator' button. Now you and the navigator share the ownership of your git repo. You won't work with your new repo until the end of the lab.
+
+## Step 1b: Set up directory for this lab
+
+
+* Clone your repo in your cs24 directory on CSIL. If your repo is called lab06_jgaucho_alily, type the following commands:
+
+```
+cd ~/cs24
+git clone git@github.com:ucsb-cs24-sp17/lab06_jgaucho_alily.git 
+```
+
+Now navigate to your starter-code directory (cloned in a previous lab) and do a git pull to get the latest version of the code
+
+```
+cd ~/cs24/starter-code/
+git pull
+cd ~/cs24/lab06_jgauch_alily/
+```
+
+Now copy all of the files for this lab from the starter-code directory to your lab03 git repo directory:
+
+```
+cp ~/cs24/starter-code/lab03/* ./
+
 -bash-4.3$ ls
 evalfull.cpp  intstack.h  usestack.cpp
+```
+
 First look at intstack.h to learn what you can do with objects of this type. You can also notice how a stack can be implemented with an array - since all of the methods are very simple, they are implemented "inline" as part of the function definition.
 
 Now look at usestack.cpp - notice it starts with #include "intstack.h" so it can create objects of type Stack and use the public methods of that class. The main function creates a Stack object named s, then it pushes first 10 then 20 onto the stack. Finally, it loops until the stack is empty, printing the top element then popping that element from the stack. Feel free to compile it and run it - notice the numbers are popped from the stack in last-in first-out (LIFO) order:
 
+```
 -bash-4.3$ make usestack
 g++     usestack.cpp   -o usestack
 -bash-4.3$ ./usestack
 20
 10
+```
 Edit usestack.cpp with emacs or another editor to play with this stack until you are comfortable with its operations. Push some numbers, pop a few numbers, use cout to print the top number, and so on. You might want to leave the loop at the end alone, to print out the remaining numbers at the end. Try to predict what numbers will be printed, and in what order. Move on to Step 3 after you are sure you know how to use this ADT.
 
 WARNING: this stack does no error checking - do not push a number onto it if it already has 10 of them, and do not try to access the top element if the stack is empty!
 
-Step 3: Learn two algorithms that use stacks, and implement one of them
+## Step 3: Learn two algorithms that use stacks, and implement one of them
 
 The next file to look at is evalfull.cpp which is intended to evaluate fully-parenthesized arithmetic expressions. You can compile and run it now, but no matter what expression the user enters, it will say "bad expression: parentheses are not balanced" until you implement the function named balanced. But first learn how two stacks can be used to evaluate an arithmetic expression that has a set of parentheses enclosing every calculation. For example, the first expression below is fully parenthesized, and the rest are not:
 
@@ -52,6 +80,7 @@ The next file to look at is evalfull.cpp which is intended to evaluate fully-par
 ( 4 * ( 5 + 3.2 ) / 1.5 ) )    // unbalanced parens - missing one '('
 4 * ( ( 5 + 3.2 ) / 1.5 )      // not fully-parenthesized at '*' operation
 ( 4 * ( 5 + 3.2 ) / 1.5 )      // not fully-parenthesized at '/' operation
+
 The main function gets an expression from the user, assuming that the "tokens" are separated by spaces. Each part of the expression is a different token - left parenthesis, right parenthesis, number, and arithmetic operators add, subtract, multiply and divide. These tokens are stored in an array, char *expression[] and passed to the evalFull function inside a try block, where it prints the result returned by evalFull. The evalFull function might throw a string exception if the expression cannot be evaluated, and such exceptions are caught and printed by main.
 
 Here is the evalFull algorithm (with help from the utility function that identifies tokens and the enum TokenType) - try to follow the steps involved, and see how the program implements them.
@@ -70,6 +99,7 @@ end of loop (stack should be empty) - done: return true if empty, else false
 Just one stack is needed, and it is already created in the skeleton: stack<char *> s is an object of the STL stack class that is set up to store C strings like "(".
 Compile and test it on some balanced and some unbalanced expressions. If balanced, the program should print a result, or at least throw a different exception string like the following sample runs of our solution:
 
+```
 -bash-4.3$ ./evalfull
 enter expression: ( 4 + 7 )
 result: 11
@@ -80,7 +110,7 @@ bad expression: operator(s) left on stack at end
 enter expression: ( 4 7 )
 bad expression: empty stack where operator expected
 Step 4: Learn how to evaluate postfix expressions with a stack
-
+```
 First switch roles between pilot and navigator if you did not already do that.
 
 We are most accustomed to arithmetic expressions in infix form - number operator number - where the operator is between the two numbers, as in 7 + 5. With this form, it is necessary to consider the precedence of operators and the effects of parentheses, which makes 7 + 5 * 3 different than (7 + 5) * 3, for example.
@@ -131,25 +161,26 @@ numbers.push(left + right);
 cout << numbers.top() << endl;
 Please select a different expression - make up a simple one, but not too simple, so you know you understand the steps. Don't make it so complicated that you won't have time to complete it before lab ends (besides, you want to work on the optional challenges for awhile). Show the expression you are evaluating in a comment at the top. Compile and test it so you can show the TA how it works.
 
-Step 5: Show off your work and get credit for the lab
+## Step 5: Show off your work and get credit for the lab
 
 Get your TA's attention to inspect your work, and to record your lab completion.
 Don't leave early though ... see challenge problems below.
 
-Step 5a. ONLY IF YOU RAN OUT OF TIME TO HAVE THE TA INSPECT YOUR WORK
+## Step 6: Submit words2.cpp
 
-In the unlikely event that you must complete this assignment at CSIL, then submit it with the turnin program - but do NOT turn it in if the TA already checked you off. The command is:
+Submit Lab06 at https://submit.cs.ucsb.edu/, or use the following command from a CS terminal:
 
-turnin Lab06@cs24 usestack.cpp evalfull.cpp
-Evaluation and Grading
+~submit/submit -p 735 evalfull.cxx usestack.cxx
+
+## Evaluation and Grading
 
 Each student must accomplish the following to earn full credit for this lab:
 [50 points] usestack.cpp and evalfull.cpp are saved, with your name(s) in a comment at the top and other evidence of your work. Both of these files should compile and execute properly too.
-ONLY IF STEP 5a IS NECESSARY - usestack.cpp and evalfull.cpp have been turned in. 
-Deadline for after-lab submission: Tonight at 11:59pm. 
+
 To be eligible for late turn-in with credit, you MUST have attended your entire lab period.
 [-0 to -50 points, at the TA's discretion] The student arrived on time to their lab session, and worked diligently on CS24-related material until dismissed.
-Optional Extra Challenge
+
+## Optional Extra Challenge
 
 Improve class Stack (the one defined in intstack.h) so its functions will behave properly if called on an empty or full stack. Notice what pop does now, for example: it decrements next no matter how many times it is called on an empty stack, which essentially is a seg fault waiting to happen when top is called or even push in some cases. At least pop should check for an empty stack and decrement only when it is not. Also both top and push should throw exceptions when they are used improperly, and the class should provide a way to check for a full stack.
 First, create intstack.cpp for implementing the functions of class Stack. The reason is that your functions won't be "one-liners" anymore, and therefore they are inappropriate choices for inline functions. Cut all of the implementations from intstack.h (constructor and four member functions) and paste them into intstack.cpp, and make all other necessary syntax changes. When done, verify it still compiles and that it works correctly with usestack.cpp too.

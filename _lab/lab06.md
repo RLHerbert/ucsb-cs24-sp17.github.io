@@ -98,22 +98,25 @@ Here is the evalFull algorithm (with help from the utility function that identif
 
 You must write function balanced to complete this program. Edit evalFull.cpp so that balanced implements the following algorithm:
 
-// Balanced Parentheses Algorithm
-loop through all the tokens in the expression (up to numTokens):
+## Balanced Parentheses Algorithm
 
-    identify the token (using the utility function named identify)
+    loop through all the tokens in the expression (up to numTokens):
+
+        identify the token (using the utility function named identify)
     
-    if token is a left parenthesis: push it on the stack named s
+        if token is a left parenthesis: push it on the stack named s
     
-    if token is a right parenthesis (means a left should be on the stack):
+        if token is a right parenthesis (means a left should be on the stack):
     
-        if stack is empty - done: found out not balanced, so return false
+            if stack is empty - done: found out not balanced, so return false
         
-        else pop a left parenthesis
+            else pop a left parenthesis
         
-    ignore any other token
+        ignore any other token
     
-end of loop (stack should be empty) - done: return true if empty, else false
+    end of loop (stack should be empty) - done: 
+
+    return true if empty, else false
 
 Just one stack is needed, and it is already created in the skeleton: stack<char *> s is an object of the STL stack class that is set up to store C strings like "(".
 Compile and test it on some balanced and some unbalanced expressions. If balanced, the program should print a result, or at least throw a different exception string like the following sample runs of our solution:
@@ -140,23 +143,23 @@ An algorithm to evaluate general infix expressions is even more complicated than
 
 # Postfix Expression Evaluation Algorithm
 
-create a stack for numbers (just need this one stack)
+    create a stack for numbers (just need this one stack)
 
-loop through all the tokens in the expression:
+    loop through all the tokens in the expression:
 
-    identify the token
+        identify the token
     
-    if token is a number: push it on the stack
+        if token is a number: push it on the stack
     
-    if token is an operator (means time to perform a calculation):
+        if token is an operator (means time to perform a calculation):
     
-        pop a number - last one pushed, so it is on right side of calculation
+            pop a number - last one pushed, so it is on right side of calculation
         
-        pop a second number - for the left side of the calculation
+            pop a second number - for the left side of the calculation
         
-        perform the calculation, and push the result on the stack
+            perform the calculation, and push the result on the stack
         
-Done: result is on top of stack
+    Done: result is on top of stack
 
 Exceptions would be thrown if (a) a token cannot be identified, (b) there are less than two numbers on the stack when an operator is encountered, or (c) the stack does not have exactly one number left on it at the end of loop.
 

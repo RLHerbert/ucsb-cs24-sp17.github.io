@@ -19,7 +19,7 @@ This lab may be done with a partner
 
 ## Step by Step Instructions
 
-## Step 1: Create a lab06 git directory (in the first pilot's account)
+## Step 1: Create a lab06 git repo and get the starter code 
 
 First get together with your lab partner. If your regular partner is more than 5 minutes late, let your mentor know.
 

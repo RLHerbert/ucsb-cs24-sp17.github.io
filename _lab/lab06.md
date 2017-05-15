@@ -48,7 +48,7 @@ git pull
 cd ~/cs24/lab06_jgauch_alily/
 ```
 
-Now copy all of the files for this lab from the starter-code directory to your lab03 git repo directory:
+Now copy all of the files for this lab from the starter-code directory to your git repo directory:
 
 ```
 cp ~/cs24/starter-code/lab06/* ./

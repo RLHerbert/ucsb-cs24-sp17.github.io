@@ -23,7 +23,7 @@ This lab may be done with a partner
 
 First get together with your lab partner. If your regular partner is more than 5 minutes late, let your mentor know.
 
-Select a pilot, log in.
+Select a pilot, log into the CSIL machines.
 
 ## Step 1a: Create a git repo, add your partner as collaborator
 

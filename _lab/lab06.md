@@ -15,13 +15,15 @@ By the time you have completed this lab, you should be able to
 * Solve problems with the help of stacks, including stack<T> objects from the Standard Template Library
 * Evaluate expressions in postfix form
 
+This lab may be done with a partner
+
 ## Step by Step Instructions
 
-##Step 1: Create a lab06 directory (in the first pilot's account)
+## Step 1: Create a lab06 git directory (in the first pilot's account)
 
-First get together with your lab partner. If your regular partner is more than 5 minutes late, ask the TA to pair you with someone else for this week.
+First get together with your lab partner. If your regular partner is more than 5 minutes late, let your mentor know.
 
-Select a pilot, log in, create a ~/cs24/lab06 directory, and make it your current directory.
+Select a pilot, log in
 
 ## Step 1a: Create a git repo, add your partner as collaborator
 

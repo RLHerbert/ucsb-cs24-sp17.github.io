@@ -79,7 +79,7 @@ Move on to Step 3 after you are sure you know how to use this ADT.
 
 WARNING: this stack does no error checking - do not push a number onto it if it already has 10 of them, and do not try to access the top element if the stack is empty!
 
-## Step 3: Learn two algorithms that use stacks, and implement one of them
+## Step 3: Learn two algorithms that use stacks, and implement them
 
 The next file to look at is evalfull.cpp which is intended to evaluate fully-parenthesized arithmetic expressions. You can compile and run it now, but no matter what expression the user enters, it will say "bad expression: parentheses are not balanced" until you implement the function named balanced. But first learn how two stacks can be used to evaluate an arithmetic expression that has a set of parentheses enclosing every calculation. For example, the first expression below is fully parenthesized, and the rest are not:
 

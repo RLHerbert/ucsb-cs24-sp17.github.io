@@ -202,11 +202,11 @@ Please select a different expression - make up a simple one, but not too simple,
 Get your TA's attention to inspect your work, and to record your lab completion.
 Don't leave early though ... see challenge problems below.
 
-## Step 6: Submit words2.cpp
+## Step 6: Submit evalfull.cpp and usestack.cpp
 
 Submit Lab06 at https://submit.cs.ucsb.edu/, or use the following command from a CS terminal:
 
-~submit/submit -p 735 evalfull.cxx usestack.cxx
+~submit/submit -p 735 evalfull.cpp usestack.cpp
 
 ## Evaluation and Grading
 

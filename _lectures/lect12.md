@@ -4,7 +4,7 @@ desc: "Chapter 7: Stacks, intro to lab06"
 ready: true
 pdfurl: /lectures/CS24_Lecture12.pdf
 annotatedpdfurl: /lectures/CS24_Lecture12_ann.pdf
-annotatedready: false
+annotatedready: true
 lecture_date: 2017-05-15 
 ---
 

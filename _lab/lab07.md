@@ -31,7 +31,7 @@ Select a pilot, log into the CSIL machines.
 
 ## Step 1b: Clone your gitrepo and get the starter code
 
-* Clone your repo in your cs24 directory on CSIL. If your repo is called lab06_jgaucho_alily, type the following commands:
+* Clone your repo in your cs24 directory on CSIL. If your repo is called lab07_jgaucho_alily, type the following commands:
 
 ```
 cd ~/cs24

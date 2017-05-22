@@ -1,7 +1,7 @@
 ---
 layout: lab
 num: lab07
-ready: false 
+ready: true 
 desc: "Recursion"
 assigned: 2017-05-23 09:00:00.00-7
 due: 2017-05-23 23:59:59.00-7
@@ -168,15 +168,10 @@ Assuming you already made the first two changes above, change main to get the ch
 Can you figure out how to change the triangle functions so the triangles are right-justified instead of left as in the following?
 ```
 ***
-
  **
- 
   *
-  
   *
-  
  **
- 
 ***
 ```
 Do you have to use some iteration instead of just recursion to make this work, or at least must you add additional parameters to the triangle functions?

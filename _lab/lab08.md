@@ -1,7 +1,7 @@
 ---
 layout: lab
 num: lab08
-ready: false
+ready: true
 desc: "Binary Search Tree"
 assigned: 2017-05-30 09:00:00.00-7
 due: 2017-05-30 23:59:00.00-7
@@ -147,7 +147,7 @@ Be aware, however, that more rigorous testing will be done when your work is sub
 
 Submit Lab08 at https://submit.cs.ucsb.edu/, or use the following command from a CS terminal:
 
-~submit/submit -p 603 intbst.cpp
+~submit/submit -p 747 intbst.cpp
 If you are working with a partner, be sure that both partners' names are in a comment at the top of the source code files, and be sure to properly form a group for this project in the submit.cs system.
 
 50/50 is a perfect score.

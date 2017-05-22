@@ -78,8 +78,11 @@ Before continuing, test boundary and null cases such as alph('a') and alph('B'),
 Now - one at a time - implement the other three functions in alph.cpp. All must be done using recursion (you may not use any loop structures).
 
 ralph - prints the alphabetic sequence in reverse, starting with the character passed to it, and ending with 'a' (all of these functions do nothing if the argument passed is not a lower case character).
+
 zalph - prints the alphabetic sequence that starts with the character passed to it, and ends with 'z'.
+
 zralph - prints the alphabetic sequence in reverse, starting with 'z' and ending with the character passed to it.
+
 Here is a complete run from our solution - functions are called in this order: alph, ralph, zalph, zralph
 ```
 -bash-4.3$ ./alph
@@ -111,8 +114,12 @@ enter size:
 ***
 ```
 
-It is a crude print drawing of two triangles, each of the size specified by the user. Here is a run with size 20.
-Implement function stars first. This function should print a star (actually an asterisk, '*'), and call itself as many times as necessary to print exactly the number of stars specified in the initial call. If you don't change main yet, then compile triangles.cpp and run it, your output should match the following runs:
+It is a crude print drawing of two triangles, each of the size specified by the user. 
+
+Here is a run with size 20.
+Implement function stars first. This function should print a star (actually an asterisk, '*'), and call itself as many times as necessary to print exactly the number of stars specified in the initial call. 
+
+If you don't change main yet, then compile triangles.cpp and run it, your output should match the following runs:
 
 ```
 -bash-4.3$ make triangles
@@ -159,10 +166,17 @@ Make an improved version of stars named chars that takes two arguments, the char
 Improve the triangle functions to take those same two arguments, and thereby print triangles made of any character, not just asterisks.
 Assuming you already made the first two changes above, change main to get the character to print from the user, and then test the entire system.
 Can you figure out how to change the triangle functions so the triangles are right-justified instead of left as in the following?
+```
 ***
+
  **
+ 
   *
+  
   *
+  
  **
+ 
 ***
+```
 Do you have to use some iteration instead of just recursion to make this work, or at least must you add additional parameters to the triangle functions?

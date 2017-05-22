@@ -17,7 +17,7 @@ By the time you have completed this lab, you should be able to
 
 ## Step by Step Instructions
 
-## Step 1: Create a lab06 git repo and get the starter code 
+## Step 1: Create a lab07 git repo and get the starter code 
 
 First get together with your lab partner. If your regular partner is more than 5 minutes late, let your mentor know.
 

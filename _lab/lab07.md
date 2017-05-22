@@ -137,7 +137,7 @@ Finally, implement rtriangle to print the rows of stars in reverse order, one st
 
 Submit Lab07 at https://submit.cs.ucsb.edu/, or use the following command from a CS terminal:
 ```   
-~submit/submit -p 599 alph.cpp triangles.cpp
+~submit/submit -p 743 alph.cpp triangles.cpp
 ```
 If you are working with a partner, be sure that both partners' names are in a comment at the top of the source code files, and be sure to properly form a group for this project in the submit.cs system.
 
@@ -166,4 +166,3 @@ Can you figure out how to change the triangle functions so the triangles are rig
  **
 ***
 Do you have to use some iteration instead of just recursion to make this work, or at least must you add additional parameters to the triangle functions?
-Prepared by Michael Costanzo.

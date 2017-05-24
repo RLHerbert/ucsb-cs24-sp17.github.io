@@ -10,17 +10,16 @@ due: 2017-06-06 23:59:00.00-7
 
 Step by Step Instructions
 
-Step 1: TA evaluations
+# Step 1: TA evaluations
 
 Please complete the TA evaluations when the forms are given to you.
 
 This lab step is important to us, and you can only earn credit today by attending your lab session on Tuesday, November 29 - and only if you arrive in time to complete it. The forms will be distributed no later than 5 minutes past the hour that begins your lab session. Don't be late!
-Step 2: If necessary, work on Programming Assignment 6
 
-If you have not already finished PA6, then work on it now:
+# Step 2: If necessary, work on Programming Assignment 6
 
-PA6 is due tonight.
-Step 3: Seek help, and help others with course topics as needed
+
+# Step 3: Seek help, and help others with course topics as needed
 
 The third exam is tomorrow (Wednesday) at 12:30 in the usual lecture room, Psych 1924. It will be a 60-minute exam, focusing mostly on the primary topics covered in lectures since the last exam - recursion and binary trees - and the general searching concepts presented in Monday's lecture.
 
@@ -31,7 +30,7 @@ All except Section 11.3 (B-Trees) from Chapter 11 (Balanced Trees).
 Section 12.1, introductory parts of Sections 12.2-12.4 from Chapter 12 (Searching).
 Take advantage of the TA's presence - as well as the presence of your classmates - to ask questions about any of these possible third exam topics. This also is an opportunity to get help for PA6 if you need it.
 
-Evaluation and Grading
+# Evaluation and Grading
 
 Each student must accomplish the following to earn full credit for this lab:
 

@@ -1,7 +1,7 @@
 ---
 layout: lab
 num: lab08
-ready: false
+ready: true
 desc: "Binary Search Tree"
 assigned: 2017-05-30 09:00:00.00-7
 due: 2017-05-30 23:59:00.00-7
@@ -16,35 +16,57 @@ By the time you have completed this lab, you should be able to
 * Implement recursive functions for binary trees
 * Implement binary search tree functions
 
-# Step by Step Instructions
+## Step by Step Instructions
 
-Step 1: Create a lab09 directory (in the first pilot's account)
+## Step 1: Create a lab08 git repo and get the starter code 
 
-First get together with your lab partner. If your regular partner is more than 5 minutes late, ask the TA to pair you with someone else for this week.
+First get together with your lab partner. If your regular partner is more than 5 minutes late, let your mentor know.
 
-Select a pilot, log in, create a ~/cs24/lab09 directory, and make it your current directory.
+Select a pilot, log into the CSIL machines.
 
-Step 2: Get copies and learn about the necessary program files
+## Step 1a: Create a git repo, add your partner as collaborator
 
+* Create a repo for this lab on the pilot's github account (just like you did in lab00): To do this, open a browser and navigate to [www.github.com](www.github.com). Log into the pilot's github account. From the drop down menu on the left, select our class organization: ucsb-cs24-sp17 and proceed to create a new repo. You may refer to the instructions in lab00. Follow this naming convention: If your github username is jgaucho and your partner's is alily, your should name your repo lab08_agaucho_alily (usernames appear in alphabetical order). Also you must set the visibity of your repo to be 'PRIVATE' when creating it. We will not repeat these instructions in subsequent labs.
+
+* The pilot should add the navigator as a collaborator on github, and the navigator should accept the request to join the repo. See instructions in previous labs
+
+## Step 1b: Clone your gitrepo and get the starter code
+
+* Clone your repo in your cs24 directory on CSIL. If your repo is called lab06_jgaucho_alily, type the following commands:
+
+```
+cd ~/cs24
+git clone git@github.com:ucsb-cs24-sp17/lab08_jgaucho_alily.git 
+```
+
+Now navigate to your starter-code directory (cloned in a previous lab) and do a git pull to get the latest version of the code
+
+```
+cd ~/cs24/starter-code/
+git pull
+cd ~/cs24/lab08_jgauch_alily/
+```
 There are four required files to copy from the class account this week. Get them all at once:
 
-cp ~cs24/labs/lab09/* ~/cs24/lab09/
-Verify you got all the files and try to compile them as follows:
 
+Verify you got all the files and try to compile them as follows:
+```
 -bash-4.3$ ls
 intbst.cpp  intbst.h  Makefile  testbst.cpp
 -bash-4.3$ make
 g++ -std=c++11 -o testbst testbst.cpp intbst.cpp
+```
 A binary search tree class for integers, class IntBST is defined in intbst.h - please study this file for details of the class's features:
 
 The constructor, destructor, insert method and pre-order print method are already implemented in intbst.cpp. Notice the insert method will return false to indicate an attempt to insert a duplicate value; otherwise it inserts the value and returns true.
 In Step 3, you will implement the other two print methods, in-order and post-order. Then in Step 4 you will implement the sum, count and contains methods.
 The binary tree node structure is defined in the private area. The only instance variable is a node pointer, to point at the root node of the tree or at 0 if the tree is empty.
 Several utility functions are declared in the private area too. These functions can be recursive (by virtue of their Node* parameters), and the public methods may choose to use them or not. See how the destructor uses clear, for example, and the insert method uses the overloaded version of insert, each by passing the root pointer to the corresponding utility function.
-Step 3: Implement in-order and post-order binary tree printing
+
+# Step 3: Implement in-order and post-order binary tree printing
 
 You should be able to run testbst now (assuming you compiled it in Step 2):
-
+```
 -bash-4.3$ ./testbst
 Choice of tests:
   0. all tests
@@ -72,6 +94,8 @@ Empty BST:
   sum: 0
   count: 0
   contains 16? N
+  
+```
 Note that just the pre-order print is complete (and the sum, count and contains methods aren't working either).
 
 Use an editor (e.g., emacs) to make the following changes to intbst.cpp - do not change any of the other files.
@@ -86,7 +110,8 @@ BST:
   in-order: 4 8 16 32 64 128 256 512
   post-order: 4 16 32 8 256 512 128 64
 By the way, you should be able to draw the tree now, both by tracing the order of the inserts, or by interpreting the three orders above. Take a minute to try that now on a piece of scratch paper. When you are done, compare your drawing to this Lab09 tree drawing. Review your work and redo it if your drawing does not match ours.
-Step 4: Implement three more binary search tree functions
+
+# Step 4: Implement three more binary search tree functions
 
 First: switch roles between pilot and navigator if you did not already do that.
 
@@ -96,7 +121,7 @@ Implement the helper function for sum() - notice the public method just returns 
 Implement the helper function for count() - this is very similar to the sum() function.
 Implement the public contains method, either recursively or iteratively - both are about the same level of difficulty in this case. If you decide to use recursion, then you must also implement and use the overloaded private contains function declared in intbst.h. You won't need the utility function to solve the problem iteratively. In either case, remember the tree is a binary search tree, and so your solution should run in O(log n) time.
 Here are the results of all tests from our solution - you should verify that your results match:
-
+```
 BST: 
   pre-order: 64 8 4 32 16 128 512 256 
   in-order: 4 8 16 32 64 128 256 512 
@@ -114,18 +139,20 @@ Empty BST:
   sum: 0
   count: 0
   contains 16? N
+```
+
 Be aware, however, that more rigorous testing will be done when your work is submitted (a different program is used for testing your functions, some with random data).
 
-Step 5: Submit your revised intbst.cpp
+# Step 5: Submit your revised intbst.cpp
 
-Submit Lab09 at https://submit.cs.ucsb.edu/, or use the following command from a CS terminal:
+Submit Lab08 at https://submit.cs.ucsb.edu/, or use the following command from a CS terminal:
 
-~submit/submit -p 603 intbst.cpp
+~submit/submit -p 747 intbst.cpp
 If you are working with a partner, be sure that both partners' names are in a comment at the top of the source code files, and be sure to properly form a group for this project in the submit.cs system.
 
 50/50 is a perfect score.
 
-Evaluation and Grading
+# Evaluation and Grading
 
 Each student must accomplish the following to earn full credit [50 total points] for this lab:
 

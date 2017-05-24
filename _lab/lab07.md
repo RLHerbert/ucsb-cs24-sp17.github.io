@@ -1,7 +1,7 @@
 ---
 layout: lab
 num: lab07
-ready: false 
+ready: true 
 desc: "Recursion"
 assigned: 2017-05-23 09:00:00.00-7
 due: 2017-05-23 23:59:59.00-7
@@ -17,7 +17,7 @@ By the time you have completed this lab, you should be able to
 
 ## Step by Step Instructions
 
-## Step 1: Create a lab06 git repo and get the starter code 
+## Step 1: Create a lab07 git repo and get the starter code 
 
 First get together with your lab partner. If your regular partner is more than 5 minutes late, let your mentor know.
 
@@ -31,7 +31,7 @@ Select a pilot, log into the CSIL machines.
 
 ## Step 1b: Clone your gitrepo and get the starter code
 
-* Clone your repo in your cs24 directory on CSIL. If your repo is called lab06_jgaucho_alily, type the following commands:
+* Clone your repo in your cs24 directory on CSIL. If your repo is called lab07_jgaucho_alily, type the following commands:
 
 ```
 cd ~/cs24
@@ -78,8 +78,11 @@ Before continuing, test boundary and null cases such as alph('a') and alph('B'),
 Now - one at a time - implement the other three functions in alph.cpp. All must be done using recursion (you may not use any loop structures).
 
 ralph - prints the alphabetic sequence in reverse, starting with the character passed to it, and ending with 'a' (all of these functions do nothing if the argument passed is not a lower case character).
+
 zalph - prints the alphabetic sequence that starts with the character passed to it, and ends with 'z'.
+
 zralph - prints the alphabetic sequence in reverse, starting with 'z' and ending with the character passed to it.
+
 Here is a complete run from our solution - functions are called in this order: alph, ralph, zalph, zralph
 ```
 -bash-4.3$ ./alph
@@ -111,8 +114,12 @@ enter size:
 ***
 ```
 
-It is a crude print drawing of two triangles, each of the size specified by the user. Here is a run with size 20.
-Implement function stars first. This function should print a star (actually an asterisk, '*'), and call itself as many times as necessary to print exactly the number of stars specified in the initial call. If you don't change main yet, then compile triangles.cpp and run it, your output should match the following runs:
+It is a crude print drawing of two triangles, each of the size specified by the user. 
+
+Here is a run with size 20.
+Implement function stars first. This function should print a star (actually an asterisk, '*'), and call itself as many times as necessary to print exactly the number of stars specified in the initial call. 
+
+If you don't change main yet, then compile triangles.cpp and run it, your output should match the following runs:
 
 ```
 -bash-4.3$ make triangles
@@ -137,7 +144,7 @@ Finally, implement rtriangle to print the rows of stars in reverse order, one st
 
 Submit Lab07 at https://submit.cs.ucsb.edu/, or use the following command from a CS terminal:
 ```   
-~submit/submit -p 599 alph.cpp triangles.cpp
+~submit/submit -p 743 alph.cpp triangles.cpp
 ```
 If you are working with a partner, be sure that both partners' names are in a comment at the top of the source code files, and be sure to properly form a group for this project in the submit.cs system.
 
@@ -159,11 +166,12 @@ Make an improved version of stars named chars that takes two arguments, the char
 Improve the triangle functions to take those same two arguments, and thereby print triangles made of any character, not just asterisks.
 Assuming you already made the first two changes above, change main to get the character to print from the user, and then test the entire system.
 Can you figure out how to change the triangle functions so the triangles are right-justified instead of left as in the following?
+```
 ***
  **
   *
   *
  **
 ***
+```
 Do you have to use some iteration instead of just recursion to make this work, or at least must you add additional parameters to the triangle functions?
-Prepared by Michael Costanzo.

@@ -146,8 +146,9 @@ Be aware, however, that more rigorous testing will be done when your work is sub
 # Step 5: Submit your revised intbst.cpp
 
 Submit Lab08 at https://submit.cs.ucsb.edu/, or use the following command from a CS terminal:
-
+```
 ~submit/submit -p 747 intbst.cpp
+```
 If you are working with a partner, be sure that both partners' names are in a comment at the top of the source code files, and be sure to properly form a group for this project in the submit.cs system.
 
 50/50 is a perfect score.
@@ -158,8 +159,8 @@ Each student must accomplish the following to earn full credit [50 total points]
 
 [50 points] intbst.cpp is saved, it has your name(s) in a comment at the top, it compiles and executes properly, and scores 50/50 on the submit.cs system tests.
 [-0 to -50 points, at the TA's discretion] The student arrived on time to their lab session, and worked diligently on CS24-related material until dismissed.
-This lab is due by 11:59 pm Sunday night!
-Optional Extra Challenge
+
+# Optional Extra Challenge
 
 Work with copies of intbst.h, intbst.cpp and testbst.cpp in attempting these challenges. Maybe just create a subdirectory named challenge inside your lab09 directory, and then copy the current versions of these files into there.
 

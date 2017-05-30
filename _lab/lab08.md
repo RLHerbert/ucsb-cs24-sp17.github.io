@@ -106,10 +106,16 @@ Save, and then test your print implementations: compile and execute testbst agai
 Here are the correct results (abbreviated to show just the print orders):
 
 BST:
+
   pre-order: 64 8 4 32 16 128 512 256
+  
   in-order: 4 8 16 32 64 128 256 512
+  
   post-order: 4 16 32 8 256 512 128 64
-By the way, you should be able to draw the tree now, both by tracing the order of the inserts, or by interpreting the three orders above. Take a minute to try that now on a piece of scratch paper. When you are done, compare your drawing to this Lab09 tree drawing. Review your work and redo it if your drawing does not match ours.
+  
+By the way, you should be able to draw the tree now, both by tracing the order of the inserts, or by interpreting the three orders above. Take a minute to try that now on a piece of scratch paper. When you are done, compare your drawing to this Lab08
+http://www.cs.ucsb.edu/~mikec/cs24/assignments/lab09/lab09tree.png
+tree drawing. Review your work and redo it if your drawing does not match ours.
 
 # Step 4: Implement three more binary search tree functions
 

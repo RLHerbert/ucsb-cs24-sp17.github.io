@@ -106,10 +106,16 @@ Save, and then test your print implementations: compile and execute testbst agai
 Here are the correct results (abbreviated to show just the print orders):
 
 BST:
+
   pre-order: 64 8 4 32 16 128 512 256
+  
   in-order: 4 8 16 32 64 128 256 512
+  
   post-order: 4 16 32 8 256 512 128 64
-By the way, you should be able to draw the tree now, both by tracing the order of the inserts, or by interpreting the three orders above. Take a minute to try that now on a piece of scratch paper. When you are done, compare your drawing to this Lab09 tree drawing. Review your work and redo it if your drawing does not match ours.
+  
+By the way, you should be able to draw the tree now, both by tracing the order of the inserts, or by interpreting the three orders above. Take a minute to try that now on a piece of scratch paper. When you are done, compare your drawing to this Lab08
+http://www.cs.ucsb.edu/~mikec/cs24/assignments/lab09/lab09tree.png
+tree drawing. Review your work and redo it if your drawing does not match ours.
 
 # Step 4: Implement three more binary search tree functions
 
@@ -146,8 +152,9 @@ Be aware, however, that more rigorous testing will be done when your work is sub
 # Step 5: Submit your revised intbst.cpp
 
 Submit Lab08 at https://submit.cs.ucsb.edu/, or use the following command from a CS terminal:
-
+```
 ~submit/submit -p 747 intbst.cpp
+```
 If you are working with a partner, be sure that both partners' names are in a comment at the top of the source code files, and be sure to properly form a group for this project in the submit.cs system.
 
 50/50 is a perfect score.
@@ -158,8 +165,8 @@ Each student must accomplish the following to earn full credit [50 total points]
 
 [50 points] intbst.cpp is saved, it has your name(s) in a comment at the top, it compiles and executes properly, and scores 50/50 on the submit.cs system tests.
 [-0 to -50 points, at the TA's discretion] The student arrived on time to their lab session, and worked diligently on CS24-related material until dismissed.
-This lab is due by 11:59 pm Sunday night!
-Optional Extra Challenge
+
+# Optional Extra Challenge
 
 Work with copies of intbst.h, intbst.cpp and testbst.cpp in attempting these challenges. Maybe just create a subdirectory named challenge inside your lab09 directory, and then copy the current versions of these files into there.
 

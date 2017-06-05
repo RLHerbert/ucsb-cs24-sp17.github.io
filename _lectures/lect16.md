@@ -4,7 +4,7 @@ desc: "Chapter 10: Binary Search Trees"
 ready: true
 pdfurl: /lectures/CS24_Lecture16.pdf
 annotatedpdfurl: /lectures/CS24_Lecture16_ann.pdf 
-annotatedready: false
+annotatedready: true
 lecture_date: 2017-05-31 
 
 ---

@@ -1,10 +1,10 @@
 ---
 num: "lect17"
-desc: "Searching algorithms and run time analysis"
-ready: false
+desc: "Run time analysis of search in a BST, pa05"
+ready: true
 pdfurl: /lectures/CS24_Lecture17.pdf
 annotatedpdfurl: /lectures/CS24_Lecture17_ann.pdf
-annotatedready: false
+annotatedready: true
 lecture_date: 2017-06-05
 ---
 

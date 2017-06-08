@@ -10,10 +10,10 @@ ready: true
 
 ## Grade breakup by evaluation component
 * Lecture and section partcipation: 2%
-* Homeworks/Quizzes: 13%
-* Lab assignments: 35% 
+* Homeworks/Quizzes: 8%
+* Lab assignments: 40% 
 * Midterm Exams (2 at 15% each): 30%
-* Final Examination : 20
+* Final Examination : 20%
 
 <p>Quizzes may occur at anytime, announced or unannounced. Missed quizzes may not be made up.<br />
 Thus <strong>attendance is required</strong>, and <strong>reading the assigned readings is required.</strong></p>
